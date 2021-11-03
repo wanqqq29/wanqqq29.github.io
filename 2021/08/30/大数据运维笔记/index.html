@@ -1,0 +1,1151 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="google-site-verification" content="TneGvKxHBEhNeNdJY3BrlLe_y8OsYSHNicJyUXafxzE" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="万能青年">
+  <meta name="keywords" content="">
+  <meta name="baidu-site-verification" content="code-YL4uW1Y3qB" />
+  
+  <title>大数据运维综合实践课堂笔记 - 日常随笔</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.wanqqq29.cn","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ba727d5704de87e82519e888b016c619";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>日常随笔</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                学习随笔
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="大数据运维综合实践课堂笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-30 08:53" pubdate>
+        2021年8月30日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      10.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      144
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">大数据运维综合实践课堂笔记</h1>
+            
+            <div class="markdown-body">
+              <h1 id="课程笔记教师版"><a href="#课程笔记教师版" class="headerlink" title="课程笔记教师版"></a>课程笔记教师版</h1><h2 id="https-www-wolai-com-ptxibaMET7CiA4PMQMRgwU"><a href="#https-www-wolai-com-ptxibaMET7CiA4PMQMRgwU" class="headerlink" title="https://www.wolai.com/ptxibaMET7CiA4PMQMRgwU"></a><a target="_blank" rel="noopener" href="https://www.wolai.com/ptxibaMET7CiA4PMQMRgwU">https://www.wolai.com/ptxibaMET7CiA4PMQMRgwU</a></h2><h1 id="第一课时开始2021-8-30"><a href="#第一课时开始2021-8-30" class="headerlink" title="第一课时开始2021.8.30"></a>第一课时开始2021.8.30</h1><hr>
+<h1 id="虚拟化技术-docker"><a href="#虚拟化技术-docker" class="headerlink" title="虚拟化技术 docker"></a>虚拟化技术 docker</h1><p><img src="http://markdowntc.wanqqq29.cn//image-20210830110359747.png" srcset="/img/loading.gif" lazyload alt="image-20210830110359747"></p>
+<h2 id="三个概念"><a href="#三个概念" class="headerlink" title="三个概念"></a>三个概念</h2><h3 id="镜像（Image）"><a href="#镜像（Image）" class="headerlink" title="镜像（Image）"></a>镜像（Image）</h3><ul>
+<li><p> 模板，提前设计好的与各种相关环境的环境 </p>
+</li>
+<li><p>镜像就是创建容器的模板</p>
+</li>
+</ul>
+<h3 id="容器（Container）"><a href="#容器（Container）" class="headerlink" title="容器（Container）"></a>容器（Container）</h3><ul>
+<li><p>运行环境、就是一个完整的操作系统</p>
+</li>
+<li><p>容器与容器之间做到了完全的隔离（沙箱）</p>
+</li>
+</ul>
+<h3 id="仓库（Repository）"><a href="#仓库（Repository）" class="headerlink" title="仓库（Repository）"></a>仓库（Repository）</h3><ul>
+<li>存放各种镜像的地方，可以上传下载</li>
+<li>远程仓库：dockerHub、本地仓库</li>
+<li>每个仓库都可以包含多个标签（Tag）,每个标签对应一个镜像</li>
+<li>通常每个仓艰苦会包含同一个软件不同版本的镜像，可以通过<code>仓库名:标签</code>的格式来指定镜像</li>
+</ul>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p>###配置静态ip</p>
+<p>###安装Docker</p>
+<h3 id="卸载旧版本"><a href="#卸载旧版本" class="headerlink" title="卸载旧版本"></a>卸载旧版本</h3><p>旧版本的多克被称为或。如果安装了这些，则卸载它们以及相关的依赖关系。<code>docker``docker-engine</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum remove docker \<br>    docker-client \<br>    docker-client-latest \<br>    docker-common \<br>    docker-latest \<br>    docker-latest-logrotate \<br>    docker-logrotate \<br>    docker-engine<br></code></pre></td></tr></table></figure>
+
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
+<li><p>更新yum源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">sudo yum update<br></code></pre></td></tr></table></figure></li>
+<li><p>安装 yum-utils 及devicemapper驱动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install -y yum-utils device-mapper-persistent-data lvm2<br></code></pre></td></tr></table></figure></li>
+<li><p>设置yum源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo<br></code></pre></td></tr></table></figure></li>
+<li><p>安装Docker</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">yum install docker-ce -y<br></code></pre></td></tr></table></figure></li>
+<li><p>启动Docker</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">systemctl start docker<br></code></pre></td></tr></table></figure></li>
+<li><p>检查docker是否正确安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run hello-world<br></code></pre></td></tr></table></figure></li>
+<li><p>正确安装输出如下：</p>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210830220328061.png" srcset="/img/loading.gif" lazyload alt="image-20210830220328061"></p>
+</li>
+</ul>
+<hr>
+<h1 id="第二课时开始2021-8-31"><a href="#第二课时开始2021-8-31" class="headerlink" title="第二课时开始2021.8.31"></a>第二课时开始2021.8.31</h1><hr>
+<h1 id="Docker使用"><a href="#Docker使用" class="headerlink" title="Docker使用"></a>Docker使用</h1><h2 id="docker-run-i-ubuntu-bin-echo-“hello-world”"><a href="#docker-run-i-ubuntu-bin-echo-“hello-world”" class="headerlink" title="docker run -i ubuntu /bin/echo “hello world”"></a>docker run -i ubuntu /bin/echo “hello world”</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -i ubuntu /bin/echo &quot;hello world&quot;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>run:运行一个容器</li>
+<li>ubuntu:指定要运行的镜像，Docker首先从本地主机上查找镜像是否存在，如果不存在，Docker就会从镜像仓库Docker Hub下载符合的公共镜像。</li>
+<li>/bin/echo “hello world”:在启动的容器中执行的命令。</li>
+<li><img src="http://markdowntc.wanqqq29.cn//image-20210831095921743.png" srcset="/img/loading.gif" lazyload alt="image-20210831095921743"></li>
+</ul>
+<h2 id="docker-run-i-t-ubuntu-bin-bash"><a href="#docker-run-i-t-ubuntu-bin-bash" class="headerlink" title="docker run -i -t ubuntu /bin/bash"></a>docker run -i -t ubuntu /bin/bash</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -i -t -d ubuntu /bin/bash<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>-t：在新容器内指定一个伪终端或终端。</li>
+<li>-i：允许你对容器内的标准输入（STDIN）进行交互</li>
+<li>-d 后台启动容器，不会进入容器</li>
+</ul>
+<h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><h3 id="exit或CTRL-D来退出容器"><a href="#exit或CTRL-D来退出容器" class="headerlink" title="exit或CTRL+D来退出容器"></a>exit或CTRL+D来退出容器</h3><h3 id="docker-ps-来查看运行的容器"><a href="#docker-ps-来查看运行的容器" class="headerlink" title="docker ps 来查看运行的容器"></a>docker ps 来查看运行的容器</h3><p><img src="http://markdowntc.wanqqq29.cn//image-20210830222731719.png" srcset="/img/loading.gif" lazyload alt="image-20210830222731719"></p>
+<ul>
+<li>CONTAINER ID：容器ID</li>
+<li>IMAGE：使用的镜像</li>
+<li>COMMAND：启动容器时运行的命令</li>
+<li>CREATED：容器的创建时间</li>
+<li>STATUS：容器的状态<ul>
+<li>Created（已创建）</li>
+<li>Restarting（重启中）</li>
+<li>Running 或 Up（运行中）</li>
+<li>Removing（迁移中）</li>
+<li>Paused（暂停） </li>
+<li> Exited（停止）</li>
+<li> Dead（死亡）</li>
+</ul>
+</li>
+<li>PORTS：容器的端口信息和使用的连接类型（tcp/udp）</li>
+<li>NAMES：自动分配的容器名称</li>
+</ul>
+<h3 id="进入、退出容器"><a href="#进入、退出容器" class="headerlink" title="进入、退出容器"></a>进入、退出容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">进入：docker attach DockerID<br>	docker exec<br>退出：exit<br>	推荐使用docker exec命令进入容器，退出容器终端时，不会导致容器停止<br></code></pre></td></tr></table></figure>
+
+<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">docker</span> ps <span class="hljs-comment">#列出正在运行的容器 |-a 全部容器</span><br>docker rm ID <span class="hljs-comment"># 删除对应ID的容器（需先停止）| -f 强制删除</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h2><h3 id="列出本地主机上的镜像"><a href="#列出本地主机上的镜像" class="headerlink" title="列出本地主机上的镜像"></a>列出本地主机上的镜像</h3><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker images</span> <br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210831090845172.png" srcset="/img/loading.gif" lazyload alt="image-20210831090845172"></p>
+<ul>
+<li>REPOSITORY：表示镜像的仓库源</li>
+<li>TAG：镜像的标签</li>
+<li>IMAGE ID：镜像ID</li>
+<li>CREATED：镜像创建时间</li>
+<li>SIZE：镜像大小</li>
+</ul>
+<h3 id="获取一个新的镜像"><a href="#获取一个新的镜像" class="headerlink" title="获取一个新的镜像"></a>获取一个新的镜像</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> pull ubuntu:<span class="hljs-number">13</span>.<span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="查找镜像"><a href="#查找镜像" class="headerlink" title="查找镜像"></a>查找镜像</h3><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker search hadoop</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="第三课时开始-2021-9-1"><a href="#第三课时开始-2021-9-1" class="headerlink" title="第三课时开始 2021.9.1"></a>第三课时开始 2021.9.1</h2><hr>
+<h2 id="容器链接"><a href="#容器链接" class="headerlink" title="容器链接"></a>容器链接</h2><h3 id="网络端口映射"><a href="#网络端口映射" class="headerlink" title="网络端口映射"></a>网络端口映射</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> run -d -p <span class="hljs-number">80</span>:<span class="hljs-number">5000</span> training/webapp python app.py<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>-p：指定端口映射，5000容器内部端口，80容器向外暴露的端口（本机的80端口映射到容器的5000端口）</li>
+<li>浏览器打开IP:80输出如下</li>
+<li><img src="http://markdowntc.wanqqq29.cn//image-20210831092307771.png" srcset="/img/loading.gif" lazyload alt="image-20210831092307771"></li>
+</ul>
+<h3 id="指定容器绑定网络地址"><a href="#指定容器绑定网络地址" class="headerlink" title="指定容器绑定网络地址"></a>指定容器绑定网络地址</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> run -d -p <span class="hljs-number">127.0.0.1:5001</span>:<span class="hljs-number">5000</span> training/webapp python app.py<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>可以通过访问127.0.0.1:5001来访问容器的5001端口</li>
+</ul>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>无法访问127.0.0.1:5001</p>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210831093419478.png" srcset="/img/loading.gif" lazyload alt="image-20210831093419478"></p>
+<h4 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h4><p>127.0.0.1应该是虚拟机的IP，在主机访问127.0.0.1定位到了主机,而不是虚拟机的127地址</p>
+<p>5001端口正在占用说明容器没问题</p>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210831100853660.png" srcset="/img/loading.gif" lazyload alt="image-20210831100853660"></p>
+<h4 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h4><ul>
+<li>127.0.0.1 为本机地址，外网不能访问</li>
+<li>0.0.0.0 为外网可以访问的地址</li>
+</ul>
+<ol>
+<li><p>虚拟机的127 5001端口映射出去  (暂时没有找到访问方法)</p>
+</li>
+<li><p>直接在虚拟机中访问127.0.0.1:5001</p>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210831101234332.png" srcset="/img/loading.gif" lazyload alt="image-20210831101234332"></p>
+<p>返回了hello world 说明指定ip成功</p>
+</li>
+</ol>
+<h4 id="问题原理"><a href="#问题原理" class="headerlink" title="问题原理"></a>问题原理</h4><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs dns">localhost、<span class="hljs-number">127.0.0.1</span>和<span class="hljs-number">0.0.0.0</span>和本机IP的区别<br>localhost<br>localhost其实是域名，一般windows系统默认将localhost指向<span class="hljs-number">127.0.0.1</span>，但是localhost并不等于<span class="hljs-number">127.0.0.1</span>，localhost指向的IP地址是可以配置的<br><br><span class="hljs-number">127.0.0.1</span><br>首先我们要先知道一个概念，凡是以<span class="hljs-number">127</span>开头的IP地址，都是回环地址（Loop back address），其所在的回环接口一般被理解为虚拟网卡，并不是真正的路由器接口。<br><br>所谓的回环地址，通俗的讲，就是我们在主机上发送给<span class="hljs-number">127</span>开头的IP地址的数据包会被发送的主机自己接收，根本传不出去，外部设备也无法通过回环地址访问到本机。<br><br>小说明：正常的数据包会从IP层进入链路层，然后发送到网络上；而给回环地址发送数据包，数据包会直接被发送主机的IP层获取，后面就没有链路层他们啥事了。<br><br>而<span class="hljs-number">127.0.0.1</span>作为&#123;<span class="hljs-number">127</span>&#125;集合中的一员，当然也是个回环地址。只不过<span class="hljs-number">127.0.0.1</span>经常被默认配置为localhost的IP地址。<br>一般会通过ping <span class="hljs-number">127.0.0.1</span>来测试某台机器上的网络设备是否工作正常。<br><br><span class="hljs-number">0.0.0.0</span><br>首先，<span class="hljs-number">0.0.0.0</span>是不能被ping通的。在服务器中，<span class="hljs-number">0.0.0.0</span>并不是一个真实的的IP地址，它表示本机中所有的IPV4地址。监听<span class="hljs-number">0.0.0.0</span>的端口，就是监听本机中所有IP的端口。<br><br>小例子剧场（帮助理解本机IP、<span class="hljs-number">127.0.0.1</span>和<span class="hljs-number">0.0.0.0</span>）<br>现在有两台pc在同一个局域网内，分别为pc1与pc2，pc1上有一个网卡，IP地址为<span class="hljs-number">192.168.10.128</span><br><br>pc1中sever监听<span class="hljs-number">127.0.0.1</span>，则pc1中的client可以连上<span class="hljs-number">127.0.0.1</span>，<span class="hljs-number">192.168.10.128</span>连不上；而pc2中client都连不上。<br>pc1中sever监听<span class="hljs-number">192.168.10.128</span>，则pc1中的client可以连上<span class="hljs-number">192.168.10.128</span>，<span class="hljs-number">127.0.0.1</span>连不上；而pc2中client能连上<span class="hljs-number">192.168.10.128</span>。<br>pc1中sever监听<span class="hljs-number">0.0.0.0</span>，则pc1中的client可以连上<span class="hljs-number">127.0.0.1</span>和<span class="hljs-number">192.168.10.128</span>，pc2中的client能连上<span class="hljs-number">192.168.10.128</span>。<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="容器命名"><a href="#容器命名" class="headerlink" title="容器命名"></a>容器命名</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">docker <span class="hljs-built_in">run</span> -d -P <span class="hljs-comment">--name runoob training/webapp python app.py</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="新建网络"><a href="#新建网络" class="headerlink" title="新建网络"></a>新建网络</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">docker<span class="hljs-built_in"> network </span>create -d<span class="hljs-built_in"> bridge </span>test-net<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>新建一个桥接(bridge)网络，命名为test-net</li>
+<li><img src="http://markdowntc.wanqqq29.cn//image-20210901093308751.png" srcset="/img/loading.gif" lazyload alt="image-20210901093308751"></li>
+</ul>
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">Error response from daemon: Failed to Setup IP tables: Unable to enable SKIP DNAT rule:  (iptables failed: iptables --wait -t nat -I DOCKER -i br-<span class="hljs-number">139</span>fb34fcc94 -j RETURN: iptables: No chain<span class="hljs-regexp">/target/m</span>atch by that name.<br> (<span class="hljs-keyword">exit</span> status <span class="hljs-number">1</span>))<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs maxima">关闭防火墙之后docker需要重启，执行以下命令重启docker即可：<br><br>systemctl <span class="hljs-built_in">restart</span> docker<br></code></pre></td></tr></table></figure>
+
+<h2 id="连接容器"><a href="#连接容器" class="headerlink" title="连接容器"></a>连接容器</h2><ul>
+<li>新建一个名为test1，镜像为ubuntu，并连接到网络test-net的容器  <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">docker run -itd <span class="hljs-params">--name</span> test1 <span class="hljs-params">--network</span> test-net ubuntu <span class="hljs-string">/bin/bash</span><br></code></pre></td></tr></table></figure></li>
+<li>新建一个名为test2，镜像为ubuntu，并连接到网络test-net的容器  <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">docker run -itd <span class="hljs-params">--name</span> test2 <span class="hljs-params">--network</span> test-net ubuntu <span class="hljs-string">/bin/bash</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210901094328089.png" srcset="/img/loading.gif" lazyload alt="image-20210901094328089"></p>
+<ul>
+<li><p>进入容器test1</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">docker exec -it test1 <span class="hljs-regexp">/bin/</span>bash<br></code></pre></td></tr></table></figure>
+<ul>
+<li><p>安装ping</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">apt-get update<br>apt-get install iputils-ping<br><br>如果安装失败，先设置apt源<br>参考：https:<span class="hljs-regexp">//</span>blog.csdn.net<span class="hljs-regexp">/annita2019/</span>article<span class="hljs-regexp">/details/</span><span class="hljs-number">104743157</span>/<br></code></pre></td></tr></table></figure></li>
+<li><p>ping test2</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ping</span> test<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210901095030594.png" srcset="/img/loading.gif" lazyload alt="image-20210901095030594"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="配置dns"><a href="#配置dns" class="headerlink" title="配置dns"></a>配置dns</h3><p>  在宿主机的 <code>/etc/docker/daemon.json</code>文件中增加以下内容来设置全部容器的dns（若不存在daemon.json文件需要新建）</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123; <span class="hljs-attr">&quot;dns&quot;</span> : [ <span class="hljs-string">&quot;114.114.114.114&quot;</span>, <span class="hljs-string">&quot;8.8.8.8&quot;</span> ] &#125;<br></code></pre></td></tr></table></figure>
+
+<p>设置后，启动容器的 DNS 会自动配置为 114.114.114.114 和 8.8.8.8。</p>
+<p>配置完，需要重启 docker 才能生效。</p>
+<p>查看容器的 DNS 是否生效可以使用以下命令，它会输出容器的 DNS 信息：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stata">docker <span class="hljs-keyword">run</span> -it --<span class="hljs-keyword">rm</span>  ubuntu  <span class="hljs-keyword">cat</span> etc/resolv.<span class="hljs-keyword">conf</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210901100028279.png" srcset="/img/loading.gif" lazyload alt="image-20210901100028279"></p>
+<h1 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h1><h2 id="什么是dockerfile"><a href="#什么是dockerfile" class="headerlink" title="什么是dockerfile"></a>什么是dockerfile</h2><p>Dockerfile 是一个用来构建镜像的文本文件，文本内容包含了构建镜像所需的指令和说明。 (文件名必须要叫dockerfile)</p>
+<h3 id="FROM-和-RUN-指令"><a href="#FROM-和-RUN-指令" class="headerlink" title="FROM 和 RUN 指令"></a><strong>FROM 和 RUN 指令</strong></h3><p><strong>FROM</strong>：定制的镜像都是基于 FROM 的镜像，这里的 nginx 就是定制需要的基础镜像。后续的操作都是基于 nginx。 <strong>RUN</strong>：用于执行后面跟着的命令行命令。</p>
+<h3 id="RUN命令格式"><a href="#RUN命令格式" class="headerlink" title="RUN命令格式"></a>RUN命令格式</h3><p>普通shell 格式，终端的普通命令</p>
+<p>exec格式，RUN [“可执行文件”, “参数1”, “参数2”]</p>
+<p>例：RUN [“./test.php”, “dev”, “offline”] 等价于 RUN ./test.php dev offline</p>
+<h2 id="构建镜像"><a href="#构建镜像" class="headerlink" title="构建镜像"></a>构建镜像</h2><p>在dockerfile存放目录下执行构建动作</p>
+<h3 id="在当前目录下新建名为dockerfile的文件"><a href="#在当前目录下新建名为dockerfile的文件" class="headerlink" title="在当前目录下新建名为dockerfile的文件"></a>在当前目录下新建名为dockerfile的文件</h3><p>文件内容如下</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">FROM</span> nginx<br>RUN echo <span class="hljs-string">&#x27;这是一个本地构建的nginx镜像&#x27;</span> &gt; <span class="hljs-regexp">/usr/</span>share<span class="hljs-regexp">/nginx/</span>html/index.html<br></code></pre></td></tr></table></figure>
+
+<h3 id="执行命令构建镜像"><a href="#执行命令构建镜像" class="headerlink" title="执行命令构建镜像"></a>执行命令构建镜像</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">docker <span class="hljs-keyword">build </span>-t nginx:v3 . <span class="hljs-comment">#注意后面的.为上下文路径</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210901102045300.png" srcset="/img/loading.gif" lazyload alt="image-20210901102045300"></p>
+<ul>
+<li>红框为自己构建的镜像，蓝框为拉取的公共镜像</li>
+</ul>
+<h3 id="启动镜像"><a href="#启动镜像" class="headerlink" title="启动镜像"></a>启动镜像</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> run -itd -p <span class="hljs-number">80</span>:<span class="hljs-number">80</span> &#123;IMAGE ID&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210901103344243.png" srcset="/img/loading.gif" lazyload alt="image-20210901103344243"></p>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210901103932420.png" srcset="/img/loading.gif" lazyload alt="image-20210901103932420"></p>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210901105633434.png" srcset="/img/loading.gif" lazyload alt="image-20210901105633434"></p>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210901103640835.png" srcset="/img/loading.gif" lazyload alt="image-20210901103640835"></p>
+<blockquote>
+<p><strong>提示</strong>：乱码是因为网页内容的编码格式不对 </p>
+</blockquote>
+<h3 id="上下文路径"><a href="#上下文路径" class="headerlink" title="上下文路径"></a>上下文路径</h3><p>是指 docker 在构建镜像，有时候想要使用到本机的文件（比如复制），docker build 命令得知这个路径后，会将路径下的所有内容打包。</p>
+<p>如果未说明最后一个参数，那么默认上下文路径就是 Dockerfile 所在的位置。</p>
+<blockquote>
+<p><strong>注意</strong>：上下文路径下不要放无用的文件，因为会一起打包发送给 docker 引擎，如果文件过多会造成过程缓慢。</p>
+</blockquote>
+<h2 id="docker-文件指令详解"><a href="#docker-文件指令详解" class="headerlink" title="docker 文件指令详解"></a>docker 文件指令详解</h2><h3 id="COPY"><a href="#COPY" class="headerlink" title="COPY"></a>COPY</h3><p>复制指令，从上下文目录中复制文件或者目录到容器里指定路径。<br>COPY [–chown=<user>:<group>] &lt;源路径1&gt;…  &lt;目标路径&gt;</p>
+<p><b>[–chown=<user>:<group>]</b>：可选参数，用户改变复制到容器内文件的拥有者和属组。</p>
+<p>源路径可以为通配符格式<br>目标路径无需创建好，如无目标路径则自行创建<br>COPY hom* /mydir/<br>COPY hom?.txt /mydir/</p>
+<h3 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h3><p>ADD 指令和 COPY 的使用格类似（同样需求下，官方推荐使用 COPY）。功能也类似，不同之处如下：</p>
+<ul>
+<li>ADD 的优点：在执行 &lt;源文件&gt; 为 tar 压缩文件的话，压缩格式为 gzip, bzip2 以及 xz 的情况下，会自动复制并解压到 &lt;目标路径&gt;。</li>
+<li>ADD 的缺点：在不解压的前提下，无法复制 tar 压缩文件。会令镜像构建缓存失效，从而可能会令镜像构建变得比较缓慢。具体是否使用，可以根据是否需要自动解压来决定。</li>
+<li>如果想原封不动的复制tar文件到容器下，需使用copy</li>
+</ul>
+<h3 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h3><p>类似于 RUN 指令，用于运行程序，但二者运行的时间点不同:</p>
+<ul>
+<li>CMD 在docker run 时运行。</li>
+<li>RUN 是在 docker build。</li>
+</ul>
+<p><strong>作用</strong>：为启动的容器指定默认要运行的程序，程序运行结束，容器也就结束。CMD 指令指定的程序可被 docker run 命令行参数中指定要运行的程序所覆盖。</p>
+<blockquote>
+<p>如果 Dockerfile 中如果存在多个 CMD 指令，仅最后一个生效。</p>
+</blockquote>
+<h3 id="ENV"><a href="#ENV" class="headerlink" title="*ENV"></a>*ENV</h3><p>设置环境变量，定义了环境变量，那么在后续的指令中，就可以使用这个环境变量。<br>ENV <key> <value> ENV <key1>=<value1> <key2>=<value2>…<br>实例<br>ENV NODE_VERSION 7.2.0</p>
+<h3 id="ARG"><a href="#ARG" class="headerlink" title="ARG"></a>ARG</h3><p>构建参数，与 ENV 作用一致。不过作用域不一样。ARG 设置的环境变量仅对 Dockerfile 内有效，也就是说只有 docker build 的过程中有效，构建好的镜像内不存在此环境变量。</p>
+<h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h3><p>配置一个能用jdk的dockerfile镜像</p>
+<h3 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">111doickd<br></code></pre></td></tr></table></figure>
+
+<h1 id="docker-compose安装"><a href="#docker-compose安装" class="headerlink" title="docker compose安装"></a>docker compose安装</h1><h2 id="什么是docker-compose"><a href="#什么是docker-compose" class="headerlink" title="什么是docker compose"></a>什么是docker compose</h2><p>Compose 是用于定义和运行多容器 Docker 应用程序的工具。通过 Compose，您可以使用 YML 文件来配置应用程序需要的所有服务。然后，使用一个命令，就可以从 YML 文件配置中创建并启动所有服务。</p>
+<h2 id="YAML"><a href="#YAML" class="headerlink" title="YAML"></a>YAML</h2><p>本节参考<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/yaml-intro.html">https://www.runoob.com/w3cnote/yaml-intro.html</a></p>
+<h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><ul>
+<li>大小写敏感</li>
+<li>使用缩进表示层级关系</li>
+<li>缩进不允许使用tab，只允许使用空格</li>
+<li>所进的空格数不重要，只要相同的层级的元素左对齐即可</li>
+<li>表示注释</li>
+</ul>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>YAML支持以下几种数据类型：</p>
+<ul>
+<li>对象：键值对的集合，又称为映射（mapping）/哈希（hashes）/字典（dictionary）</li>
+<li>数组：一组按次序排列的值，又称为序列（sequence）/列表（list）</li>
+<li>纯量（scalars）：单个的、不可再分的值</li>
+</ul>
+<h3 id="YAML对象"><a href="#YAML对象" class="headerlink" title="YAML对象"></a>YAML对象</h3><p>对象键值对使用冒号结构表示 <strong>key: value</strong>，冒号后面要加一个空格。<br>也可以使用 **key:{key1: value1, key2: value2, …}**。<br>还可以使用缩进表示层级关系；</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">key</span>: child-key: value<br>	 <span class="hljs-attribute">child</span>-key<span class="hljs-number">2</span>: value<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="YAML数组"><a href="#YAML数组" class="headerlink" title="YAML数组"></a>YAML数组</h3><p>以 - 开头的行表示构成一个数组：</p>
+<ul>
+<li>A</li>
+<li>B</li>
+<li>C</li>
+</ul>
+<p>YAML 支持多维数组，可以使用行内表示：<br>key: [value1, value2, …]<br>数据结构的子成员是一个数组，则可以在该项下面缩进一个空格。</p>
+<ul>
+<li>A</li>
+<li>B</li>
+<li>C</li>
+</ul>
+<p>例子<br>companies:</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs dts">- <br><span class="hljs-symbol">  id:</span> <span class="hljs-number">1</span> <br><span class="hljs-symbol">  name:</span> company1<br><span class="hljs-symbol">  price:</span> <span class="hljs-number">200</span>W <br>- <br><span class="hljs-symbol">  id:</span> <span class="hljs-number">2</span> <br><span class="hljs-symbol">  name:</span> company2<br><span class="hljs-symbol">  price:</span> <span class="hljs-number">500</span>W<br></code></pre></td></tr></table></figure>
+
+<p>意思是 companies 属性是一个数组，每一个数组元素又是由 id、name、price 三个属性构成。<br>数组也可以使用流式(flow)的方式表示：<br>companies: [{id: 1,name: company1,price: 200W},{id: 2,name: company2,price: 500W}]</p>
+<h3 id="纯量"><a href="#纯量" class="headerlink" title="纯量"></a>纯量</h3><p>纯量是最基本的，不可再分的值，包括：</p>
+<ul>
+<li>字符串</li>
+<li>布尔值</li>
+<li>整数</li>
+<li>浮点数</li>
+<li>Null</li>
+<li>时间</li>
+<li>日期</li>
+</ul>
+<p>实例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs text">boolean: <br>    - TRUE  #true,True都可以<br>    - FALSE  #false，False都可以<br>float:<br>    - 3.14<br>    - 6.8523015e+5  #可以使用科学计数法<br>int:<br>    - 123<br>    - 0b1010_0111_0100_1010_1110    #二进制表示<br>null:<br>    nodeName: &#x27;node&#x27;<br>    parent: ~  #使用~表示null<br>string:<br>    - 哈哈<br>    - &#x27;Hello world&#x27;  #可以使用双引号或者单引号包裹特殊字符<br>    - newline<br>      newline2    #字符串可以拆成多行，每一行会被转化成一个空格<br>date:<br>    - 2018-02-17    #日期必须使用ISO 8601格式，即yyyy-MM-dd<br>datetime: <br>    -  2018-02-17T15:02:31+08:00    #时间使用ISO 8601格式，时间和日期之间使用T连接，最后使用+代表时区<br></code></pre></td></tr></table></figure>
+
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>&amp; 锚点和 * 别名，可以用来引用:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs text">defaults: &amp;defaults<br>  adapter:  postgres<br>  host:     localhost<br><br>development:<br>  database: myapp_development<br>  &lt;&lt;: *defaults<br><br>test:<br>  database: myapp_test<br>  &lt;&lt;: *defaults<br></code></pre></td></tr></table></figure>
+
+<p>相当于</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs text">defaults:<br>  adapter:  postgres<br>  host:     localhost<br><br>development:<br>  database: myapp_development<br>  adapter:  postgres<br>  host:     localhost<br><br>test:<br>  database: myapp_test<br>  adapter:  postgres<br>  host:     localhost<br></code></pre></td></tr></table></figure>
+
+<p><strong>&amp;</strong> 用来建立锚点（defaults），**&lt;&lt;** 表示合并到当前数据，***** 用来引用锚点。</p>
+<h2 id="Compose-使用的三个步骤"><a href="#Compose-使用的三个步骤" class="headerlink" title="Compose 使用的三个步骤"></a>Compose 使用的三个步骤</h2><ul>
+<li>使用 Dockerfile 定义应用程序的环境。</li>
+<li>使用 docker-compose.yml 定义构成应用程序的服务，这样它们可以在隔离环境中一起运行。</li>
+<li>最后，执行 docker-compose up 命令来启动并运行整个应用程序。<h3 id="compose安装"><a href="#compose安装" class="headerlink" title="compose安装"></a>compose安装</h3>curl -L “<a target="_blank" rel="noopener" href="https://get.daocloud.io/docker/compose/releases/download/1.12.0/docker-compose-(uname%E2%88%92s)%E2%88%92">https://get.daocloud.io/docker/compose/releases/download/1.12.0/docker-compose-(uname−s)−</a>(uname -s)-(uname−s)−(uname -m)” -o /usr/local/bin/docker-compose<br>下载并安装<br>chmod +x /usr/local/bin/docker-compose<br>更改权限可执行<h3 id="测试安装是否成功"><a href="#测试安装是否成功" class="headerlink" title="测试安装是否成功"></a>测试安装是否成功</h3><code>docker-compose -version</code><br>docker-compose version 1.12.0, build b31ff33</li>
+</ul>
+<h3 id="yml-配置指令"><a href="#yml-配置指令" class="headerlink" title="yml 配置指令"></a>yml 配置指令</h3><h4 id="version"><a href="#version" class="headerlink" title="version"></a>version</h4><p>指定本 yml 的写法格式（格式的版本）</p>
+<h4 id="services"><a href="#services" class="headerlink" title="services"></a>services</h4><p>服务列表，用数组形式展现，每个服务可为一个容器</p>
+<h4 id="image"><a href="#image" class="headerlink" title="image"></a>image</h4><p>指定服务所用镜像</p>
+<h4 id="container-name"><a href="#container-name" class="headerlink" title="container_name"></a>container_name</h4><p>指定容器名字，而非默认</p>
+<h4 id="restart"><a href="#restart" class="headerlink" title="restart"></a>restart</h4><ul>
+<li>no：是默认的重启策略，在任何情况下都不会重启容器。</li>
+<li>always：容器总是重新启动。(docker重启时）</li>
+<li>on-failure：在容器非正常退出时（退出状态非0），才会重启容器。</li>
+<li>unless-stopped：在容器退出时总是重启容器，但是不考虑在Docker守护进程启动时就已经停止了的容器</li>
+</ul>
+<h4 id="networks"><a href="#networks" class="headerlink" title="networks"></a>networks</h4><h5 id="配置容器连接的网络，引用顶级-networks-下的条目"><a href="#配置容器连接的网络，引用顶级-networks-下的条目" class="headerlink" title="配置容器连接的网络，引用顶级 networks 下的条目"></a>配置容器连接的网络，引用顶级 networks 下的条目</h5><p>实例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell">services:<br>	some-service: <br>	networks:<br>		some-network:<br>			aliases:<br>				- alias1<br>		other-network:<br>			aliases:<br>         		- alias2<br> 	ports:<br>       - &quot;50070:50070&quot;<br>       - &quot;9000:9000&quot;<br>	extra_hosts:<br>		- &quot;hadoop-nn:172.25.1.100&quot;<br>		- &quot;hadoop-dn1:172.25.1.101&quot;<br>		- &quot;hadoop-dn2:172.25.1.102&quot;<br>		- &quot;hadoop-dn3:172.25.1.103&quot;    <br>networks:<br>  some-network:<br>    # Use a custom driver<br>    driver: custom-driver-1<br></code></pre></td></tr></table></figure>
+
+<h5 id="自定义扩展网卡"><a href="#自定义扩展网卡" class="headerlink" title="自定义扩展网卡"></a>自定义扩展网卡</h5><p>实例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">　　　　networks:<br>　　　　  extnetwork: 　　#自定义网络名称<br>　　　　    ipam:　　#ip地址管理<br>　　　　      config: 　　#配置信息<br>　　　　        - subnet: 172.20.0.0/24　　#网段管理<br>　　　　          gateway: 172.20.0.1　　  #网关地址<br></code></pre></td></tr></table></figure>
+
+<h4 id="ipv4-address"><a href="#ipv4-address" class="headerlink" title="ipv4_address"></a>ipv4_address</h4><p>为服务的容器指定一个静态ip地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">networks:<br>  hadoop-hdfs:<br>    ipv4_address: 172.25.1.100 <br></code></pre></td></tr></table></figure>
+
+<h4 id="ports"><a href="#ports" class="headerlink" title="ports"></a>ports</h4><p>映射端口<br>实例</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">   ports:<br>- &quot;50070:50070&quot;<br>- &quot;9000:9000&quot;<br></code></pre></td></tr></table></figure>
+
+<h4 id="extra-hosts"><a href="#extra-hosts" class="headerlink" title="extra_hosts"></a>extra_hosts</h4><p>添加主机名的标签，就是往<code>/etc/hosts</code>文件中添加一些记录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">extra_hosts:<br>  - &quot;hadoop-nn:172.25.1.100&quot;<br>  - &quot;hadoop-dn1:172.25.1.101&quot;<br>  - &quot;hadoop-dn2:172.25.1.102&quot;<br>  - &quot;hadoop-dn3:172.25.1.103&quot;<br></code></pre></td></tr></table></figure>
+<h4 id="docker-compose-构建停止启动命令"><a href="#docker-compose-构建停止启动命令" class="headerlink" title="docker-compose 构建停止启动命令"></a>docker-compose 构建停止启动命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">构建docekr-compose集群<br>	docker-compose up<br>停止docker-compose集群<br>	docker-compose stop<br>启动doceker-compose集群<br>	docker-compose start<br></code></pre></td></tr></table></figure>
+
+<h1 id="docker安装hadoop"><a href="#docker安装hadoop" class="headerlink" title="docker安装hadoop"></a>docker安装hadoop</h1><h2 id="构建基础环境镜像"><a href="#构建基础环境镜像" class="headerlink" title="构建基础环境镜像"></a>构建基础环境镜像</h2><h3 id="拉取ubuntu-14-04镜像"><a href="#拉取ubuntu-14-04镜像" class="headerlink" title="拉取ubuntu:14.04镜像"></a>拉取ubuntu:14.04镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker pull ubuntu:14.04<br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210903090131442.png" srcset="/img/loading.gif" lazyload alt="image-20210903090131442"></p>
+<h3 id="创建虚拟nat网卡"><a href="#创建虚拟nat网卡" class="headerlink" title="创建虚拟nat网卡"></a>创建虚拟nat网卡</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker network create -d bridge baseEnv-net<br></code></pre></td></tr></table></figure>
+
+<h3 id="下载sources-list及ssh-config"><a href="#下载sources-list及ssh-config" class="headerlink" title="下载sources.list及ssh_config"></a>下载sources.list及ssh_config</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">宿主机中<br>wget web.wanqqq29.cn/sources.list<br>wget web.wanqqq29.cn/ssh_config<br></code></pre></td></tr></table></figure>
+
+<h3 id="编写dockerfile"><a href="#编写dockerfile" class="headerlink" title="编写dockerfile"></a>编写dockerfile</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs shell">** 旧版本(免密登录、ssh无效) **<br>FROM ubuntu:14.04<br>RUN mv /etc/apt/sources.list /etc/apt/sources.bak<br>COPY files/sources.list /etc/apt/<br>RUN apt-get update &amp;&amp; \<br>	apt-get install openssh-server openssh-client -y &amp;&amp; \<br>	mv /etc/ssh/ssh_config /etc/ssh/ssh_config.bak<br>COPY files/ssh_config /etc/ssh/<br>RUN mkdir -p /var/run/sshd &amp;&amp; \<br>	echo &#x27;root:root&#x27; | chpasswd &amp;&amp; \<br>	cd /root<br>CMD /var/run/sshd -D<br><br>**最终版本**<br>FROM ubuntu:14.04<br><br>RUN mv /etc/apt/sources.list /etc/apt/sources.bak<br><br>COPY files/sources.list /etc/apt/<br><br>RUN apt-get update &amp;&amp; \<br>	apt-get install openssh-server openssh-client -y &amp;&amp; \<br>	mv /etc/ssh/ssh_config /etc/ssh/ssh_config.bak<br>	mkdir -p /var/run/sshd &amp;&amp; \<br>	echo &#x27;root:root&#x27; | chpasswd <br>	<br>RUN mkdir /root/.ssh &amp;&amp; ssh-keygen -q -P &#x27;&#x27; -t dsa -f /root/.ssh/id_dsa &amp;&amp; \<br>	cat /root/.ssh/id_dsa.pub &gt;&gt; /root/.ssh/authorized_keys<br>	<br>COPY files/ssh_config /etc/ssh/<br><br><br><br>EXPOSE 22<br>WORKDIR /root <br>	 <br>CMD /usr/sbin/sshd -D<br><br><br>** RUN层优化 **<br>FROM ubuntu:14.04<br><br>RUN mv /etc/apt/sources.list /etc/apt/sources.bak<br><br>COPY files/sources.list /etc/apt/<br><br>RUN apt-get update &amp;&amp; \<br>	apt-get install openssh-server openssh-client -y &amp;&amp; \<br>	mv /etc/ssh/ssh_config /etc/ssh/ssh_config.bak &amp;&amp; \<br>	mkdir -p /var/run/sshd &amp;&amp; \<br>	echo &#x27;root:root&#x27; | chpasswd &amp;&amp; \<br>	mkdir /root/.ssh &amp;&amp; ssh-keygen -q -P &#x27;&#x27; -t dsa -f /root/.ssh/id_dsa &amp;&amp; \<br>	cat /root/.ssh/id_dsa.pub &gt;&gt; /root/.ssh/authorized_keys &amp;&amp; \<br>	apt-get clean &amp;&amp; rm -rf /var/lib/apt/lists/*<br>	<br>COPY files/ssh_config /etc/ssh/<br><br>EXPOSE 22<br>WORKDIR /root  <br>CMD /usr/sbin/sshd -D<br></code></pre></td></tr></table></figure>
+
+<h4 id="优化空间"><a href="#优化空间" class="headerlink" title="优化空间"></a>优化空间</h4><p><img src="http://markdowntc.wanqqq29.cn//image-20210907100525561.png" srcset="/img/loading.gif" lazyload alt="image-20210907100525561"></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">apt-get clean &amp;&amp; rm -rf <span class="hljs-regexp">/var/</span>lib<span class="hljs-regexp">/apt/</span>lists/* <br>删除apt-get缓存<br>v2比v1 小了<span class="hljs-number">25</span>M<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="构建镜像-1"><a href="#构建镜像-1" class="headerlink" title="构建镜像"></a>构建镜像</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker build -t ubuntu-ssh:v1 .<br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210903113023303.png" srcset="/img/loading.gif" lazyload alt="image-20210903113023303"></p>
+<h3 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -itd --name baseEnv1 --network baseEnv-net ubuntu-ssh:v1 <br>docker run -itd --name baseEnv2 --network baseEnv-net ubuntu-ssh:v1 <br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210903113038924.png" srcset="/img/loading.gif" lazyload alt="image-20210903113038924"></p>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210903113052509.png" srcset="/img/loading.gif" lazyload alt="image-20210903113052509"></p>
+<h3 id="测试是否免密登录"><a href="#测试是否免密登录" class="headerlink" title="测试是否免密登录"></a>测试是否免密登录</h3><h4 id="查看ip"><a href="#查看ip" class="headerlink" title="查看ip"></a>查看ip</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker inspect &#123;name&#125;<br>172.19.0.2/3<br></code></pre></td></tr></table></figure>
+
+<h4 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker exec -it baseEnv1 /bin/bash<br>ssh root@localhost<br>ssh root@&#123;baseEnv2.IP&#125;<br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210903113458624.png" srcset="/img/loading.gif" lazyload alt="image-20210903113458624"></p>
+<h3 id="问题-2"><a href="#问题-2" class="headerlink" title="问题"></a>问题</h3><h4 id="1-ssh服务起不来"><a href="#1-ssh服务起不来" class="headerlink" title="1. ssh服务起不来"></a>1. ssh服务起不来</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">```<br>CMD /var/run/sshd -D<br>sudo service ssh start<br>无效<br>```<br><br>启动容器后，ssh登录22端口拒绝<br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210903102951380.png" srcset="/img/loading.gif" lazyload alt="image-20210903102951380"></p>
+<p>通过<code>ps -e |grep ssh</code>命令查看ssh进程没起来</p>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210903103028663.png" srcset="/img/loading.gif" lazyload alt="image-20210903103028663"></p>
+<h5 id="问题分析-1"><a href="#问题分析-1" class="headerlink" title="- 问题分析"></a>- 问题分析</h5><ul>
+<li><p>没有暴露22端口</p>
+<p>启动容器时添加了 /bin/bash 替换了最后的CMD 导致Dockerfile中的CMD被替代掉</p>
+</li>
+</ul>
+<h5 id="问题解决-1"><a href="#问题解决-1" class="headerlink" title="- 问题解决"></a>- 问题解决</h5><ul>
+<li>暴露端口<code>EXPOSE 22</code></li>
+<li>去掉/bin/bash</li>
+</ul>
+<h4 id="2-免密登录配置不成功"><a href="#2-免密登录配置不成功" class="headerlink" title="2.免密登录配置不成功"></a>2.免密登录配置不成功</h4><h5 id="问题分析-2"><a href="#问题分析-2" class="headerlink" title="- 问题分析"></a>- 问题分析</h5><ul>
+<li>在刚开始的dockerfile中，没有配置免密登录</li>
+<li>配置免密登录后修改root密码</li>
+<li>免密登录需要多次交互操作</li>
+</ul>
+<h5 id="问题解决-2"><a href="#问题解决-2" class="headerlink" title="-  问题解决"></a>-  问题解决</h5><ul>
+<li><p>修改root密码放在配置免密前</p>
+</li>
+<li><p>减少交互操作配置免密登录</p>
+</li>
+<li><p>```shell<br>ssh-keygen -q -P ‘’ -t dsa -f /root/.ssh/id_dsa<br>-q -P ‘’ 取消密码确认操作<br>-f 指定生成地址</p>
+</li>
+</ul>
+<h2 id="配置JDK"><a href="#配置JDK" class="headerlink" title="配置JDK"></a>配置JDK</h2><p>因为Hadoop、Zookeeper、Spark依赖于JVM，因此本模块功能为构建JDK镜像作为Hadoop、Zookeeper和Spark的基础镜像。</p>
+<h3 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">（<span class="hljs-number">1</span>）采用<span class="hljs-number">2</span>.<span class="hljs-number">1</span>中构建的ubuntu-ssh:<span class="hljs-built_in">v1</span>作为基础镜像<br>（<span class="hljs-number">2</span>）将<span class="hljs-keyword">jdk-8u231-linux-x64.tar.gz（也可采用其他版本，建议1.8JDK）复制并解压到/root/tool目录下，为了精简镜像，解压完成后需要将jdk-8u231-linux-x64.tar.gz删除。</span><br><span class="hljs-keyword"></span>（<span class="hljs-number">3</span>）配置<span class="hljs-keyword">Java的环境变量</span><br><span class="hljs-keyword"></span>（<span class="hljs-number">4</span>）通过docker <span class="hljs-keyword">build构jdk:v1镜像</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="编写dockerfile-1"><a href="#编写dockerfile-1" class="headerlink" title="编写dockerfile"></a>编写dockerfile</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs awk">FROM ubuntu-ssh:v1<br><br>RUN mkdir -p <span class="hljs-regexp">/root/</span>tool<br><br>COPY files<span class="hljs-regexp">/jdk.tar.gz /</span>root/<br><br>RUN tar -zxvf <span class="hljs-regexp">/root/</span>jdk.tar.gz -C <span class="hljs-regexp">/root/</span>tool/  &amp;&amp;  \<br>        mv <span class="hljs-regexp">/root/</span>tool<span class="hljs-regexp">/jdk1.8.0_231 /</span>root<span class="hljs-regexp">/tool/</span>java &amp;&amp; \<br>        rm -rf <span class="hljs-regexp">/root/</span>jdk.tar.gz<br><br>ENV JAVA_HOME=<span class="hljs-regexp">/root/</span>tool/java<br>ENV PATH=<span class="hljs-variable">$JAVA_HOME</span>/bin:<span class="hljs-variable">$PATH</span><br><br>CMD <span class="hljs-regexp">/usr/</span>sbin/sshd -d<br></code></pre></td></tr></table></figure>
+
+<h3 id="构建镜像-2"><a href="#构建镜像-2" class="headerlink" title="构建镜像"></a>构建镜像</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">docker <span class="hljs-keyword">build </span>-t ubuntu-<span class="hljs-keyword">jdk:v1 </span>.<br></code></pre></td></tr></table></figure>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210906101301729.png" srcset="/img/loading.gif" lazyload alt="image-20210906101301729"></p>
+<h3 id="创建容器-1"><a href="#创建容器-1" class="headerlink" title="创建容器"></a>创建容器</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">docker run -itd --name <span class="hljs-keyword">jdkEnv1 </span>--network <span class="hljs-keyword">baseEnv-net </span>ubuntu-<span class="hljs-keyword">jdk:v1 </span><br>docker run -itd --name <span class="hljs-keyword">jdkEnv2 </span>--network <span class="hljs-keyword">baseEnv-net </span>ubuntu-<span class="hljs-keyword">jdk:v1 </span><br></code></pre></td></tr></table></figure>
+
+<h3 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">docker exec -it jdkEnv1 <span class="hljs-regexp">/bin/</span>bash<br>java -version <span class="hljs-regexp">/java /</span>javac<br></code></pre></td></tr></table></figure>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210906101608241.png" srcset="/img/loading.gif" lazyload alt="image-20210906101608241"></p>
+<h2 id="Hadoop部署"><a href="#Hadoop部署" class="headerlink" title="Hadoop部署"></a>Hadoop部署</h2><h3 id="集群规划"><a href="#集群规划" class="headerlink" title="集群规划"></a>集群规划</h3><h4 id="hdfs集群规划"><a href="#hdfs集群规划" class="headerlink" title="hdfs集群规划"></a>hdfs集群规划</h4><table>
+<thead>
+<tr>
+<th>容器主机名/容器名</th>
+<th>容器IP（网络名称hadoop-hdfs）</th>
+<th>节点进程</th>
+<th>容器启动镜像</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hadoop-nn</td>
+<td>172.25.1.100</td>
+<td>NameNode、SecondaryNameNode</td>
+<td>namenode:v1</td>
+</tr>
+<tr>
+<td>hadoop-dn1</td>
+<td>172.25.1.101</td>
+<td>DataNode</td>
+<td>datanode:v1</td>
+</tr>
+<tr>
+<td>hadoop-dn2</td>
+<td>172.25.1.102</td>
+<td>DataNode</td>
+<td>datanode:v1</td>
+</tr>
+<tr>
+<td>hadoop-dn3</td>
+<td>172.25.1.103</td>
+<td>DataNode</td>
+<td>datanode:v1</td>
+</tr>
+</tbody></table>
+<h4 id="yarn集群规划"><a href="#yarn集群规划" class="headerlink" title="yarn集群规划"></a>yarn集群规划</h4><table>
+<thead>
+<tr>
+<th>容器主机名/容器名</th>
+<th>容器IP（网络名称hadoop-yarn）</th>
+<th>节点进程</th>
+<th>容器启动镜像</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hadoop-rm</td>
+<td>172.24.1.100</td>
+<td>ResourceManager</td>
+<td>resourcemanager:v1</td>
+</tr>
+<tr>
+<td>hadoop-nm1</td>
+<td>172.24.1.101</td>
+<td>NodeManager</td>
+<td>nodemanager:v1</td>
+</tr>
+<tr>
+<td>hadoop-nm2</td>
+<td>172.24.1.102</td>
+<td>NodeManager</td>
+<td>nodemanager:v1</td>
+</tr>
+<tr>
+<td>hadoop-nm3</td>
+<td>172.24.1.103</td>
+<td>NodeManager</td>
+<td>nodemanager:v1</td>
+</tr>
+</tbody></table>
+<h3 id="设计思路-1"><a href="#设计思路-1" class="headerlink" title="设计思路"></a>设计思路</h3><p>当容器启动时，需要启动hdfs的所有进程，因此设计为需要定义namenode和datanode两个镜像文件。因为hdfs和yarn的需要的配置文件相同，因此先自定义一个hadoop-base的基础镜像，然后再分别构建namenode、datanode、resourcemanager和nodemanager镜像。</p>
+<h3 id="构建hadoopBase镜像"><a href="#构建hadoopBase镜像" class="headerlink" title="构建hadoopBase镜像"></a>构建hadoopBase镜像</h3><h4 id="基础步骤"><a href="#基础步骤" class="headerlink" title="基础步骤"></a>基础步骤</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs awk">（<span class="hljs-number">1</span>）<span class="hljs-number">2.2</span>中构建的ubuntu-jdk:v1作为基础镜像<br>（<span class="hljs-number">2</span>）将hadoop-<span class="hljs-number">2.7</span>.<span class="hljs-number">6</span>.tar.gz（可采用其他版本）复制到容器的<span class="hljs-regexp">/root目录下并解压至/</span>root/tools目录下，为了精简镜像，需要将hadoop-<span class="hljs-number">2.7</span>.<span class="hljs-number">6</span>.tar.gz删除。<br>（<span class="hljs-number">3</span>）创建<span class="hljs-regexp">/root/</span>hdfs<span class="hljs-regexp">/namenode、/</span>root<span class="hljs-regexp">/hdfs/</span>datanode（hdfs-site.xml指定目录）和<span class="hljs-regexp">/root/</span>apps<span class="hljs-regexp">/hadoop/</span>logs（启动namenode时产生的日志文件保存在该目录下）目录<br>（<span class="hljs-number">4</span>）配置Hadoop环境变量<br>（<span class="hljs-number">5</span>）将配置文件复制的<span class="hljs-regexp">/tmp/</span>目录下，并在<span class="hljs-regexp">/tmp/</span>下移动到<span class="hljs-variable">$HADOOP_HOME</span><span class="hljs-regexp">/etc/</span>hadoop/目录中<br>	** 需要修改hadoop-env.sh中JAVA_HOME的路径为<span class="hljs-regexp">/root/</span>tool/java<br>（<span class="hljs-number">6</span>）通过docker-build构建hadoop-base:v1镜像<br></code></pre></td></tr></table></figure>
+
+<h4 id="编写dockerfile-2"><a href="#编写dockerfile-2" class="headerlink" title="编写dockerfile"></a>编写dockerfile</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs awk">FROM ubuntu-jdk:v1<br><br>COPY files<span class="hljs-regexp">/hadoop-2.7.6.tar.gz /</span>root<br><br>RUN tar -zxvf <span class="hljs-regexp">/root/</span>hadoop-<span class="hljs-number">2.7</span>.<span class="hljs-number">6</span>.tar.gz -C <span class="hljs-regexp">/root/</span>tool &amp;&amp; \<br>	mv <span class="hljs-regexp">/root/</span>tool<span class="hljs-regexp">/hadoop-2.7.6 /</span>root<span class="hljs-regexp">/tool/</span>hadoop &amp;&amp; \<br>	rm -rf <span class="hljs-regexp">/root/</span>hadoop-<span class="hljs-number">2.7</span>.<span class="hljs-number">6</span>.tar.gz &amp;&amp; \<br>	mkdir -p <span class="hljs-regexp">/root/</span>hdfs/namenode &amp;&amp; \<br>	mkdir -p <span class="hljs-regexp">/root/</span>hdfs/datanode &amp;&amp; \<br>	mkdir -p <span class="hljs-regexp">/root/</span>tool<span class="hljs-regexp">/hadoop/</span>logs <br>	<br>ENV HADOOP_HOME=<span class="hljs-regexp">/root/</span>tool/hadoop<br>ENV PATH=<span class="hljs-variable">$HADOOP_HOME</span><span class="hljs-regexp">/bin:$HADOOP_HOME/</span>sbin:<span class="hljs-variable">$PATH</span><br><br>COPY files<span class="hljs-regexp">/config/</span>* <span class="hljs-regexp">/tmp/</span><br><br>RUN mv <span class="hljs-regexp">/tmp/</span>hadoop-env.sh <span class="hljs-variable">$HADOOP_HOME</span><span class="hljs-regexp">/etc/</span>hadoop/hadoop-env.sh &amp;&amp; \<br>	mv <span class="hljs-regexp">/tmp/</span>hdfs-site.xml <span class="hljs-variable">$HADOOP_HOME</span><span class="hljs-regexp">/etc/</span>hadoop/hdfs-site.xml &amp;&amp; \<br>	mv <span class="hljs-regexp">/tmp/</span>core-site.xml <span class="hljs-variable">$HADOOP_HOME</span><span class="hljs-regexp">/etc/</span>hadoop/core-site.xml &amp;&amp; \<br>	mv <span class="hljs-regexp">/tmp/m</span>apred-site.xml <span class="hljs-variable">$HADOOP_HOME</span><span class="hljs-regexp">/etc/</span>hadoop/mapred-site.xml &amp;&amp; \<br>	mv <span class="hljs-regexp">/tmp/y</span>arn-site.xml <span class="hljs-variable">$HADOOP_HOME</span><span class="hljs-regexp">/etc/</span>hadoop/yarn-site.xml &amp;&amp; \<br>	apt-get clean &amp;&amp; rm -rf <span class="hljs-regexp">/var/</span>lib<span class="hljs-regexp">/apt/</span>lists/*<br><br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210907093318004.png" srcset="/img/loading.gif" lazyload alt="image-20210907093318004"></p>
+<h4 id="启动镜像验证"><a href="#启动镜像验证" class="headerlink" title="启动镜像验证"></a>启动镜像验证</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> run -itd --name hadoopBase<span class="hljs-number">1</span> --network baseEnv-net hadoop-base:v<span class="hljs-number">1</span><br><span class="hljs-attribute">docker</span> exec -it hadoopBase<span class="hljs-number">1</span> /bin/bash<br><span class="hljs-attribute">hadoop</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210907094350167.png" srcset="/img/loading.gif" lazyload alt="image-20210907094350167"></p>
+<h3 id="namenode镜像"><a href="#namenode镜像" class="headerlink" title="namenode镜像"></a>namenode镜像</h3><h5 id="基础步骤-1"><a href="#基础步骤-1" class="headerlink" title="基础步骤"></a>基础步骤</h5><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs stata">（1）构建的hadoop-base:v1作为基础镜像<br>（2）namenode节点需要格式化，因此运行hadoop namenode –<span class="hljs-keyword">format</span>命令<br>（3）将<span class="hljs-keyword">run</span>.<span class="hljs-keyword">sh</span>(启动namenode和sshd的脚本)复制到/root下并添加执行权限<br>（3）指定数据卷/root/hdfs<br>（4）暴露端口50070和9000<br>（5）指定容器启动运行<span class="hljs-keyword">run</span>.<span class="hljs-keyword">sh</span>脚本<br>（6）通过docker-build构建namenode:v1镜像<br></code></pre></td></tr></table></figure>
+
+<h5 id="sh文件"><a href="#sh文件" class="headerlink" title="sh文件"></a>sh文件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br><br>hadoop namenode -format<br><br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;启动namenode&#x27;</span><br>/root/tool/hadoop/sbin/hadoop-daemon.sh start namenode<br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;启动ssh服务&#x27;</span><br>/usr/sbin/sshd -D<br><br></code></pre></td></tr></table></figure>
+
+<h5 id="编写dockerfile-3"><a href="#编写dockerfile-3" class="headerlink" title="编写dockerfile"></a>编写dockerfile</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs awk">FROM hadoop-base:v1<br><br>COPY files<span class="hljs-regexp">/* /</span>root/<br><br>RUN mv <span class="hljs-regexp">/root/</span>slaves <span class="hljs-variable">$HADOOP_HOME</span><span class="hljs-regexp">/etc/</span>hadoop/slaves &amp;&amp; \<br>	hadoop namenode -format<br><br>VOLUME <span class="hljs-regexp">/root/</span>hdfs<br><br>EXPOSE <span class="hljs-number">50070</span><br>EXPOSE <span class="hljs-number">9000</span><br><br>RUN chmod +x run.sh<br><br>CMD sh run.sh<br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210907105233792.png" srcset="/img/loading.gif" lazyload alt="image-20210907105233792"></p>
+<h5 id="构建镜像-3"><a href="#构建镜像-3" class="headerlink" title="构建镜像"></a>构建镜像</h5><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">docker <span class="hljs-keyword">build </span>-t namenode:<span class="hljs-built_in">v1</span> .<br></code></pre></td></tr></table></figure>
+
+<h5 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h5><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> run -itd --name namenode<span class="hljs-number">1</span> --network baseEnv-net namenode:v<span class="hljs-number">1</span> <br><span class="hljs-attribute">docker</span> exec -it namenode<span class="hljs-number">1</span> /bin/bash<br><span class="hljs-attribute">jps</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210907111946011.png" srcset="/img/loading.gif" lazyload alt="image-20210907111946011"></p>
+<h3 id="datanode镜像"><a href="#datanode镜像" class="headerlink" title="datanode镜像"></a>datanode镜像</h3><h4 id="基础步骤-2"><a href="#基础步骤-2" class="headerlink" title="基础步骤"></a>基础步骤</h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stata">（1）构建的hadoop-base:v1作为基础镜像<br>（2）将<span class="hljs-keyword">run</span>.<span class="hljs-keyword">sh</span>(启动datanode和sshd的脚本)复制到/root下并添加执行权限<br>（3）指定容器启动运行<span class="hljs-keyword">run</span>.<span class="hljs-keyword">sh</span>脚本<br>（4）通过docker-build构建datanode:v1镜像<br></code></pre></td></tr></table></figure>
+
+<h4 id="sh文件-1"><a href="#sh文件-1" class="headerlink" title="sh文件"></a>sh文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;启动datanode&#x27;</span><br>/root/tool/hadoop/sbin/hadoop-daemon.sh start datanode<br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;启动ssh服务&#x27;</span><br>/usr/sbin/sshd -D<br></code></pre></td></tr></table></figure>
+
+<h4 id="dockerfile"><a href="#dockerfile" class="headerlink" title="dockerfile"></a>dockerfile</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk">FROM hadoop-base:v1<br><br>COPY files<span class="hljs-regexp">/* /</span>root/<br><br>RUN mv <span class="hljs-regexp">/root/</span>slaves <span class="hljs-variable">$HADOOP_HOME</span><span class="hljs-regexp">/etc/</span>hadoop/slaves &amp;&amp; \<br>	chmod +x run.sh<br><br>CMD sh run.sh<br></code></pre></td></tr></table></figure>
+
+<h4 id="构建镜像-4"><a href="#构建镜像-4" class="headerlink" title="构建镜像"></a>构建镜像</h4><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">docker <span class="hljs-keyword">build </span>-t datanode:<span class="hljs-built_in">v1</span> .<br></code></pre></td></tr></table></figure>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210907112613500.png" srcset="/img/loading.gif" lazyload alt="image-20210907112613500"></p>
+<h4 id="验证-1"><a href="#验证-1" class="headerlink" title="验证"></a>验证</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> run -itd --name datanode<span class="hljs-number">1</span> --network baseEnv-net datanode:v<span class="hljs-number">1</span> <br><span class="hljs-attribute">docker</span> exec -it datanode<span class="hljs-number">1</span> /bin/bash<br><span class="hljs-attribute">jps</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210907112742540.png" srcset="/img/loading.gif" lazyload alt="image-20210907112742540"></p>
+<h3 id="resourcemanager镜像"><a href="#resourcemanager镜像" class="headerlink" title="resourcemanager镜像"></a>resourcemanager镜像</h3><h4 id="基础步骤-3"><a href="#基础步骤-3" class="headerlink" title="基础步骤"></a>基础步骤</h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs stata">（1）构建的hadoop-bash:v1作为基础镜像<br>（2）将<span class="hljs-keyword">run</span>.<span class="hljs-keyword">sh</span>(启动resourcemanager和sshd的脚本)复制到/root下并添加执行权限<br>（3）暴露端口8080<br>（4）指定容器启动运行<span class="hljs-keyword">run</span>.<span class="hljs-keyword">sh</span>脚本<br>（5）通过docker-build构建resourcemanager:v1镜像<br></code></pre></td></tr></table></figure>
+
+<h4 id="sh文件-2"><a href="#sh文件-2" class="headerlink" title="sh文件"></a>sh文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;启动resourcemanager&#x27;</span><br>/root/tool/hadoop/sbin/yarn-daemon.sh start resourcemanager<br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;启动ssh服务&#x27;</span><br>/usr/sbin/sshd -D<br></code></pre></td></tr></table></figure>
+
+<h4 id="dockerfile-文件"><a href="#dockerfile-文件" class="headerlink" title="dockerfile 文件"></a>dockerfile 文件</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs awk">FROM hadoop-base:v1<br><br>COPY files<span class="hljs-regexp">/* /</span>root/<br><br>RUN mv <span class="hljs-regexp">/root/</span>slaves <span class="hljs-variable">$HADOOP_HOME</span><span class="hljs-regexp">/etc/</span>hadoop/slaves<br><br>RUN chmod +x run.sh<br><br>EXPOSE <span class="hljs-number">8080</span><br><br>CMD sh run.sh<br></code></pre></td></tr></table></figure>
+
+<h4 id="构建镜像-5"><a href="#构建镜像-5" class="headerlink" title="构建镜像"></a>构建镜像</h4><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">docker <span class="hljs-keyword">build </span>-t resourcemanager:<span class="hljs-built_in">v1</span> .<br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210907114017389.png" srcset="/img/loading.gif" lazyload alt="image-20210907114017389"></p>
+<h4 id="验证-2"><a href="#验证-2" class="headerlink" title="验证"></a>验证</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> run -itd --name resourcemanager<span class="hljs-number">1</span> --network baseEnv-net resourcemanager:v<span class="hljs-number">1</span> <br><span class="hljs-attribute">docker</span> exec -it resourcemanager<span class="hljs-number">1</span> /bin/bash<br><span class="hljs-attribute">jps</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210907153022001.png" srcset="/img/loading.gif" lazyload alt="image-20210907153022001"></p>
+<h3 id="nodemanager镜像"><a href="#nodemanager镜像" class="headerlink" title="nodemanager镜像"></a>nodemanager镜像</h3><h4 id="基础步骤-4"><a href="#基础步骤-4" class="headerlink" title="基础步骤"></a>基础步骤</h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stata">（1）构建的hadoop-bash:v1作为基础镜像<br>（2）将<span class="hljs-keyword">run</span>.<span class="hljs-keyword">sh</span>(启动nodemanager和sshd的脚本)复制到/root下并添加执行权限<br>（3）指定容器启动运行<span class="hljs-keyword">run</span>.<span class="hljs-keyword">sh</span>脚本<br>（4）通过docker-build构建node:v1镜像<br></code></pre></td></tr></table></figure>
+
+<h4 id="sh文件-3"><a href="#sh文件-3" class="headerlink" title="sh文件"></a>sh文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/sh</span><br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;启动resourcemanager&#x27;</span><br>/root/tool/hadoop/sbin/yarn-daemon.sh start nodemanager <br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;启动ssh服务&#x27;</span><br>/usr/sbin/sshd -D<br></code></pre></td></tr></table></figure>
+
+<h4 id="dockerfile-文件-1"><a href="#dockerfile-文件-1" class="headerlink" title="dockerfile 文件"></a>dockerfile 文件</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk">FROM hadoop-base:v1<br><br>COPY files<span class="hljs-regexp">/* /</span>root/<br><br>RUN mv <span class="hljs-regexp">/root/</span>slaves <span class="hljs-variable">$HADOOP_HOME</span><span class="hljs-regexp">/etc/</span>hadoop/slaves<br><br>RUN chmod +x run.sh<br><br>CMD sh run.sh<br></code></pre></td></tr></table></figure>
+
+<h4 id="构建镜像-6"><a href="#构建镜像-6" class="headerlink" title="构建镜像"></a>构建镜像</h4><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">docker <span class="hljs-keyword">build </span>-t nodemanager:<span class="hljs-built_in">v1</span> .<br></code></pre></td></tr></table></figure>
+
+<h4 id="验证-3"><a href="#验证-3" class="headerlink" title="验证"></a>验证</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> run -itd --name nodemanager<span class="hljs-number">1</span> --network baseEnv-net nodemanager:v<span class="hljs-number">1</span> <br><span class="hljs-attribute">docker</span> exec -it nodemanager<span class="hljs-number">1</span> /bin/bash<br><span class="hljs-attribute">jps</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="hdfs容器化部署"><a href="#hdfs容器化部署" class="headerlink" title="hdfs容器化部署"></a>hdfs容器化部署</h3><h4 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h4><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs dns">（<span class="hljs-number">1</span>）创建docker-compose.yml文件<br>（<span class="hljs-number">2</span>）指定docker-compose版本为<span class="hljs-number">3</span>（也可以采用<span class="hljs-number">2</span>）<br>（<span class="hljs-number">3</span>）定义名称为hadoop-hdfs的网络，网络驱动指定为bridge,subnet为<span class="hljs-number">172.25.1.0</span>/<span class="hljs-number">24</span>，网关为<span class="hljs-number">172.25.1.1</span><br>（<span class="hljs-number">4</span>）分别指定hadoop-nn、hadooo-dn1、hadoop-dn2、hadoop-dn3服务，每个服务的重启策略为always,network采用hadoop-hdfs,并添加容器主机名和ip映射，hadoop-nn服务将<span class="hljs-number">50070和9000</span>端口映射到DockerHost的<span class="hljs-number">50070和9000</span>端口<br>（<span class="hljs-number">5</span>）通过docker-compose up –d启动hdfs服务。<br>（<span class="hljs-number">6</span>）通过WebUI方式测试（浏览器中输入DockerHOST的IP:<span class="hljs-number">50070</span>），查看每个节点的运行状态。<br></code></pre></td></tr></table></figure>
+
+<h4 id="docker-compose-yml实例"><a href="#docker-compose-yml实例" class="headerlink" title="docker-compose.yml实例"></a>docker-compose.yml实例</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">hadoop-nn:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">namenode:v1</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">hadoop-nn</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">hadoop-nn</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span><br>      <span class="hljs-attr">hadoop-hdfs:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.25</span><span class="hljs-number">.1</span><span class="hljs-number">.100</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">50070</span><span class="hljs-string">:50070</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">9000</span><span class="hljs-string">:9000</span><br>    <span class="hljs-attr">extra_hosts:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nn:172.25.1.100&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-dn1:172.25.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-dn2:172.25.1.102&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-dn3:172.25.1.103&#x27;</span><br><br>  <span class="hljs-attr">hadoop-dn1:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">datanode:v1</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">hadoop-dn1</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">hadoop-dn1</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span><br>      <span class="hljs-attr">hadoop-hdfs:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.25</span><span class="hljs-number">.1</span><span class="hljs-number">.101</span><br>    <span class="hljs-attr">extra_hosts:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nn:172.25.1.100&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-dn1:172.25.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-dn2:172.25.1.102&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-dn3:172.25.1.103&#x27;</span><br><br>  <span class="hljs-attr">hadoop-dn2:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">datanode:v1</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">hadoop-dn2</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">hadoop-dn2</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span><br>      <span class="hljs-attr">hadoop-hdfs:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.25</span><span class="hljs-number">.1</span><span class="hljs-number">.102</span><br>    <span class="hljs-attr">extra_hosts:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nn:172.25.1.100&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-dn1:172.25.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-dn2:172.25.1.102&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-dn3:172.25.1.103&#x27;</span><br><br>  <span class="hljs-attr">hadoop-dn3:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">datanode:v1</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">hadoop-dn3</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">hadoop-dn3</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span><br>      <span class="hljs-attr">hadoop-hdfs:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.25</span><span class="hljs-number">.1</span><span class="hljs-number">.103</span><br>    <span class="hljs-attr">extra_hosts:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nn:172.25.1.100&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-dn1:172.25.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-dn2:172.25.1.102&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-dn3:172.25.1.103&#x27;</span><br><br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">hadoop-hdfs:</span><br>    <span class="hljs-attr">driver:</span> <span class="hljs-string">bridge</span><br>    <span class="hljs-attr">ipam:</span><br>      <span class="hljs-attr">driver:</span> <span class="hljs-string">default</span><br>      <span class="hljs-attr">config:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-attr">subnet:</span> <span class="hljs-number">172.25</span><span class="hljs-number">.1</span><span class="hljs-number">.0</span><span class="hljs-string">/24</span><br><br></code></pre></td></tr></table></figure>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim">在docker-compose.yml同级目录下执行<br>docker-compose <span class="hljs-keyword">up</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="yarn容器化部署"><a href="#yarn容器化部署" class="headerlink" title="yarn容器化部署"></a>yarn容器化部署</h3><h4 id="部署步骤-1"><a href="#部署步骤-1" class="headerlink" title="部署步骤"></a>部署步骤</h4><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">（<span class="hljs-number">1</span>）创建docker-compose<span class="hljs-number">.</span>yml文件<br>（<span class="hljs-number">2</span>）指定docker-compose版本为<span class="hljs-number">3</span>（也可以采用<span class="hljs-number">2</span>）<br>（<span class="hljs-number">3</span>）定义名称为hadoop-yarn的网络，网络驱动指定为bridge,subnet为<span class="hljs-number">172.24</span><span class="hljs-number">.1</span><span class="hljs-number">.0</span>/<span class="hljs-number">24</span>，网关为<span class="hljs-number">172.24</span><span class="hljs-number">.1</span><span class="hljs-number">.1</span><br>（<span class="hljs-number">4</span>）分别指定hadoop-rm、hadooo-nm1、hadoop-nm2、hadoop-nm3服务，每个服务的重启策略为always,network采用hadoop-yarn,并添加容器主机名和<span class="hljs-built_in">ip</span>映射,hadoop-rm服务将<span class="hljs-number">8080</span>端口映射到DockerHost的<span class="hljs-number">8088</span>端口<br>（<span class="hljs-number">5</span>）通过docker-compose <span class="hljs-meta">up</span> –d启动yarn服务。<br>（<span class="hljs-number">6</span>）通过WebUI方式测试（浏览器中输入DockerHOST的<span class="hljs-built_in">IP</span>:<span class="hljs-number">8088</span>），查看每个节点的运行状态。<br></code></pre></td></tr></table></figure>
+
+<h4 id="docker-compose-yml实例-1"><a href="#docker-compose-yml实例-1" class="headerlink" title="docker-compose.yml实例"></a>docker-compose.yml实例</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">hadoop-rm:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">resourcemanager:v1</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">hadoop-rm</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">hadoop-rm</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span><br>      <span class="hljs-attr">hadoop-yarn:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.24</span><span class="hljs-number">.1</span><span class="hljs-number">.100</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">8080</span><span class="hljs-string">:8080</span><br>    <span class="hljs-attr">extra_hosts:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-rm:172.24.1.100&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nm1:172.24.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nm2:172.24.1.102&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nm3:172.24.1.103&#x27;</span><br><br>  <span class="hljs-attr">hadoop-nm1:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">nodemamager:v1</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">hadoop-nm1</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">hadoop-nm1</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span><br>      <span class="hljs-attr">hadoop-yarn:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.24</span><span class="hljs-number">.1</span><span class="hljs-number">.101</span><br>    <span class="hljs-attr">extra_hosts:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-rm:172.24.1.100&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nm1:172.24.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nm2:172.24.1.102&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nm3:172.24.1.103&#x27;</span><br><br>  <span class="hljs-attr">hadoop-nm2:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">datanode:v1</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">hadoop-nm2</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">hadoop-nm2</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span><br>      <span class="hljs-attr">hadoop-yarn:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.24</span><span class="hljs-number">.1</span><span class="hljs-number">.102</span><br>    <span class="hljs-attr">extra_hosts:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-rm:172.24.1.100&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nm1:172.24.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nm2:172.24.1.102&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nm3:172.24.1.103&#x27;</span><br><br>  <span class="hljs-attr">hadoop-nm3:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">datanode:v1</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">hadoop-nm3</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">hadoop-nm3</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span><br>      <span class="hljs-attr">hadoop-yarn:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.24</span><span class="hljs-number">.1</span><span class="hljs-number">.103</span><br>    <span class="hljs-attr">extra_hosts:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-rm:172.24.1.100&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nm1:172.24.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nm2:172.24.1.102&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;hadoop-nm3:172.24.1.103&#x27;</span><br><br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">hadoop-yarn:</span><br>    <span class="hljs-attr">driver:</span> <span class="hljs-string">bridge</span><br>    <span class="hljs-attr">ipam:</span><br>      <span class="hljs-attr">driver:</span> <span class="hljs-string">default</span><br>      <span class="hljs-attr">config:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-attr">subnet:</span> <span class="hljs-number">172.24</span><span class="hljs-number">.1</span><span class="hljs-number">.0</span><span class="hljs-string">/24</span><br><br><br></code></pre></td></tr></table></figure>
+
+<h4 id="启动-1"><a href="#启动-1" class="headerlink" title="启动"></a>启动</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim">在docker-compose.yml同级目录下执行<br>docker-compose <span class="hljs-keyword">up</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="验证-4"><a href="#验证-4" class="headerlink" title="验证"></a>验证</h3><p><img src="http://markdowntc.wanqqq29.cn//image-20210908115407578.png" srcset="/img/loading.gif" lazyload alt="image-20210908115407578"></p>
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210908115418218.png" srcset="/img/loading.gif" lazyload alt="image-20210908115418218"></p>
+<h3 id="后台启动docker-compose-（screen命令）"><a href="#后台启动docker-compose-（screen命令）" class="headerlink" title="后台启动docker-compose  （screen命令）"></a>后台启动docker-compose  （screen命令）</h3><h4 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h4><p><strong>Screen</strong> 是一款由GNU计划开发的用于命令行终端切换的自由软件。用户可以通过该软件同时连接多个本地或远程的命令行会话，并在其间自由切换。GNU Screen可以看作是窗口管理器的命令行界面版本。它提供了统一的管理多个会话的界面和相应的功能。</p>
+<p><strong>会话恢复</strong></p>
+<p>只要Screen本身没有终止，在其内部运行的会话都可以恢复。这一点对于远程登录的用户特别有用——即使网络连接中断，用户也不会失去对已经打开的命令行会话的控制。只要再次登录到主机上执行screen -r就可以恢复会话的运行。同样在暂时离开的时候，也可以执行分离命令detach，在保证里面的程序正常运行的情况下让Screen挂起（切换到后台）。这一点和图形界面下的VNC很相似。</p>
+<p><strong>多窗口</strong></p>
+<p>在Screen环境下，所有的会话都独立的运行，并拥有各自的编号、输入、输出和窗口缓存。用户可以通过快捷键在不同的窗口下切换，并可以自由的重定向各个窗口的输入和输出。Screen实现了基本的文本操作，如复制粘贴等；还提供了类似滚动条的功能，可以查看窗口状况的历史记录。窗口还可以被分区和命名，还可以监视后台窗口的活动。 会话共享 Screen可以让一个或多个用户从不同终端多次登录一个会话，并共享会话的所有特性（比如可以看到完全相同的输出）。它同时提供了窗口访问权限的机制，可以对窗口进行密码保护。</p>
+<p>GNU’s Screen 官方站点：<a target="_blank" rel="noopener" href="http://www.gnu.org/software/screen/">http://www.gnu.org/software/screen/</a></p>
+<h4 id="常用screen参数"><a href="#常用screen参数" class="headerlink" title="常用screen参数"></a>常用screen参数</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">screen -S yourname -&gt; 新建一个叫yourname的session<br>screen -ls -&gt; 列出当前所有的session<br>screen -r yourname -&gt; 回到yourname这个session<br>screen -d yourname -&gt; 远程detach某个session<br>screen -d -r yourname -&gt; 结束当前session并回到yourname这个session<br></code></pre></td></tr></table></figure>
+
+<p>在每个screen session 下，所有命令都以 ctrl+a(C-a) 开始。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs shell">C-a ? -&gt; 显示所有键绑定信息<br>C-a c -&gt; 创建一个新的运行shell的窗口并切换到该窗口<br>C-a n -&gt; Next，切换到下一个 window <br>C-a p -&gt; Previous，切换到前一个 window <br>C-a 0..9 -&gt; 切换到第 0..9 个 window<br>Ctrl+a [Space] -&gt; 由视窗0循序切换到视窗9<br>C-a C-a -&gt; 在两个最近使用的 window 间切换 <br>C-a x -&gt; 锁住当前的 window，需用用户密码解锁<br>C-a d -&gt; detach，暂时离开当前session，将目前的 screen session (可能含有多个 windows) 丢到后台执行，并会回到还没进 screen 时的状态，此时在 screen session 里，每个 window 内运行的 process (无论是前台/后台)都在继续执行，即使 logout 也不影响。 <br>C-a z -&gt; 把当前session放到后台执行，用 shell 的 fg 命令则可回去。<br>C-a w -&gt; 显示所有窗口列表<br>C-a t -&gt; time，显示当前时间，和系统的 load <br>C-a k -&gt; kill window，强行关闭当前的 window<br>C-a  -&gt; 进入 copy mode，在 copy mode 下可以回滚、搜索、复制就像用使用 [vi 一样<br>    C-b Backward，PageUp <br>    C-f Forward，PageDown <br>    H(大写) High，将光标移至左上角 <br>    L Low，将光标移至左下角 <br>    0 移到行首 <br>    $ 行末 <br>    w forward one word，以字为单位往前移 <br>    b backward one word，以字为单位往后移 <br>    Space 第一次按为标记区起点，第二次按为终点 <br>    Esc 结束 copy mode <br>C-a ] -&gt; paste，把刚刚在 copy mode 选定的内容贴上<br></code></pre></td></tr></table></figure>
+
+<h4 id="使用-screen"><a href="#使用-screen" class="headerlink" title="使用 screen"></a>使用 screen</h4><p><strong>安装screen</strong></p>
+<p>流行的Linux发行版（例如Red Hat Enterprise Linux）通常会自带screen实用程序，如果没有的话，可以从GNU screen的官方网站下载。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@TS-DEV ~]# yum install screen<br>[root@TS-DEV ~]# rpm -qa|grep screen<br>screen-4.0.3-4.el5<br>[root@TS-DEV ~]#<br></code></pre></td></tr></table></figure>
+
+<p><strong>创建一个新的窗口</strong></p>
+<p>安装完成后，直接敲命令screen就可以启动它。但是这样启动的screen会话没有名字，实践上推荐为每个screen会话取一个名字，方便分辨：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@TS-DEV ~]# screen -S david <br></code></pre></td></tr></table></figure>
+
+<p>screen启动后，会创建第一个窗口，也就是窗口No. 0，并在其中打开一个系统默认的shell，一般都会是bash。所以你敲入命令screen之后，会立刻又返回到命令提示符，仿佛什么也没有发生似的，其实你已经进入Screen的世界了。当然，也可以在screen命令之后加入你喜欢的参数，使之直接打开你指定的程序，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@TS-DEV ~]# screen vi david.txt<br></code></pre></td></tr></table></figure>
+
+<p>screen创建一个执行vi david.txt的单窗口会话，退出vi 将退出该窗口/会话。</p>
+<p><strong>应用</strong></p>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs gauss"><span class="hljs-keyword">screen</span> -S hdfs 	<span class="hljs-meta">#建立一个名为hdfs的终端窗口</span><br>ctrl+a d	<span class="hljs-meta">#将当前窗口放到后台</span><br><span class="hljs-keyword">screen</span> -S yarn	<span class="hljs-meta">#建立一个名为yarn的终端窗口</span><br>ctrl+a d	<span class="hljs-meta">#将当前窗口放到后台</span><br><span class="hljs-keyword">screen</span> -R hdfs	<span class="hljs-meta">#将名为hdfs的窗口恢复</span><br><span class="hljs-keyword">screen</span> -R yarn	<span class="hljs-meta">#将名为yarn的窗口恢复</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="docker安装zookeeper"><a href="#docker安装zookeeper" class="headerlink" title="docker安装zookeeper"></a>docker安装zookeeper</h1><h2 id="什么是zookeeper"><a href="#什么是zookeeper" class="headerlink" title="什么是zookeeper"></a>什么是zookeeper</h2><p>zookeeper实际上是yahoo开发的，用于分布式中一致性处理的框架。最初其作为研发Hadoop时的副产品。由于分布式系统中一致性处理较为困难，其他的分布式系统没有必要费劲重复造轮子，故随后的分布式系统中大量应用了zookeeper，以至于zookeeper成为了各种分布式系统的基础组件，其地位之重要，可想而知。著名的hadoop、kafka、dubbo 都是基于zookeeper而构建。</p>
+<p>官网：<a target="_blank" rel="noopener" href="http://zookeeper.apache.org/">http://zookeeper.apache.org/</a></p>
+<h2 id="集群规划-1"><a href="#集群规划-1" class="headerlink" title="集群规划"></a>集群规划</h2><table>
+<thead>
+<tr>
+<th>容器主机名/容器名</th>
+<th>容器IP（网络名称zk-network）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>zk1</td>
+<td>172.26.1.101</td>
+</tr>
+<tr>
+<td>zk2</td>
+<td>172.26.1.102</td>
+</tr>
+<tr>
+<td>zk3</td>
+<td>172.26.1.103</td>
+</tr>
+</tbody></table>
+<h2 id="镜像启动操作"><a href="#镜像启动操作" class="headerlink" title="镜像启动操作"></a>镜像启动操作</h2><h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk">（<span class="hljs-number">1</span>）<span class="hljs-number">2.2</span>中构建的jdk1.<span class="hljs-number">8</span>:v1作为基础镜像<br>（<span class="hljs-number">2</span>）将zookeeper-<span class="hljs-number">3.4</span>.<span class="hljs-number">12</span>.tar.gz（可采用其他版本）复制到容器的<span class="hljs-regexp">/root目录下并解压至/</span>root/apps目录下，为了精简镜像，需要将zookeeper-<span class="hljs-number">3.4</span>.<span class="hljs-number">12</span>.tar.gz删除。<br>（<span class="hljs-number">3</span>）配置Zookeeper环境变量,并定义zk_ID变量（docker-compose运行时传递参数到zk_ID,并写入到zookeeper的datadir中的myid文件中）<br>（<span class="hljs-number">4</span>）将配置文件复制的<span class="hljs-regexp">/tmp/</span>目录下，并在<span class="hljs-regexp">/tmp/</span>下移动到<span class="hljs-variable">$ZOOKEEPER_HOME</span><span class="hljs-regexp">/conf /</span>目录中<br>（<span class="hljs-number">5</span>）将start-zk.sh（启动zookeeper和sshd服务）复制到/root下并添加执行权限<br>（<span class="hljs-number">6</span>）创建zoo.conf配置文件中指定的datadir目录<br>（<span class="hljs-number">7</span>）指定<span class="hljs-regexp">/root/</span>data/zookeeper为数据卷<br>（<span class="hljs-number">8</span>）暴露<span class="hljs-number">2181</span>端口<br>（<span class="hljs-number">9</span>）指定容器启动时运行start-zk.sh脚本<br></code></pre></td></tr></table></figure>
+
+<h3 id="dockerfile实例"><a href="#dockerfile实例" class="headerlink" title="dockerfile实例"></a>dockerfile实例</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">FROM</span> ubuntu-jdk:v1<br><br><span class="hljs-keyword">COPY</span> files<span class="hljs-regexp">/zookeeper-3.4.12.tar.gz /</span>root/<br><br>RUN tar -zxvf <span class="hljs-regexp">/root/</span>zookeeper-<span class="hljs-number">3.4</span>.<span class="hljs-number">12</span>.tar.gz -C <span class="hljs-regexp">/root/</span>tool/ &amp;&amp; \<br>	mv <span class="hljs-regexp">/root/</span>tool<span class="hljs-regexp">/zookeeper-3.4.12 /</span>root<span class="hljs-regexp">/tool/</span>zookeeper &amp;&amp; \<br>	rm -rf <span class="hljs-regexp">/root/</span>zookeeper-<span class="hljs-number">3.4</span>.<span class="hljs-number">12</span>.tar.gz &amp;&amp; \<br>	mkdir -p <span class="hljs-regexp">/root/</span>data/zookeeper<br><br>ENV ZOOKEEPER_HOME=<span class="hljs-regexp">/root/</span>tool/zookeeper<br>ENV PATH=$PATH:$ZOOKEEPER_HOME/bin:$PATH<br><br>VOLUME <span class="hljs-regexp">/root/</span>data/zookeeper<br><br>EXPOSE <span class="hljs-number">2181</span><br><br><span class="hljs-keyword">COPY</span> <span class="hljs-regexp">/files/</span>conf<span class="hljs-regexp">/zoo.cfg /</span>root<span class="hljs-regexp">/tool/</span>zookeeper<span class="hljs-regexp">/conf/</span><br><span class="hljs-keyword">COPY</span> <span class="hljs-regexp">/files/</span>conf<span class="hljs-regexp">/start-zk.sh /</span>root/<br><br>CMD sh start-zk.sh<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><span class="hljs-attr">services:</span> <br>  <span class="hljs-attr">zk1:</span> <br>    <span class="hljs-attr">image:</span> <span class="hljs-string">zookeeper:v1</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">zk1</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">zk1</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span> <br>      <span class="hljs-attr">zk-network:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.26</span><span class="hljs-number">.1</span><span class="hljs-number">.101</span><br>    <span class="hljs-attr">ports:</span> <br>      <span class="hljs-bullet">-</span> <span class="hljs-number">2181</span><span class="hljs-string">:2181</span><br>    <span class="hljs-attr">extra_hosts:</span> <br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;zk1:172.26.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;zk2:172.26.1.102&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;zk3:172.26.1.103&#x27;</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">zk_ID:</span> <span class="hljs-number">1</span><br>      <br>  <span class="hljs-attr">zk2:</span> <br>    <span class="hljs-attr">image:</span> <span class="hljs-string">zookeeper:v1</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">zk2</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">zk2</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span> <br>      <span class="hljs-attr">zk-network:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.26</span><span class="hljs-number">.1</span><span class="hljs-number">.102</span><br>    <span class="hljs-attr">ports:</span> <br>      <span class="hljs-bullet">-</span> <span class="hljs-number">2182</span><span class="hljs-string">:2181</span><br>    <span class="hljs-attr">extra_hosts:</span> <br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;zk1:172.26.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;zk2:172.26.1.102&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;zk3:172.26.1.103&#x27;</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">zk_ID:</span> <span class="hljs-number">2</span><br>      <br>  <span class="hljs-attr">zk3:</span> <br>    <span class="hljs-attr">image:</span> <span class="hljs-string">zookeeper:v1</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">zk3</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">zk3</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span> <br>      <span class="hljs-attr">zk-network:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.26</span><span class="hljs-number">.1</span><span class="hljs-number">.103</span><br>    <span class="hljs-attr">ports:</span> <br>      <span class="hljs-bullet">-</span> <span class="hljs-number">2183</span><span class="hljs-string">:2181</span><br>    <span class="hljs-attr">extra_hosts:</span> <br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;zk1:172.26.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;zk2:172.26.1.102&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;zk3:172.26.1.103&#x27;</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">zk_ID:</span> <span class="hljs-number">3</span><br>      <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">zk-network:</span><br>    <span class="hljs-attr">driver:</span> <span class="hljs-string">bridge</span><br>    <span class="hljs-attr">ipam:</span><br>      <span class="hljs-attr">driver:</span> <span class="hljs-string">default</span><br>      <span class="hljs-attr">config:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-attr">subnet:</span> <span class="hljs-number">172.26</span><span class="hljs-number">.1</span><span class="hljs-number">.0</span><span class="hljs-string">/24</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="sh"><a href="#sh" class="headerlink" title="sh"></a>sh</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$zk_ID</span> &gt; /root/data/zookeeper/myid<br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$zk_ID</span><br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;启动zookeeper&quot;</span><br>zkServer.sh start <br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;启动ssh服务&quot;</span><br>/usr/sbin/sshd -D<br></code></pre></td></tr></table></figure>
+
+<h3 id="所需命令"><a href="#所需命令" class="headerlink" title="所需命令"></a>所需命令</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-comment"># 构建镜像</span><br>docker <span class="hljs-keyword">build </span>-t zookeeper:<span class="hljs-built_in">v1</span> .<br><span class="hljs-comment"># compose集群启动</span><br>docker-compose up<br><span class="hljs-comment"># 查看zookeeper状态</span><br>zkServer.<span class="hljs-keyword">sh </span>status<br></code></pre></td></tr></table></figure>
+
+<h3 id="问题-3"><a href="#问题-3" class="headerlink" title="问题"></a>问题</h3><h4 id="1-myid文件的赋值"><a href="#1-myid文件的赋值" class="headerlink" title="1.myid文件的赋值"></a>1.myid文件的赋值</h4><h5 id="dockerfile与docker-compose联动，生成三个镜像"><a href="#dockerfile与docker-compose联动，生成三个镜像" class="headerlink" title="- dockerfile与docker-compose联动，生成三个镜像"></a>- dockerfile与docker-compose联动，生成三个镜像</h5><ul>
+<li>在dockerfile文件中声明ARG:MYID</li>
+<li>在dockerfile文件中把MYID赋值给myid文件</li>
+<li>在docker-compose文件中 新建镜像 分别赋值MYID</li>
+</ul>
+<h5 id="docker-compose与sh联动，生成一个镜像"><a href="#docker-compose与sh联动，生成一个镜像" class="headerlink" title="- docker-compose与sh联动，生成一个镜像"></a>- docker-compose与sh联动，生成一个镜像</h5><ul>
+<li>在docker-compose文件中 声明environment:zk_ID</li>
+<li>在sh文件中赋值给myid文件</li>
+</ul>
+<h1 id="docker安装spark"><a href="#docker安装spark" class="headerlink" title="docker安装spark"></a>docker安装spark</h1><h2 id="什么是spark"><a href="#什么是spark" class="headerlink" title="什么是spark"></a>什么是spark</h2><p>Spark最初由美国加州伯克利大学的AMP实验室于2009年开发，Spark是一种通用的大数据计算框架,是基于RDD（弹性分布式数据集）的一种计算模型。通俗讲就是可以分布式处理大量极数据的，将大量集数据先拆分，分别进行计算，然后再将计算后的结果进行合并。</p>
+<h2 id="ApacheSpark的功能"><a href="#ApacheSpark的功能" class="headerlink" title="ApacheSpark的功能"></a>ApacheSpark的功能</h2><p><strong>快速</strong> - 使用最先进的DAG调度程序，查询优化器和物理执行引擎，为批处理和流数据提供高性能。 </p>
+<p><strong>易于使用</strong> - 它有助于使用Java，Scala，Python，R和SQL编写应用程序。它还提供80多个高级运算符。 </p>
+<p><strong>通用性</strong> - 它提供了一系列库，包括SQL和DataFrames，用于机器学习的MLlib，GraphX和Spark Streaming。 轻量级 - 它是一种轻型统一分析引擎，用于大规模数据处理。 </p>
+<p><strong>无处不在</strong> - 它可以轻松运行在Hadoop，Apache Mesos，Kubernetes，独立或云端。</p>
+<h2 id="集群规划-2"><a href="#集群规划-2" class="headerlink" title="集群规划"></a>集群规划</h2><table>
+<thead>
+<tr>
+<th>容器主机名<br>/容器名</th>
+<th>容器IP（网络名称spark-network）</th>
+<th>节点进程</th>
+<th>容器启动镜像</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>spark-master1</td>
+<td>172.27.1.100</td>
+<td>master、HistoryServer</td>
+<td>spark-master:v1</td>
+</tr>
+<tr>
+<td>spark-master2</td>
+<td>172.27.1.120</td>
+<td>master</td>
+<td>spark-master:v1</td>
+</tr>
+<tr>
+<td>spark-worker1</td>
+<td>172.27.1.101</td>
+<td>worker</td>
+<td>spark-worker:v1</td>
+</tr>
+<tr>
+<td>spark-worker2</td>
+<td>172.27.1.102</td>
+<td>worker</td>
+<td>spark-worker:v1</td>
+</tr>
+<tr>
+<td>spark-worker3</td>
+<td>172.27.1.103</td>
+<td>worker</td>
+<td>spark-worker:v1</td>
+</tr>
+</tbody></table>
+<h2 id="设计与实现思路"><a href="#设计与实现思路" class="headerlink" title="设计与实现思路"></a>设计与实现思路</h2><h2 id="spark-master-worker镜像"><a href="#spark-master-worker镜像" class="headerlink" title="spark-master/worker镜像"></a>spark-master/worker镜像</h2><h4 id="基础步骤-5"><a href="#基础步骤-5" class="headerlink" title="基础步骤"></a>基础步骤</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs awk">（<span class="hljs-number">1</span>）<span class="hljs-number">2.2</span>中构建的jdk1.<span class="hljs-number">8</span>:v1作为基础镜像<br>（<span class="hljs-number">2</span>）将spark-<span class="hljs-number">2.3</span>.<span class="hljs-number">4</span>.tar.gz（可采用其他版本）复制到容器的<span class="hljs-regexp">/root目录下并解压至/</span>root/tool目录下，为了精简镜像，需要将spark-<span class="hljs-number">2.3</span>.<span class="hljs-number">4</span>.tar.gz删除。<br>（<span class="hljs-number">3</span>）配置Spark环境变量<br>**ARG变量复制master和worker的配置**<br>- dockerfile中 ARG conf_hosts<br>- docker-compose.yml中<br>  - args: <br>	    conf_hosts: conf-master<br>（<span class="hljs-number">4</span>）将配置文件（指导老师讲解配置文件并提供给学生）复制的<span class="hljs-regexp">/tmp/</span>目录下，并在<span class="hljs-regexp">/tmp/</span>下移动到<span class="hljs-variable">$SPARK_HOME</span><span class="hljs-regexp">/conf/</span>目录中<br>（<span class="hljs-number">5</span>）创建 <span class="hljs-regexp">/root/</span>apps<span class="hljs-regexp">/spark/</span>logs目录（spark启动时的日志文件输出到本目录下）<br>（<span class="hljs-number">6</span>）将run.sh（启动master和historyserver服务）复制到/root下并添加执行权限<br>（<span class="hljs-number">7</span>）暴露<span class="hljs-number">8080</span>和<span class="hljs-number">7077</span>端口<br>（<span class="hljs-number">8</span>）指定容器启动时运行run.sh脚本<br></code></pre></td></tr></table></figure>
+
+<h4 id="dockerfile实例-1"><a href="#dockerfile实例-1" class="headerlink" title="dockerfile实例"></a>dockerfile实例</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs awk">FROM ubuntu-jdk:v1<br><br>COPY files<span class="hljs-regexp">/spark-2.3.4.tar.gz /</span>root/<br><br>RUN apt-get install curl -y &amp;&amp; \<br>	tar -zxvf <span class="hljs-regexp">/root/</span>spark-<span class="hljs-number">2.3</span>.<span class="hljs-number">4</span>.tar.gz -C <span class="hljs-regexp">/root/</span>tool/ &amp;&amp; \<br>	mv <span class="hljs-regexp">/root/</span>tool<span class="hljs-regexp">/spark-2.3.4-bin-hadoop2.7 /</span>root<span class="hljs-regexp">/tool/</span>spark &amp;&amp; \<br>	rm -rf <span class="hljs-regexp">/root/</span>spark-<span class="hljs-number">2.3</span>.<span class="hljs-number">4</span>.tar.gz &amp;&amp; \<br>	mkdir -p <span class="hljs-regexp">/root/</span>tool<span class="hljs-regexp">/spark/</span>logs<br><br>ENV SPARK_HOME=<span class="hljs-regexp">/root/</span>tool/spark<br>ENV PATH=<span class="hljs-variable">$PATH</span>:<span class="hljs-variable">$SPARK_HOME</span><span class="hljs-regexp">/bin:$SPARK_HOME/</span>sbin:<span class="hljs-variable">$PATH</span><br><br>ARG conf_hosts<br>COPY files<span class="hljs-regexp">/$&#123;conf_hosts&#125;/</span>conf<span class="hljs-regexp">/* /</span>tmp/<br>RUN mv <span class="hljs-regexp">/tmp/</span>spark-env.sh <span class="hljs-regexp">/root/</span>tool<span class="hljs-regexp">/spark/</span>conf/spark-env.sh &amp;&amp; \<br>	mv <span class="hljs-regexp">/tmp/</span>spark-defaults.conf <span class="hljs-regexp">/root/</span>tool<span class="hljs-regexp">/spark/</span>conf/spark-defaults.conf &amp;&amp; \<br>	mv <span class="hljs-regexp">/tmp/</span>slaves <span class="hljs-regexp">/root/</span>tool<span class="hljs-regexp">/spark/</span>slaves &amp;&amp; \<br>	mv <span class="hljs-regexp">/tmp/</span>run.sh <span class="hljs-regexp">/root/</span>run.sh<br><br>EXPOSE <span class="hljs-number">8080</span><br>EXPOSE <span class="hljs-number">7077</span><br><br>RUN chmod +x <span class="hljs-regexp">/root/</span>run.sh<br><br>CMD [<span class="hljs-string">&quot;/root/run.sh&quot;</span>]<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="docker-compose实例"><a href="#docker-compose实例" class="headerlink" title="docker-compose实例"></a>docker-compose实例</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3&#x27;</span><br><span class="hljs-attr">services:</span> <br>  <span class="hljs-attr">spark-master1:</span> <br>    <span class="hljs-attr">build:</span>  <br>	  <span class="hljs-attr">context:</span> <span class="hljs-string">/root/00_dockerfile/04_spark</span><br>	  <span class="hljs-attr">dockerfile:</span> <span class="hljs-string">/root/00_dockerfile/04_spark/dockerfile</span><br>	  <span class="hljs-attr">args:</span> <br>	    <span class="hljs-attr">conf_hosts:</span> <span class="hljs-string">conf-master</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">spark-master1</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">spark-master1</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span> <br>      <span class="hljs-attr">spark-network:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.27</span><span class="hljs-number">.1</span><span class="hljs-number">.100</span><br>    <span class="hljs-attr">ports:</span> <br>      <span class="hljs-bullet">-</span> <span class="hljs-number">8080</span><span class="hljs-string">:8080</span><br>	  <span class="hljs-bullet">-</span> <span class="hljs-number">7077</span><span class="hljs-string">:7077</span><br>    <span class="hljs-attr">extra_hosts:</span> <br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-master1:172.27.1.100&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-master2:172.27.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker1:172.27.1.102&#x27;</span><br>	  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker2:172.27.1.103&#x27;</span><br>	  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker3:172.27.1.104&#x27;</span><br><br>  <span class="hljs-attr">spark-master2:</span> <br>    <span class="hljs-attr">build:</span>  <br>	  <span class="hljs-attr">context:</span> <span class="hljs-string">/root/00_dockerfile/04_spark</span><br>	  <span class="hljs-attr">dockerfile:</span> <span class="hljs-string">/root/00_dockerfile/04_spark/dockerfile</span><br>	  <span class="hljs-attr">args:</span> <br>	    <span class="hljs-attr">conf_hosts:</span> <span class="hljs-string">conf-master</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">spark-master2</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">spark-master2</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span> <br>      <span class="hljs-attr">spark-network:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.27</span><span class="hljs-number">.1</span><span class="hljs-number">.101</span><br>    <span class="hljs-attr">ports:</span> <br>      <span class="hljs-bullet">-</span> <span class="hljs-number">8081</span><span class="hljs-string">:8080</span><br>	  <span class="hljs-bullet">-</span> <span class="hljs-number">7078</span><span class="hljs-string">:7077</span><br>    <span class="hljs-attr">extra_hosts:</span> <br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-master1:172.27.1.100&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-master2:172.27.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker1:172.27.1.102&#x27;</span><br>	  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker2:172.27.1.103&#x27;</span><br>	  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker3:172.27.1.104&#x27;</span><br><br>  <span class="hljs-attr">spark-worker2:</span> <br>    <span class="hljs-attr">build:</span>  <br>	  <span class="hljs-attr">context:</span> <span class="hljs-string">/root/00_dockerfile/04_spark</span><br>	  <span class="hljs-attr">dockerfile:</span> <span class="hljs-string">/root/00_dockerfile/04_spark/dockerfile</span><br>	  <span class="hljs-attr">args:</span> <br>	    <span class="hljs-attr">conf_hosts:</span> <span class="hljs-string">conf-worker</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">spark-worker2</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">spark-worker2</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span> <br>      <span class="hljs-attr">spark-network:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.27</span><span class="hljs-number">.1</span><span class="hljs-number">.103</span><br>    <span class="hljs-attr">extra_hosts:</span> <br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-master1:172.27.1.100&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-master2:172.27.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker1:172.27.1.102&#x27;</span><br>	  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker2:172.27.1.103&#x27;</span><br>	  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker3:172.27.1.104&#x27;</span><br><br>  <span class="hljs-attr">spark-worker1:</span> <br>    <span class="hljs-attr">build:</span>  <br>	  <span class="hljs-attr">context:</span> <span class="hljs-string">/root/00_dockerfile/04_spark</span><br>	  <span class="hljs-attr">dockerfile:</span> <span class="hljs-string">/root/00_dockerfile/04_spark/dockerfile</span><br>	  <span class="hljs-attr">args:</span> <br>	    <span class="hljs-attr">conf_hosts:</span> <span class="hljs-string">conf-worker</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">spark-worker1</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">spark-worker1</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span> <br>      <span class="hljs-attr">spark-network:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.27</span><span class="hljs-number">.1</span><span class="hljs-number">.102</span><br>    <span class="hljs-attr">extra_hosts:</span> <br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-master1:172.27.1.100&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-master2:172.27.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker1:172.27.1.102&#x27;</span><br>	  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker2:172.27.1.103&#x27;</span><br>	  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker3:172.27.1.104&#x27;</span><br><br>  <span class="hljs-attr">spark-worker3:</span> <br>    <span class="hljs-attr">build:</span>  <br>	  <span class="hljs-attr">context:</span> <span class="hljs-string">/root/00_dockerfile/04_spark</span><br>	  <span class="hljs-attr">dockerfile:</span> <span class="hljs-string">/root/00_dockerfile/04_spark/dockerfile</span><br>	  <span class="hljs-attr">args:</span> <br>	    <span class="hljs-attr">conf_hosts:</span> <span class="hljs-string">conf-worker</span><br>    <span class="hljs-attr">container_name:</span> <span class="hljs-string">spark-worker3</span><br>    <span class="hljs-attr">hostname:</span> <span class="hljs-string">spark-worker3</span><br>    <span class="hljs-attr">restart:</span> <span class="hljs-string">always</span><br>    <span class="hljs-attr">networks:</span> <br>      <span class="hljs-attr">spark-network:</span><br>        <span class="hljs-attr">ipv4_address:</span> <span class="hljs-number">172.27</span><span class="hljs-number">.1</span><span class="hljs-number">.104</span><br>    <span class="hljs-attr">extra_hosts:</span> <br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-master1:172.27.1.100&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-master2:172.27.1.101&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker1:172.27.1.102&#x27;</span><br>	  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker2:172.27.1.103&#x27;</span><br>	  <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;spark-worker3:172.27.1.104&#x27;</span><br><br>  <br><span class="hljs-attr">networks:</span><br>  <span class="hljs-attr">spark-network:</span><br>    <span class="hljs-attr">driver:</span> <span class="hljs-string">bridge</span><br>    <span class="hljs-attr">ipam:</span><br>      <span class="hljs-attr">driver:</span> <span class="hljs-string">default</span><br>      <span class="hljs-attr">config:</span><br>        <span class="hljs-bullet">-</span> <span class="hljs-attr">subnet:</span> <span class="hljs-number">172.27</span><span class="hljs-number">.1</span><span class="hljs-number">.0</span><span class="hljs-string">/24</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20210910104556697.png" srcset="/img/loading.gif" lazyload alt="image-20210910104556697"></p>
+<h4 id="问题-4"><a href="#问题-4" class="headerlink" title="问题"></a>问题</h4><h5 id="端口占用问题"><a href="#端口占用问题" class="headerlink" title="- 端口占用问题"></a>- 端口占用问题</h5><p><img src="http://markdowntc.wanqqq29.cn//image-20210910103635044.png" srcset="/img/loading.gif" lazyload alt="image-20210910103635044"></p>
+<ul>
+<li>原因：<ul>
+<li>docker-compose.yml中 master1和master2重复开放了8080和7077端口</li>
+</ul>
+</li>
+<li>解决：<ul>
+<li>master2开发8081和7078</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%BF%90%E7%BB%B4/">大数据运维</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/13/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E8%B7%B5/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">大数据分析实践课堂笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/27/Three.js%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+                        <span class="hidden-mobile">Three.js学习记录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'wanqqq29/wanqqq29.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'Comments');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鲁ICP备19024884号
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,677 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="google-site-verification" content="TneGvKxHBEhNeNdJY3BrlLe_y8OsYSHNicJyUXafxzE" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="万能青年">
+  <meta name="keywords" content="">
+  <meta name="baidu-site-verification" content="code-YL4uW1Y3qB" />
+  
+  <title>大数据分析实践课堂笔记 - 日常随笔</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.wanqqq29.cn","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ba727d5704de87e82519e888b016c619";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>日常随笔</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                学习随笔
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="大数据分析实践课堂笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-13 09:24" pubdate>
+        2021年9月13日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      62
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">大数据分析实践课堂笔记</h1>
+            
+            <div class="markdown-body">
+              <h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><h2 id="开发环境准备"><a href="#开发环境准备" class="headerlink" title="开发环境准备"></a>开发环境准备</h2><ul>
+<li>创建Maven项目，jdk1.8</li>
+<li>导入pom.xml依赖<ul>
+<li>hadoop-common</li>
+<li>hadoop-client</li>
+<li>hadoop-hdfs</li>
+<li>hadoop-mapreduce-client-core</li>
+<li>在<code>https://mvnrepository.com/</code>找到所需要的包写入pom.xml文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="伪分布式搭建"><a href="#伪分布式搭建" class="headerlink" title="伪分布式搭建"></a>伪分布式搭建</h2><h3 id="普通用户创建"><a href="#普通用户创建" class="headerlink" title="普通用户创建"></a>普通用户创建</h3><ul>
+<li>普通用户赋予sudo权限</li>
+</ul>
+<h3 id="关闭、禁用防火墙sudo"><a href="#关闭、禁用防火墙sudo" class="headerlink" title="关闭、禁用防火墙sudo"></a>关闭、禁用防火墙sudo</h3><ul>
+<li><p>```<br>sudo systemctl stop firewalld<br>sudo systemctl disable firewalld</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk"><br>  <br><br>- ![image-<span class="hljs-number">20210914092622730</span>](http:<span class="hljs-regexp">//m</span>arkdowntc.wanqqq29.cn<span class="hljs-regexp">//im</span>age-<span class="hljs-number">20210914092622730</span>.png)<br><br><span class="hljs-comment">### 修改hostsname -&gt;/etc/hostname</span><br><br>- ```<br>  sudo vi <span class="hljs-regexp">/etc/</span>hostname<br></code></pre></td></tr></table></figure></li>
+<li><p><img src="http://markdowntc.wanqqq29.cn//image-20210914092729741.png" srcset="/img/loading.gif" lazyload alt="image-20210914092729741"></p>
+</li>
+</ul>
+<h3 id="修改hosts文件，添加node1-gt-etc-hosts"><a href="#修改hosts文件，添加node1-gt-etc-hosts" class="headerlink" title="修改hosts文件，添加node1  -&gt;/etc/hosts"></a>修改hosts文件，添加node1  -&gt;/etc/hosts</h3><ul>
+<li><p>```<br>sudo vi /etc/hosts</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk"><br>- ![image-<span class="hljs-number">20210914092858718</span>](http:<span class="hljs-regexp">//m</span>arkdowntc.wanqqq29.cn<span class="hljs-regexp">//im</span>age-<span class="hljs-number">20210914092858718</span>.png)<br><br><span class="hljs-comment">### 固定ip</span><br><br>- ```<br>  sudo vi <span class="hljs-regexp">/etc/</span>sysconfig<span class="hljs-regexp">/network-scripts/i</span>fcfg-ens33<br>  sudo systemctl reboot network<br></code></pre></td></tr></table></figure></li>
+<li><p><img src="http://markdowntc.wanqqq29.cn//image-20210914093212466.png" srcset="/img/loading.gif" lazyload alt="image-20210914093212466"></p>
+</li>
+</ul>
+<h3 id="安装jdk"><a href="#安装jdk" class="headerlink" title="安装jdk"></a>安装jdk</h3><ul>
+<li><p>配置用户环境变量</p>
+<ul>
+<li><p>为解决多用户下系统变量冲突问题，现要求配置用户的环境变量</p>
+<ul>
+<li>```<br>用户目录下：<br>vi .bashrc <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><br><span class="hljs-code">      </span><br><span class="hljs-code"></span><br><span class="hljs-bullet">    -</span> ![<span class="hljs-string">image-20210914093909268</span>](<span class="hljs-link">http://markdowntc.wanqqq29.cn//image-20210914093909268.png</span>)<br><br><span class="hljs-bullet">-</span> 生效环境变量<br><br><span class="hljs-bullet">  -</span> <span class="hljs-code">```</span><br><span class="hljs-code">    source .bashrc</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><img src="http://markdowntc.wanqqq29.cn//image-20210914094002309.png" srcset="/img/loading.gif" lazyload alt="image-20210914094002309"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="配置免密登录"><a href="#配置免密登录" class="headerlink" title="配置免密登录"></a>配置免密登录</h3><ul>
+<li><p>```<br>ssh-keygen -t rsa -P “”<br>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys<br>service sshd restart</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs awk"><br>- 私钥 除数-<span class="hljs-number">1</span>，公钥 随机的一个数<br><br><span class="hljs-comment">### 安装hadoop伪分布式</span><br><br>- 解压<br><br>- 配置环境变量<br><br>  - ![image-<span class="hljs-number">20210914095737019</span>](http:<span class="hljs-regexp">//m</span>arkdowntc.wanqqq29.cn<span class="hljs-regexp">//im</span>age-<span class="hljs-number">20210914095737019</span>.png)<br><br>- 更改hadoop配置 <span class="hljs-regexp">/etc/</span>hadoop/env.sh、yarn-env.sh -&gt; javahome<br><br>  - ```<br>    vi hadoop<span class="hljs-regexp">/etc/</span>hadoop/hadoop.env.sh<br>    vi hadoop<span class="hljs-regexp">/etc/</span>hadoop/yarn-env.sh<br>    <br>    修改以上文件的JAVA_HOME<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>hdfs-site.xml</p>
+<ul>
+<li>```<?xml version="1.0"?>
+<configuration>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>/home/map/hdfs/namenode</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>/home/map/hdfs/datanode</value>
+    </property>
+    <property>
+        <name>dfs.replication</name>
+        <value>3</value>
+    </property>
+</configuration>
+
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><br><span class="hljs-bullet">- </span>新建目录 <br><br></code></pre></td></tr></table></figure>
+mkdir -p /home/map/hdfs/namenode<br>mkdir -p /home/map/hdfs/datanode<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs xml"><br>    <br><br>- core-site.xml<br><br>  - ```<br>    <span class="hljs-meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>fs.defaultFS<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>hdfs://node1:9000/<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>mapred-site.xml</p>
+<ul>
+<li>```<br>mv mapred-site.xml.template mapred-site.xml<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs xml"><br>- ```<br>  <span class="hljs-meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>mapreduce.framework.name<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>yarn<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br>  <br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>yarn-site.xml</p>
+<ul>
+<li>```<?xml version="1.0"?>
+<configuration>
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
+        <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>node1</value>
+    </property>
+</configuration>
+
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs haml"><br>    -<span class="ruby"> </span><br><span class="ruby"></span><br>-<span class="ruby"> 格式化</span><br><span class="ruby"></span><br>  -<span class="ruby"> <span class="hljs-string">``</span><span class="hljs-string">`hadoop</span></span><br><span class="hljs-string"><span class="ruby"></span></span>    hadoop namenode –format<br><br>-<span class="ruby"><span class="hljs-string"> 启动</span></span><br><span class="hljs-string"><span class="ruby"></span></span><br>  -<span class="ruby"><span class="hljs-string"> `</span><span class="hljs-string">``</span></span><br><span class="ruby"></span>    start-all.sh<br>    start-yarn.sh<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>验证 </p>
+<ul>
+<li><img src="http://markdowntc.wanqqq29.cn//image-20210914111934162.png" srcset="/img/loading.gif" lazyload alt="image-20210914111934162"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h3><ul>
+<li><p>免密登录不生效</p>
+<ul>
+<li><p>查看系统安全日志，定位问题</p>
+<ul>
+<li><p>执行 <strong>sudo cat /var/log/secure</strong> 查看系统的安全日志，然后在安全日志中看到SSH登录过程中提示了如下错误：</p>
+</li>
+<li><p><img src="http://markdowntc.wanqqq29.cn//image-20210914102538005.png" srcset="/img/loading.gif" lazyload alt="image-20210914102538005"></p>
+</li>
+<li><p><strong>找到问题：</strong>Authentication refused: bad ownership or modes for directory <strong>/home/map</strong></p>
+<p>后面的目录代表权限不匹配</p>
+</li>
+<li><p><strong>解决：</strong></p>
+<p>（替换成你log中的目录）执行如下：</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs perl"><span class="hljs-keyword">chmod</span> g-w /home/<span class="hljs-keyword">map</span><br><span class="hljs-keyword">chmod</span> <span class="hljs-number">700</span> ./.ssh <br><span class="hljs-keyword">chmod</span> <span class="hljs-number">600</span> ~<span class="hljs-regexp">/.ssh/au</span>thorized_keys<br></code></pre></td></tr></table></figure>
+
+<p>重启SSH服务 $ service sshd restart</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="mapreduce-开发"><a href="#mapreduce-开发" class="headerlink" title="mapreduce 开发"></a>mapreduce 开发</h1><h1 id="python-hadoop参考文档"><a href="#python-hadoop参考文档" class="headerlink" title="python-hadoop参考文档"></a>python-hadoop参考文档</h1><h2 id="map部分与sh"><a href="#map部分与sh" class="headerlink" title="map部分与sh"></a>map部分与sh</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kaituorensheng/p/3826114.html">https://www.cnblogs.com/kaituorensheng/p/3826114.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wuxie1989/p/5785093.html">https://www.cnblogs.com/wuxie1989/p/5785093.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/airnew/p/9540982.html">https://www.cnblogs.com/airnew/p/9540982.html</a></li>
+</ul>
+<h2 id="Partitioner"><a href="#Partitioner" class="headerlink" title="Partitioner"></a>Partitioner</h2><ul>
+<li>2.7.6官方文档<ul>
+<li><a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/r2.7.6/hadoop-streaming/HadoopStreaming.html">http://hadoop.apache.org/docs/r2.7.6/hadoop-streaming/HadoopStreaming.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.pianshen.com/article/852647324/">https://www.pianshen.com/article/852647324/</a></li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/r1.0.4/cn/streaming.html#%E5%8F%AA%E4%BD%BF%E7%94%A8Mapper%E7%9A%84%E4%BD%9C%E4%B8%9A">http://hadoop.apache.org/docs/r1.0.4/cn/streaming.html#%E5%8F%AA%E4%BD%BF%E7%94%A8Mapper%E7%9A%84%E4%BD%9C%E4%B8%9A</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/whaoXYSH/article/details/25482753">https://blog.csdn.net/whaoXYSH/article/details/25482753</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cppblog.com/MemoryGarden/archive/2010/01/24/106312.html">http://www.cppblog.com/MemoryGarden/archive/2010/01/24/106312.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hrhguanli/p/3790985.html">https://www.cnblogs.com/hrhguanli/p/3790985.html</a></li>
+</ul>
+<h1 id="成果"><a href="#成果" class="headerlink" title="成果"></a>成果</h1><h2 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h2><p>把旧球队名替换为新球队名</p>
+<p>分别给东西部球队添加标记；1970年之前的球队统一添加M标记</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs map.py">#!/usr/bin/env python3<br># coding=UTF-8<br>##map<br>import sys  # 导入sys包<br><br>Line = &#x27;&#x27;<br>data = []<br>newTeam = [&#x27;金州勇士队&#x27;, &#x27;金州勇士队&#x27;, &#x27;洛杉矶湖人队&#x27;, &#x27;费城76人队&#x27;, &#x27;萨克拉门托国王队&#x27;, &#x27;亚特兰大老鹰队&#x27;, &#x27;华盛顿奇才队&#x27;, &#x27;华盛顿奇才队&#x27;, &#x27;俄克拉荷马城雷霆队&#x27;, &#x27;底特律活塞队&#x27;,<br>           &#x27;布鲁克林篮网队&#x27;, &#x27;达拉斯独行侠队&#x27;]<br>oldTeam = [&#x27;费城勇士队&#x27;, &#x27;旧金山勇士队&#x27;, &#x27;明尼阿波利斯湖人队&#x27;, &#x27;赛拉库斯民族队&#x27;, &#x27;罗切斯特皇家队&#x27;, &#x27;圣路易斯老鹰队&#x27;, &#x27;华盛顿子弹队&#x27;, &#x27;巴尔的摩子弹队&#x27;, &#x27;西雅图超音速队&#x27;,<br>           &#x27;福特韦恩活塞队&#x27;, &#x27;新泽西网队&#x27;, &#x27;达拉斯小牛队&#x27;]<br>eastTeam = [&#x27;亚特兰大老鹰队&#x27;, &#x27;夏洛特黄蜂队&#x27;, &#x27;迈阿密热火队&#x27;, &#x27;奥兰多魔术队&#x27;, &#x27;华盛顿奇才队&#x27;, &#x27;波士顿凯尔特人队&#x27;, &#x27;布鲁克林篮网队&#x27;, &#x27;纽约尼克斯队&#x27;, &#x27;费城76人队&#x27;, &#x27;多伦多猛龙队&#x27;,<br>            &#x27;芝加哥公牛队&#x27;, &#x27;克里夫兰骑士队&#x27;, &#x27;底特律活塞队&#x27;, &#x27;印第安纳步行者队&#x27;, &#x27;密尔沃基雄鹿队&#x27;]<br>westTeam = [&#x27;金州勇士队&#x27;, &#x27;芝加哥牡鹿队&#x27;, &#x27;洛杉矶湖人队&#x27;, &#x27;华盛顿国会队&#x27;, &#x27;塞拉库斯民族队&#x27;, &#x27;萨克拉门托国王队&#x27;, &#x27;菲尼克斯太阳队&#x27;, &#x27;波特兰开拓者队&#x27;,<br>            &#x27;俄克拉荷马城雷霆队&#x27;, &#x27;休斯顿火箭队&#x27;, &#x27;犹他爵士队&#x27;, &#x27;圣安东尼奥马刺队&#x27;, &#x27;达拉斯独行侠队&#x27;]<br># 从标准输入中获取数据<br>for line in sys.stdin:<br>    Team = []<br>    # data为每行csv的列表格式 [&#x27;1947&#x27;, &#x27;4.16-4.22&#x27;, &#x27;金州勇士队&#x27;, &#x27;4-1&#x27;, &#x27;芝加哥牡鹿队&#x27;, &#x27;&#x27;]<br>    data = line.strip().split(&#x27;,&#x27;)<br>    if data[5] == &#x27;\n&#x27;:<br>        data[5] = &#x27; &#x27;<br>    # data[2]为冠军队名<br>    # 对改名的冠军队名进行更新<br>    if data[2] in oldTeam:<br>        a = oldTeam.index(data[2])<br>        data[2] = newTeam[a]<br>        # if冠军队之前改过名，以新队名添加东西部标识<br>        # if data[0] &gt;= &#x27;1970&#x27;:<br>        #     if data[2] in eastTeam:<br>        #         data.insert(0,&#x27;E&#x27;)<br>        #     elif data[2] in westTeam:<br>        #         data.insert(0,&#x27;W&#x27;)<br>        if data[0] &gt;= &#x27;1970&#x27;:<br>            if data[2] in eastTeam:<br>                Team.append(&#x27;E&#x27;)<br>                for ii in data:<br>                    Team.append(ii)<br>            elif data[2] in westTeam:<br>                Team.append(&#x27;W&#x27;)<br>                for ii in data:<br>                    Team.append(ii)<br>            else:<br>                Team.append(&#x27;M&#x27;)<br>                for ii in data:<br>                    Team.append(ii)<br>        else:<br>            Team.append(&#x27;M&#x27;)<br>            for ii in data:<br>                Team.append(ii)<br>    # if冠军队伍没有改名，添加东西部标识<br>    else:<br>        if data[0] &gt;= &#x27;1970&#x27;:<br>            if data[2] in eastTeam:<br>                Team.append(&#x27;E&#x27;)<br>                for ii in data:<br>                    Team.append(ii)<br>            elif data[2] in westTeam:<br>                Team.append(&#x27;W&#x27;)<br>                for ii in data:<br>                    Team.append(ii)<br>            else:<br>                Team.append(&#x27;M&#x27;)<br>                for ii in data:<br>                    Team.append(ii)<br>        else:<br>            Team.append(&#x27;M&#x27;)<br>            for ii in data:<br>                Team.append(ii)<br><br>    if data[4] in oldTeam:<br>        b = oldTeam.index(data[4])<br>        data[4] = newTeam[b]<br>        Team[5] = data[4]<br><br>    # 将列表data转为字符串<br>    Line = &quot;,&quot;.join(Team)<br>    # 输出<br>    print(Line)<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs dataClear.sh">HADOOP_CMD=&quot;/home/map/apps/hadoop/bin/hadoop&quot;<br>STREAM_JAR_PATH=&quot;/home/map/apps/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.7.6.jar&quot;<br><br>INPUT_FILE_PATH_1=&quot;/nba.csv&quot;<br>OUTPUT_PATH=&quot;/data_output&quot;<br>$HADOOP_CMD fs -rm -r -skipTrash $OUTPUT_PATH #每次执行时都删除输出路径，否则会出错<br><br>$HADOOP_CMD jar $STREAM_JAR_PATH \<br>                -input $INPUT_FILE_PATH_1 \<br>                -output $OUTPUT_PATH \<br>                -mapper &quot;python3 map.py&quot; \<br>                -jobconf mapred.map.tasks=1 \<br>                -jobconf mapred.reduce.tasks=0\<br>                -file map.py \<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><code class="hljs output">[map@node1 program]$ hadoop fs -cat /data_output/part-00000<br>M,1947,4.16-4.22,金州勇士队,4-1,芝加哥牡鹿队,	<br>M,1948,4.10-4.21,华盛顿奇才队,4-2,金州勇士队,	<br>M,1949,4.4-4.13,洛杉矶湖人队,4-2,华盛顿国会队,	<br>M,1950,4.8-4.23,洛杉矶湖人队,4-2,塞拉库斯民族队,	<br>M,1951,4.7-4.21,萨克拉门托国王队,4-3,纽约尼克斯队,	<br>M,1952,4.12-4.25,洛杉矶湖人队,4-3,纽约尼克斯队,	<br>M,1953,4.4-4.10,洛杉矶湖人队,4-1,纽约尼克斯队,	<br>M,1954,3.31-4.12,洛杉矶湖人队,4-3,塞拉库斯民族队,	<br>M,1955,3.31-4.10,塞拉库斯民族队,4-3,底特律活塞队,	<br>M,1956,3.31-4.7,金州勇士队,4-1,底特律活塞队,	<br>M,1957,3.30-4.13,波士顿凯尔特人队,4-3,亚特兰大老鹰队,	<br>M,1958,3.29-4.12,亚特兰大老鹰队,4-2,波士顿凯尔特人队,	<br>M,1959,4.4-4.9,波士顿凯尔特人队,4-0,洛杉矶湖人队,	<br>M,1960,3.27-4.9,波士顿凯尔特人队,4-3,亚特兰大老鹰队,	<br>M,1961,4.2-4.11,波士顿凯尔特人队,4-1,亚特兰大老鹰队,	<br>M,1962,4.7-4.18,波士顿凯尔特人队,4-3,洛杉矶湖人队,	<br>M,1963,4.14-4.24,波士顿凯尔特人队,4-2,洛杉矶湖人队,	<br>M,1964,4.18-4.26,波士顿凯尔特人队,4-1,金州勇士队,	<br>M,1965,4.18-4.25,波士顿凯尔特人队,4-1,洛杉矶湖人队,	<br>M,1966,4.17-4.28,波士顿凯尔特人队,4-3,洛杉矶湖人队,	<br>M,1967,4.14-4.24,费城76人队,4-2,金州勇士队,	<br>M,1968,4.21-5.2,波士顿凯尔特人队,4-2,洛杉矶湖人队,	<br>M,1969,4.23-5.5,波士顿凯尔特人队,4-3,洛杉矶湖人队,杰里·韦斯特	<br>E,1970,4.24-5.8,纽约尼克斯队,4-3,洛杉矶湖人队,威利斯·里德	<br>E,1971,4.21-4.30,密尔沃基雄鹿队,4-0,华盛顿奇才队,贾巴尔	<br>W,1972,4.26-5.7,洛杉矶湖人队,4-1,纽约尼克斯队,张伯伦	<br>E,1973,5.1-5.10,纽约尼克斯队,4-1,洛杉矶湖人队,威利斯·里德	<br>E,1974,4.28-5.12,波士顿凯尔特人队,4-3,密尔沃基雄鹿队,约翰·哈夫利切克	<br>W,1975,5.18-5.25,金州勇士队,4-0,华盛顿奇才队,里克·巴里	<br>E,1976,5.23-6.6,波士顿凯尔特人队,4-2,菲尼克斯太阳队,乔·乔·怀特	<br>W,1977,5.22-6.5,波特兰开拓者队,4-2,费城76人队,比尔·沃顿	<br>E,1978,5.21-6.7,华盛顿奇才队,4-3,俄克拉荷马城雷霆队,韦斯·昂塞尔德	<br>W,1979,5.20-6.1,俄克拉荷马城雷霆队,4-1,华盛顿奇才队,丹尼斯·约翰逊	<br>W,1980,5.4-5.16,洛杉矶湖人队,4-2,费城76人队,埃尔文·约翰逊	<br>E,1981,5.5-5.14,波士顿凯尔特人队,4-2,休斯顿火箭队,塞德里克·麦克斯维尔	<br>W,1982,5.27-6.8,洛杉矶湖人队,4-2,费城76人队,埃尔文·约翰逊	<br>E,1983,5.22-5.31,费城76人队,4-0,洛杉矶湖人队,摩西·马龙	<br>E,1984,5.27-6.12,波士顿凯尔特人队,4-3,洛杉矶湖人队,拉里·伯德	<br>W,1985,5.27-6.9,洛杉矶湖人队,4-2,波士顿凯尔特人队,贾巴尔	<br>E,1986,5.26-6.8,波士顿凯尔特人队,4-2,休斯顿火箭队,拉里·伯德	<br>W,1987,6.2-6.14,洛杉矶湖人队,4-2,波士顿凯尔特人队,埃尔文·约翰逊	<br>W,1988,6.7-6.21,洛杉矶湖人队,4-3,底特律活塞队,詹姆斯·沃西	<br>E,1989,6.6-6.13,底特律活塞队,4-0,洛杉矶湖人队,乔·杜马斯	<br>E,1990,6.5-6.14,底特律活塞队,4-1,波特兰开拓者队,伊塞亚·托马斯	<br>E,1991,6.2-6.12,芝加哥公牛队,4-1,洛杉矶湖人队,迈克尔·乔丹	<br>E,1992,6.3-6.14,芝加哥公牛队,4-2,波特兰开拓者队,迈克尔·乔丹	<br>E,1993,6.9-6.20,芝加哥公牛队,4-2,菲尼克斯太阳队,迈克尔·乔丹	<br>W,1994,6.8-6.22,休斯顿火箭队,4-3,纽约尼克斯队,哈基姆·奥拉朱旺	<br>W,1995,6.7-6.14,休斯顿火箭队,4-0,奥兰多魔术队,哈基姆·奥拉朱旺	<br>E,1996,6.5-6.16,芝加哥公牛队,4-2,俄克拉荷马城雷霆队,迈克尔·乔丹	<br>E,1997,6.1-6.13,芝加哥公牛队,4-2,犹他爵士队,迈克尔·乔丹	<br>E,1998,6.3-6.14,芝加哥公牛队,4-2,犹他爵士队,迈克尔·乔丹	<br>W,1999,6.16-6.25,圣安东尼奥马刺队,4-1,纽约尼克斯队,蒂姆·邓肯	<br>W,2000,6.7-6.19,洛杉矶湖人队,4-2,印第安纳步行者队,沙奎尔·奥尼尔	<br>W,2001,6.6-6.15,洛杉矶湖人队,4-1,费城76人队,沙奎尔·奥尼尔	<br>W,2002,6.5-6.12,洛杉矶湖人队,4-0,布鲁克林篮网队,沙奎尔·奥尼尔	<br>W,2003,6.5-6.16,圣安东尼奥马刺队,4-2,布鲁克林篮网队,蒂姆·邓肯	<br>E,2004,6.7-6.16,底特律活塞队,4-1,洛杉矶湖人队,昌西·比卢普斯	<br>W,2005,6.10-6.24,圣安东尼奥马刺队,4-3,底特律活塞队,蒂姆·邓肯	<br>E,2006,6.9-6.21,迈阿密热火队,4-2,达拉斯独行侠队,德怀恩·韦德	<br>W,2007,6.8-6.15,圣安东尼奥马刺队,4-0,克里夫兰骑士队,托尼·帕克	<br>E,2008,6.6-6.18,波士顿凯尔特人队,4-2,洛杉矶湖人队,保罗·皮尔斯	<br>W,2009,6.5-6.15,洛杉矶湖人队,4-1,奥兰多魔术队,科比·布莱恩特	<br>W,2010,6.4-6.18,洛杉矶湖人队,4-3,波士顿凯尔特人队,科比·布莱恩特	<br>W,2011,6.1-6.13,达拉斯独行侠队,4-2,迈阿密热火队,德克·诺维茨基	<br>E,2012,6.13-6.22,迈阿密热火队,4-1,俄克拉荷马城雷霆队,勒布朗·詹姆斯	<br>E,2013,6.7-6.21,迈阿密热火队,4-3,圣安东尼奥马刺队,勒布朗·詹姆斯	<br>W,2014,6.6-6.16,圣安东尼奥马刺队,4-1,迈阿密热火队,科怀·伦纳德	<br>W,2015,6.5-6.17,金州勇士队,4-2,克里夫兰骑士队,安德烈·伊戈达拉	<br>E,2016,6.3-6.20,克里夫兰骑士队,4-3,金州勇士队,勒布朗·詹姆斯	<br>W,2017,6.2-6.13,金州勇士队,4-1,克利夫兰骑士队,凯文·杜兰特	<br>W,2018,6.1-6.9,金州勇士队,4-0,克利夫兰骑士队,凯文·杜兰特	<br>E,2019,5.31-6.14,多伦多猛龙队,4-2,金州勇士队,科怀·伦纳德<br></code></pre></td></tr></table></figure>
+
+
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20211001164652951.png" srcset="/img/loading.gif" lazyload alt="image-20211001164652951"></p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>通过Partitioner分类存放，这次Partitioner只实现了把M根EW分开，EW还是在一个文件夹内</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs main.py">#!/usr/bin/env python3<br># coding=UTF-8<br>##map<br>import sys<br>for line in sys.stdin:<br>    #将字符串转换为列表dataList 方便操作<br>    dataList = line.split(&#x27;,&#x27;)<br>    print(dataList)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs reduce.py">#!/usr/bin/env python3<br># coding=UTF-8<br># reduce<br><br>import sys,re<br><br>Count = []<br>kV = &#123;&#125;<br>for line in sys.stdin:<br>    line = re.sub(&quot;\[&quot;,&#x27;&#x27;,line)<br>    line = re.sub(&quot;\]&quot;,&#x27;&#x27;,line)<br>    line = re.sub(&quot;&#x27;&quot;,&#x27;&#x27;,line)<br>    line = re.sub(&quot;\t\n&quot;,&#x27;&#x27;,line)<br>    lineContent = line.split(&#x27;, &#x27;)<br>    if lineContent[2] not in Count:<br>        Count.append(lineContent[2])<br>        kV[lineContent[2]] = 1<br>    elif lineContent[2] in Count:<br>        xx = &#123;lineContent[2]: kV[lineContent[2]] + 1&#125;<br>        kV.update(xx)<br>print(kV)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs dataPartitioner.sh">HADOOP_CMD=&quot;/home/map/apps/hadoop/bin/hadoop&quot;<br>STREAM_JAR_PATH=&quot;/home/map/apps/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.7.6.jar&quot;<br><br>INPUT_FILE_PATH_1=&quot;/data_output/part-00000&quot;<br>OUTPUT_PATH=&quot;/pp_output&quot;<br>$HADOOP_CMD fs -rm -r -skipTrash $OUTPUT_PATH #每次执行时都删除输出路径，否则会出错<br><br>$HADOOP_CMD jar $STREAM_JAR_PATH \<br>  -D stream.map.output.field.separator=, \<br>  -D stream.num.map.output.key.fields=1 \<br>  -D map.output.key.field.separator=\t \<br>  -D mapred.text.key.partitioner.options=-k1,1 \<br>  -input $INPUT_FILE_PATH_1 \<br>  -output $OUTPUT_PATH \<br>  -mapper &quot;python3 main.py&quot; \<br>  -reducer &quot;python3 reduce.py&quot; \<br>  -jobconf mapred.map.tasks=3 \<br>  -jobconf mapred.reduce.tasks=3 \<br>  -file main.py \<br>  -file reduce.py \<br>  -partitioner org.apache.hadoop.mapred.lib.KeyFieldBasedPartitioner<br><br></code></pre></td></tr></table></figure>
+
+<p><img src="http://markdowntc.wanqqq29.cn//image-20211001165523346.png" srcset="/img/loading.gif" lazyload alt="image-20211001165523346"></p>
+<h2 id="只分类1970年后的"><a href="#只分类1970年后的" class="headerlink" title="只分类1970年后的"></a>只分类1970年后的</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs mainF.py">#!/usr/bin/env python3<br># coding=UTF-8<br>##map<br>import sys,re<br>for line in sys.stdin:<br>    #将字符串转换为列表dataList 方便操作<br>    line = re.sub(&quot;\[&quot;, &#x27;&#x27;, line)<br>    line = re.sub(&quot;\]&quot;, &#x27;&#x27;, line)<br>    line = re.sub(&quot;&#x27;&quot;, &#x27;&#x27;, line)<br>    line = re.sub(&quot;\t\n&quot;, &#x27;&#x27;, line)<br>    dataList = line.split(&#x27;,&#x27;)<br>    if dataList[0] == &#x27;W&#x27;:<br>        print(dataList)<br>    elif dataList[0] ==&#x27;E&#x27;:<br>        print(dataList)<br><br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs reducecF.py">#!/usr/bin/env python3<br># coding=UTF-8<br># reduce<br><br>import sys,re<br><br>Count = []<br>kVw = &#123;&#125;<br>kVe = &#123;&#125;<br>for line in sys.stdin:<br>    line = re.sub(&quot;\[&quot;,&#x27;&#x27;,line)<br>    line = re.sub(&quot;\]&quot;,&#x27;&#x27;,line)<br>    line = re.sub(&quot;&#x27;&quot;,&#x27;&#x27;,line)<br>    line = re.sub(&quot;\t\n&quot;,&#x27;&#x27;,line)<br>    lineContent = line.split(&#x27;, &#x27;)<br>    # print(lineContent)<br>    # if lineContent[0] == &#x27;W&#x27; or &#x27;E&#x27;:<br>    #     print(lineContent[0])<br>    if lineContent[0][0:1] == &#x27;W&#x27;:<br>        if lineContent[2] not in Count:<br>            Count.append(lineContent[2])<br>            kVw[lineContent[2]] = 1<br>        elif lineContent[2] in Count:<br>            xx = &#123;lineContent[2]: kVw[lineContent[2]] + 1&#125;<br>            kVw.update(xx)<br><br>    elif lineContent[0][0:1] == &#x27;E&#x27;:<br>        if lineContent[2] not in Count:<br>            Count.append(lineContent[2])<br>            kVe[lineContent[2]] = 1<br>        elif lineContent[2] in Count:<br>            xx = &#123;lineContent[2]: kVe[lineContent[2]] + 1&#125;<br>            kVe.update(xx)<br>print(kVw,&#x27;#W&#x27;)<br>print(kVe,&#x27;#E&#x27;)<br><br><br>    # if lineContent[2] not in Count:<br>    #     Count.append(lineContent[2])<br>    #     kV[lineContent[2]] = 1<br>    # elif lineContent[2] in Count:<br>    #     xx = &#123;lineContent[2]: kV[lineContent[2]] + 1&#125;<br>    #     kV.update(xx)<br># print(kV)<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs aa.sh">HADOOP_CMD=&quot;/home/map/apps/hadoop/bin/hadoop&quot;<br>STREAM_JAR_PATH=&quot;/home/map/apps/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.7.6.jar&quot;<br><br>INPUT_FILE_PATH_1=&quot;/data_output/part-00000&quot;<br>OUTPUT_PATH=&quot;/ppp_output&quot;<br>$HADOOP_CMD fs -rm -r -skipTrash $OUTPUT_PATH #每次执行时都删除输出路径，否则会出错<br><br>$HADOOP_CMD jar $STREAM_JAR_PATH \<br>  -D stream.map.output.field.separator=, \<br>  -D stream.num.map.output.key.fields=1 \<br>  -D map.output.key.field.separator=\t \<br>  -D mapred.text.key.partitioner.options=-k1,1 \<br>  -input $INPUT_FILE_PATH_1 \<br>  -output $OUTPUT_PATH \<br>  -outputformat org.apache.hadoop.mapreduce.lib.output.MultipleOutputs \<br>  -mapper &quot;python3 mainF.py&quot; \<br>  -reducer &quot;python3 reduceF.py&quot; \<br>  -jobconf mapred.map.tasks=3 \<br>  -jobconf mapred.reduce.tasks=3 \<br>  -file mainF.py \<br>  -file reduceF.py \<br>  -partitioner org.apache.hadoop.mapred.lib.KeyFieldBasedPartitioner<br><br><br></code></pre></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据分析</a>
+                    
+                      <a class="hover-with-bg" href="/tags/hadoop/">hadoop</a>
+                    
+                      <a class="hover-with-bg" href="/tags/mapreduce/">mapreduce</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/30/%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%BF%90%E7%BB%B4%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">大数据运维综合实践课堂笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'wanqqq29/wanqqq29.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'Comments');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鲁ICP备19024884号
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
