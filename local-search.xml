@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title></title>
+    <link href="/2021/11/19/js%E8%BD%AC%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%95%B0%E5%AD%97%E6%96%B9%E6%B3%95/"/>
+    <url>/2021/11/19/js%E8%BD%AC%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%95%B0%E5%AD%97%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<p>title: js转换字符串、数字方法<br>tags: [web,js]</p><h1 id="js转换为字符串类型"><a href="#js转换为字符串类型" class="headerlink" title="js转换为字符串类型"></a>js转换为字符串类型</h1><table><thead><tr><th>方式</th><th>说明</th><th>案例</th></tr></thead><tbody><tr><td>toString()</td><td>转成字符串</td><td>var num =1;alert(num.toString());</td></tr><tr><td>String()强制转换</td><td>转成字符串</td><td>var num = 1; alert(String(num));</td></tr><tr><td><b>加号拼接字符串</b></td><td>和字符串拼接的结果都是字符串</td><td>var num =1;alert(num+’字符串’);</td></tr></tbody></table><p>toString() 、String() 使用方式不同</p><p>更偏向于使用加号拼接字符串转换方式，又称为隐式转换</p><h1 id="js转换为数字类型"><a href="#js转换为数字类型" class="headerlink" title="js转换为数字类型"></a>js转换为数字类型</h1><table><thead><tr><th>方式</th><th>说明</th><th>案例</th></tr></thead><tbody><tr><td>parseInt</td><td>将string转为整数数值型</td><td>parseInt(‘78’); -&gt; 78<br>parseInt(‘120px’); -&gt; 120 <br>parseInt(‘123.2’); -&gt; 123</td></tr><tr><td>parseFloat</td><td>将string转为浮点数数值型</td><td>parseInt(‘78.1’); -&gt; 78.1<br/>parseInt(‘120.2px’); -&gt; 120.2 <br/>parseInt(‘123.2’); -&gt; 123.2</td></tr><tr><td>Number()强制转换</td><td>将string类型转换为数值型</td><td>Number(‘12’); -&gt; 12<br>Numbber(‘12.2’) -&gt; 12.2</td></tr><tr><td>js隐式转换(- * /)</td><td>利用算术运算隐式转换为数值型</td><td>‘12’-0; -&gt; 12<br>‘123’ - ’120‘  -&gt; 3 <br>‘123’ * 1 -&gt; 123</td></tr></tbody></table><h1 id="js转换为布尔型"><a href="#js转换为布尔型" class="headerlink" title="js转换为布尔型"></a>js转换为布尔型</h1><table><thead><tr><th>方式</th><th>说明</th><th>案例</th></tr></thead><tbody><tr><td>Boolean()</td><td>其他类型转成布尔值</td><td>Boolean(‘true’);</td></tr></tbody></table><ul><li><p>代表空、否定的值会被转换为false, 如 ‘’、0、NaN、null、undefined</p></li><li><p>其余值都会被转换为true</p><p><img src="http://markdowntc.wanqqq29.cn/image-20211119104746621.png" alt="image-20211119104746621"></p></li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>大数据分析实践课堂笔记</title>
     <link href="/2021/09/13/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E8%B7%B5/"/>
     <url>/2021/09/13/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%AE%9E%E8%B7%B5/</url>
