@@ -184,8 +184,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-08-11 09:51" pubdate>
-        2021年8月11日 上午
+      <time datetime="2021-12-15 13:58" pubdate>
+        2021年12月15日 下午
       </time>
     </span>
   
@@ -265,7 +265,7 @@
 
 <h3 id="查看是否启动"><a href="#查看是否启动" class="headerlink" title="查看是否启动"></a>查看是否启动</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">ps -aux | grep nginx<br></code></pre></td></tr></table></figure>
 
-<p><img src="http://markdowntc.wanqqq29.cn//image-20210811154044582.png" srcset="/img/loading.gif" lazyload alt="image-20210811154044582"></p>
+<p><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/django/docker%E5%B0%81%E8%A3%85django+uwsgi.md/74395614243607.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">vi /usr/local/nginx/conf/nginx.conf<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell">server<br>&#123;<br>	listen 80;<br>	listen 443 ssl http2;<br>    server_name 你的域名;<br>    	charset urf-8;<br>    location / &#123;<br>    	include uwsgi_params;<br>        uwsgi_pass 127.0.0.1:8001; #8001对应uwsgi配置中的socket<br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
@@ -291,7 +291,7 @@
 
 <h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><p><code>docker run -p 80:80 容器id ./go.sh</code></p>
 <p>访问ip</p>
-<p><img src="http://markdowntc.wanqqq29.cn//image-20210812134652921.png" srcset="/img/loading.gif" lazyload alt="image-20210812134652921"></p>
+<p><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/django/docker%E5%B0%81%E8%A3%85django+uwsgi.md/56185714225820.png" srcset="/img/loading.gif" lazyload></p>
 <h1 id="？问题"><a href="#？问题" class="headerlink" title="？问题"></a>？问题</h1><ol>
 <li><p>执行django并暴露端口可以使用，uwsgi无效  </p>
 <p>解决：方案 使用tail命令对日志进行持续输出 保证在前台运行</p>
@@ -330,9 +330,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/08/13/vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                      <a href="/2021/12/15/django%E6%A8%A1%E6%9D%BF%E5%BC%80%E5%8F%91&amp;%E9%87%8D%E5%86%99&amp;%E4%BD%BF%E7%94%A8bootstrap/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vue学习笔记</span>
+                        <span class="hidden-mobile">django模板开发&重写&使用bootstrap</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -340,8 +340,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/08/10/uwsgi+Django%E5%AE%9E%E7%8E%B0%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE/">
-                        <span class="hidden-mobile">uwsgi+Django实现域名访问</span>
+                      <a href="/2021/11/24/pandas%E5%85%A5%E9%97%A8/">
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

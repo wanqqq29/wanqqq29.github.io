@@ -242,9 +242,9 @@
               <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在爬取网站新闻时发现，返回的html代码中中文是乱码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python">headers = &#123;<br>    <span class="hljs-string">&quot;User-Agent&quot;</span>: <span class="hljs-string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0&quot;</span>,<br>    <span class="hljs-string">&quot;Accept&quot;</span>: <span class="hljs-string">&quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&quot;</span>,<br>    <span class="hljs-string">&quot;Accept-Language&quot;</span>: <span class="hljs-string">&quot;zh-CN&quot;</span>,<br>    <span class="hljs-string">&quot;Accept-Encoding&quot;</span>: <span class="hljs-string">&quot;gzip, deflate, br&quot;</span>,<br>    <span class="hljs-string">&quot;Referer&quot;</span>: <span class="hljs-string">&quot;http://www.sdyu.edu.cn/index.htm&quot;</span>,<br>&#125;<br>url=<span class="hljs-string">&#x27;http://www.sdyu.edu.cn/xwzx/tzgg.htm&#x27;</span><br>a = requests.get(url=url,headers=headers).text<br><span class="hljs-built_in">print</span>(a)<br></code></pre></td></tr></table></figure>
 
-<p><strong><img src="http://markdowntc.wanqqq29.cn//image-20210806104431158.png" srcset="/img/loading.gif" lazyload alt="image-20210806104431158"></strong></p>
+<p><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/python&%E7%88%AC%E8%99%AB/request.get%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3.md/114650115231128.png" srcset="/img/loading.gif" lazyload></p>
 <p>对页面代码进行分析，发现页面是以<code>utf-8</code>格式编码的</p>
-<p><img src="http://markdowntc.wanqqq29.cn//image-20210806104610722.png" srcset="/img/loading.gif" lazyload alt="image-20210806104610491"></p>
+<p><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/python&%E7%88%AC%E8%99%AB/request.get%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3.md/172840115236883.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><ol>
 <li><p>将get到的结果先转换为utf-8格式编码，之后再获取text属性</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">a = requests.get(url=url,headers=headers)<br>a.encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span><br>a=a.text<br></code></pre></td></tr></table></figure></li>
@@ -258,8 +258,7 @@
 <p>decode不能直接对字符串进行解码，所以要先将获取到的text字符串转码。</p>
 </li>
 </ol>
-<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p><img src="http://markdowntc.wanqqq29.cn//image-20210806105430520.png" srcset="/img/loading.gif" lazyload alt="image-20210806105430520"></p>
-<p>​    </p>
+<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>​<br><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/python&%E7%88%AC%E8%99%AB/request.get%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3.md/283270115237515.png" srcset="/img/loading.gif" lazyload></p>
 
             </div>
             <hr>
