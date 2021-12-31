@@ -20,7 +20,7 @@
   <meta name="keywords" content="">
   <meta name="baidu-site-verification" content="code-YL4uW1Y3qB" />
   
-  <title>Django项目初始化 - 日常随笔</title>
+  <title>2D波浪按钮 - 日常随笔</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -174,7 +174,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Django项目初始化">
+            <span class="h2" id="subtitle" title="2D波浪按钮">
               
             </span>
 
@@ -184,8 +184,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-08-05 15:45" pubdate>
-        2021年8月5日 下午
+      <time datetime="2020-04-21 15:29" pubdate>
+        2020年4月21日 下午
       </time>
     </span>
   
@@ -196,7 +196,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      204 字
+      219 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      4
        分钟
     </span>
   
@@ -236,41 +236,21 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Django项目初始化</h1>
+            <h1 style="display: none">2D波浪按钮</h1>
             
             <div class="markdown-body">
-              <h2 id="MySQL连接"><a href="#MySQL连接" class="headerlink" title="MySQL连接"></a>MySQL连接</h2><h3 id="SETTING-py"><a href="#SETTING-py" class="headerlink" title="SETTING.py"></a>SETTING.py</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py">DATABASES = &#123;<br>    <span class="hljs-string">&#x27;default&#x27;</span>: &#123;<br>        <span class="hljs-string">&#x27;ENGINE&#x27;</span>: <span class="hljs-string">&#x27;django.db.backends.mysql&#x27;</span>,<br>        <span class="hljs-string">&#x27;NAME&#x27;</span>: <span class="hljs-string">&#x27;xxx&#x27;</span>,<br>        <span class="hljs-string">&#x27;HOST&#x27;</span>:<span class="hljs-string">&#x27;localhost&#x27;</span>,<br>        <span class="hljs-string">&#x27;PORT&#x27;</span>:<span class="hljs-string">&#x27;3306&#x27;</span>,<br>        <span class="hljs-string">&#x27;USER&#x27;</span>:<span class="hljs-string">&#x27;username&#x27;</span>,<br>        <span class="hljs-string">&#x27;PASSWORD&#x27;</span>:<span class="hljs-string">&#x27;password&#x27;</span><br>    &#125;<br>&#125;<br><br>LANGUAGE_CODE = <span class="hljs-string">&#x27;zh-hans&#x27;</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="init-py"><a href="#init-py" class="headerlink" title="init.py"></a><em>init</em>.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pymysql<br>pymysql.install_as_MySQLdb()<br></code></pre></td></tr></table></figure>
-
-<h2 id="数据库模型-models-py"><a href="#数据库模型-models-py" class="headerlink" title="数据库模型(models.py)"></a>数据库模型(models.py)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Django.db <span class="hljs-keyword">import</span> models<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">xxx</span>(<span class="hljs-params">models.Model</span>):</span><br>    a = models.AutoField(primary_key=<span class="hljs-literal">True</span>)<br>    ……<br>    <br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Meta</span>:</span><br>        db_table=<span class="hljs-string">&#x27;tableName&#x27;</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs she">python manage.py makemigrations<br>python manage.py migrate<br></code></pre></td></tr></table></figure>
-
-<h2 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h2><h3 id="app-urls-py-需自建"><a href="#app-urls-py-需自建" class="headerlink" title="app/urls.py(需自建)"></a>app/urls.py(需自建)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> App.views<br><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin<br><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path<br><br>urlpatterns = [<br>    path(<span class="hljs-string">&#x27;&#x27;</span>,App.views.function),<br>    path……<br>]<br><br></code></pre></td></tr></table></figure>
-
-<h3 id="urls-py"><a href="#urls-py" class="headerlink" title="urls.py"></a>urls.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin<br><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path, include<br><span class="hljs-keyword">from</span> App <span class="hljs-keyword">import</span> urls<br><br>urlpatterns = [<br>    path(<span class="hljs-string">&#x27;admin/&#x27;</span>, admin.site.urls),<br>    path(<span class="hljs-string">&#x27;&#x27;</span>, include(<span class="hljs-string">&#x27;App.urls&#x27;</span>))<br>]<br></code></pre></td></tr></table></figure>
-
-<h1 id="跨域问题解决"><a href="#跨域问题解决" class="headerlink" title="跨域问题解决"></a>跨域问题解决</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/majingjie/p/11152052.html">https://www.cnblogs.com/majingjie/p/11152052.html</a></p>
-<p>django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:</p>
-<p>ERRORS:<br>?: (corsheaders.E014) Origin ‘<a target="_blank" rel="noopener" href="http://123.56.127.98/&#39;">http://123.56.127.98/&#39;</a> in CORS_ORIGIN_WHITELIST should not have path<br>?: (corsheaders.E014) Origin ‘<a target="_blank" rel="noopener" href="http://onestep.wanqqq29.cn/&#39;">http://onestep.wanqqq29.cn/&#39;</a> in CORS_ORIGIN_WHITELIST should not have path</p>
+              <h1 id="每天一个-1-2D波浪按钮"><a href="#每天一个-1-2D波浪按钮" class="headerlink" title="[每天一个]1.2D波浪按钮"></a>[每天一个]1.2D波浪按钮</h1><h2 id="预览图"><a href="#预览图" class="headerlink" title="预览图"></a>预览图</h2><p><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/2d%E6%B3%A2%E6%B5%AA%E6%8C%89%E9%92%AE-1.md/371461509226955.png" srcset="/img/loading.gif" lazyload><br><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/2d%E6%B3%A2%E6%B5%AA%E6%8C%89%E9%92%AE-1.md/422641509222709.png" srcset="/img/loading.gif" lazyload><br><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/2d%E6%B3%A2%E6%B5%AA%E6%8C%89%E9%92%AE-1.md/490011509240589.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="预览链接"><a href="#预览链接" class="headerlink" title="预览链接"></a>预览链接</h2><p><a target="_blank" rel="noopener" href="http://web.wanqqq29.cn/DailyCss/2Dwave/">http://web.wanqqq29.cn/DailyCss/2Dwave/</a></p>
+<h2 id="wave-png下载链接"><a href="#wave-png下载链接" class="headerlink" title="wave.png下载链接"></a>wave.png下载链接</h2><p><a target="_blank" rel="noopener" href="http://markdowntc.wanqqq29.cn//img/wave.png">http://markdowntc.wanqqq29.cn//img/wave.png</a><br><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/2d%E6%B3%A2%E6%B5%AA%E6%8C%89%E9%92%AE-1.md/25831609238193.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
+<h2 id="html-代码"><a href="#html-代码" class="headerlink" title="html 代码"></a>html 代码</h2><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">&lt;div <span class="hljs-keyword">class</span>=&quot;<span class="hljs-symbol">wavebtn</span>&quot;&gt;<br>    &lt;<span class="hljs-symbol">a</span> <span class="hljs-symbol">href</span>=&quot;#&quot;&gt;<br>        &lt;<span class="hljs-symbol">span</span>&gt;<span class="hljs-symbol">button</span>&lt;/<span class="hljs-symbol">span</span>&gt;<br>        &lt;<span class="hljs-symbol">div</span> <span class="hljs-symbol">class</span>=&quot;<span class="hljs-symbol">wave</span>&quot;&gt;&lt;/<span class="hljs-symbol">div</span>&gt;<br>    &lt;/<span class="hljs-symbol">a</span>&gt;<br>&lt;/<span class="hljs-symbol">div</span>&gt;<br><br></code></pre></td></tr></table></figure>
+<h2 id="CSS代码"><a href="#CSS代码" class="headerlink" title="CSS代码"></a>CSS代码</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.wavebtn</span>&gt;<span class="hljs-selector-tag">a</span> &#123;<br>    <span class="hljs-attribute">position</span>: relative;<br>    <span class="hljs-attribute">display</span>: block;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">30px</span>;<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid <span class="hljs-number">#00aeff</span>;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>;<br>    <span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">4px</span>;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-number">#00aeff</span>;<br>    <span class="hljs-attribute">text-decoration</span>: none;<br>    <span class="hljs-attribute">overflow</span>: hidden;<br>&#125;<br><br><span class="hljs-selector-class">.wavebtn</span>&gt;<span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">span</span> &#123;<br>    <span class="hljs-attribute">position</span>: relative;<br>    <span class="hljs-attribute">z-index</span>: <span class="hljs-number">1</span>;<br>    <span class="hljs-attribute">transition</span>: <span class="hljs-number">1s</span>;<br>&#125;<br><br><span class="hljs-selector-class">.wavebtn</span>&gt;<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-selector-tag">span</span> &#123;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;<br>&#125;<br><br><span class="hljs-selector-class">.wavebtn</span>&gt;<span class="hljs-selector-tag">a</span> <span class="hljs-selector-class">.wave</span> &#123;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-built_in">calc</span>(<span class="hljs-number">100%</span> + <span class="hljs-number">22px</span>);<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-number">#00aeff</span>;<br>    <span class="hljs-attribute">transition</span>: <span class="hljs-number">1s</span>;<br>&#125;<br><br><span class="hljs-selector-class">.wavebtn</span>&gt;<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-selector-class">.wave</span> &#123;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-selector-class">.wavebtn</span>&gt;<span class="hljs-selector-tag">a</span> <span class="hljs-selector-class">.wave</span>:before &#123;<br>    content: <span class="hljs-string">&#x27; &#x27;</span>;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">top</span>: -<span class="hljs-number">22px</span>;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">22px</span>;<br>    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">./wave.png</span>);<br>    <span class="hljs-attribute">animation</span>: animate <span class="hljs-number">0.5s</span> linear infinite;<br>&#125;<br><br><span class="hljs-keyword">@keyframes</span> animate &#123;<br>    <span class="hljs-number">0%</span> &#123;<br>        <span class="hljs-attribute">background-position</span>-x: <span class="hljs-number">0</span>;<br>        <span class="hljs-attribute">background-position</span>-y: -<span class="hljs-number">22px</span>;<br>    &#125;<br>    <span class="hljs-number">100%</span> &#123;<br>        <span class="hljs-attribute">background-position</span>-x: <span class="hljs-number">118px</span>;<br>        <span class="hljs-attribute">background-position</span>-y: -<span class="hljs-number">22px</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Django/">Django</a>
-                    
-                  </div>
                 
               </div>
               
@@ -285,21 +265,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/08/05/G6%E8%B8%A9%E5%9D%91/">
+                      <a href="/2020/04/22/%E4%B8%89%E7%A7%8D%E8%AE%A1%E7%AE%97%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E5%8F%96%E4%BD%99%E8%BF%90%E7%AE%97/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">G6踩坑</span>
+                        <span class="hidden-mobile">三种计算器实现加减乘除取余运算</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2020/04/22/%E4%B8%89%E7%A7%8D%E8%AE%A1%E7%AE%97%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E5%8F%96%E4%BD%99%E8%BF%90%E7%AE%97/">
-                        <span class="hidden-mobile">三种计算器实现加减乘除取余运算</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>

@@ -20,7 +20,7 @@
   <meta name="keywords" content="">
   <meta name="baidu-site-verification" content="code-YL4uW1Y3qB" />
   
-  <title>Django项目初始化 - 日常随笔</title>
+  <title>Ubuntu安装jupyter服务 - 日常随笔</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -174,7 +174,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Django项目初始化">
+            <span class="h2" id="subtitle" title="Ubuntu安装jupyter服务">
               
             </span>
 
@@ -184,8 +184,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-08-05 15:45" pubdate>
-        2021年8月5日 下午
+      <time datetime="2021-12-31 09:18" pubdate>
+        2021年12月31日 上午
       </time>
     </span>
   
@@ -196,7 +196,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      204 字
+      319 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      4
        分钟
     </span>
   
@@ -236,41 +236,39 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Django项目初始化</h1>
+            <h1 style="display: none">Ubuntu安装jupyter服务</h1>
             
             <div class="markdown-body">
-              <h2 id="MySQL连接"><a href="#MySQL连接" class="headerlink" title="MySQL连接"></a>MySQL连接</h2><h3 id="SETTING-py"><a href="#SETTING-py" class="headerlink" title="SETTING.py"></a>SETTING.py</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py">DATABASES = &#123;<br>    <span class="hljs-string">&#x27;default&#x27;</span>: &#123;<br>        <span class="hljs-string">&#x27;ENGINE&#x27;</span>: <span class="hljs-string">&#x27;django.db.backends.mysql&#x27;</span>,<br>        <span class="hljs-string">&#x27;NAME&#x27;</span>: <span class="hljs-string">&#x27;xxx&#x27;</span>,<br>        <span class="hljs-string">&#x27;HOST&#x27;</span>:<span class="hljs-string">&#x27;localhost&#x27;</span>,<br>        <span class="hljs-string">&#x27;PORT&#x27;</span>:<span class="hljs-string">&#x27;3306&#x27;</span>,<br>        <span class="hljs-string">&#x27;USER&#x27;</span>:<span class="hljs-string">&#x27;username&#x27;</span>,<br>        <span class="hljs-string">&#x27;PASSWORD&#x27;</span>:<span class="hljs-string">&#x27;password&#x27;</span><br>    &#125;<br>&#125;<br><br>LANGUAGE_CODE = <span class="hljs-string">&#x27;zh-hans&#x27;</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="init-py"><a href="#init-py" class="headerlink" title="init.py"></a><em>init</em>.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pymysql<br>pymysql.install_as_MySQLdb()<br></code></pre></td></tr></table></figure>
-
-<h2 id="数据库模型-models-py"><a href="#数据库模型-models-py" class="headerlink" title="数据库模型(models.py)"></a>数据库模型(models.py)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Django.db <span class="hljs-keyword">import</span> models<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">xxx</span>(<span class="hljs-params">models.Model</span>):</span><br>    a = models.AutoField(primary_key=<span class="hljs-literal">True</span>)<br>    ……<br>    <br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Meta</span>:</span><br>        db_table=<span class="hljs-string">&#x27;tableName&#x27;</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs she">python manage.py makemigrations<br>python manage.py migrate<br></code></pre></td></tr></table></figure>
-
-<h2 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h2><h3 id="app-urls-py-需自建"><a href="#app-urls-py-需自建" class="headerlink" title="app/urls.py(需自建)"></a>app/urls.py(需自建)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> App.views<br><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin<br><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path<br><br>urlpatterns = [<br>    path(<span class="hljs-string">&#x27;&#x27;</span>,App.views.function),<br>    path……<br>]<br><br></code></pre></td></tr></table></figure>
-
-<h3 id="urls-py"><a href="#urls-py" class="headerlink" title="urls.py"></a>urls.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin<br><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path, include<br><span class="hljs-keyword">from</span> App <span class="hljs-keyword">import</span> urls<br><br>urlpatterns = [<br>    path(<span class="hljs-string">&#x27;admin/&#x27;</span>, admin.site.urls),<br>    path(<span class="hljs-string">&#x27;&#x27;</span>, include(<span class="hljs-string">&#x27;App.urls&#x27;</span>))<br>]<br></code></pre></td></tr></table></figure>
-
-<h1 id="跨域问题解决"><a href="#跨域问题解决" class="headerlink" title="跨域问题解决"></a>跨域问题解决</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/majingjie/p/11152052.html">https://www.cnblogs.com/majingjie/p/11152052.html</a></p>
-<p>django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:</p>
-<p>ERRORS:<br>?: (corsheaders.E014) Origin ‘<a target="_blank" rel="noopener" href="http://123.56.127.98/&#39;">http://123.56.127.98/&#39;</a> in CORS_ORIGIN_WHITELIST should not have path<br>?: (corsheaders.E014) Origin ‘<a target="_blank" rel="noopener" href="http://onestep.wanqqq29.cn/&#39;">http://onestep.wanqqq29.cn/&#39;</a> in CORS_ORIGIN_WHITELIST should not have path</p>
+              <h1 id="python部分"><a href="#python部分" class="headerlink" title="python部分"></a>python部分</h1><ul>
+<li><p>Ubuntu自带python2跟python3，但是默认的Python命令行是Python2的，想要执行python3就必须输入python3</p>
+</li>
+<li><p>我们先解决python3默认问题</p>
+<ul>
+<li>执行以下两个命令即可  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo update-alternatives --install <span class="hljs-regexp">/usr/</span>bin<span class="hljs-regexp">/python python /u</span>sr<span class="hljs-regexp">/bin/</span>python2 <span class="hljs-number">100</span><br><br>sudo update-alternatives --install <span class="hljs-regexp">/usr/</span>bin<span class="hljs-regexp">/python python /u</span>sr<span class="hljs-regexp">/bin/</span>python3 <span class="hljs-number">150</span><br><br></code></pre></td></tr></table></figure></li>
+<li>如果想切换到python2 执行  <figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vbnet"><span class="hljs-symbol">ModuleNotFoundError:</span> No <span class="hljs-keyword">module</span> named <span class="hljs-comment">&#x27;pip&#x27;</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>若报错：ModuleNotFoundError: No module named ‘pip’</p>
+<ul>
+<li>执行  <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">sudo apt install --<span class="hljs-keyword">fix</span>-missing <span class="hljs-keyword">python3</span>-pip<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h1 id="Jupyter部分"><a href="#Jupyter部分" class="headerlink" title="Jupyter部分"></a>Jupyter部分</h1><ul>
+<li>安装jupter  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">sudo pip <span class="hljs-keyword">install</span> jupyter<br></code></pre></td></tr></table></figure></li>
+<li>生成jupyter配置文件  <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs verilog">jupyter notebook --<span class="hljs-keyword">generate</span>-<span class="hljs-keyword">config</span><br></code></pre></td></tr></table></figure>
+</li>
+<li>为jupyter notebook生成密码  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk">	from notebook.auth import passwd<br>	passwd()<br>	Enterpassword: <span class="hljs-regexp">//</span>输入密码<br>	Verify password: <span class="hljs-regexp">//</span>再次输入密码<br>	out[<span class="hljs-number">2</span>]:<span class="hljs-string">&#x27;sha1:*&#x27;</span> <span class="hljs-regexp">//</span>保存好sha1备用<br><br>+ 修改配置文件 ~<span class="hljs-regexp">/.jupter/</span>jupyter_notebook_config.py<br>	<br></code></pre></td></tr></table></figure>
+  c.NotebookApp.ip=’0.0.0.0’<br>  c.NotebookApp.allow_root=True<br>  c.NotebookApp.open_browser = False<br>  c.NotebookApp.port =8890  <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">	注意一点，如果保存完配置文件报错，需删掉.<span class="hljs-keyword">jupyter目录下的jupyter_notebook*.json文件</span><br><span class="hljs-keyword"></span>	<br>+ 运行<span class="hljs-keyword">jupyter: </span><span class="hljs-keyword">jupyter </span>notebook --no-<span class="hljs-keyword">browser </span>(--port: --ip:)<br><br><span class="hljs-comment"># 注意</span><br><span class="hljs-number">1</span>. 在服务器上放开<span class="hljs-keyword">jupyter端口</span><br><span class="hljs-keyword"></span><span class="hljs-number">2</span>.	换成python3之后 yum无法正常工作，修改下列文件可使用<br>	<br></code></pre></td></tr></table></figure>
+  which yum =&gt; 找到yum路径  sudo vi  /usr/bin/yum  #!/usr/bin/python  修改为系统的python path  例如：#!/usr/bin/python2  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs"><br>若还报错 修改	 <br><br></code></pre></td></tr></table></figure>
+  vi /usr/libexec/urlgrabber-ext-down  #! /usr/bin/python   修改为系统的python path  例如：#!/usr/bin/python2<br>  ```</li>
+</ul>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Django/">Django</a>
-                    
-                  </div>
                 
               </div>
               
@@ -285,18 +283,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/08/05/G6%E8%B8%A9%E5%9D%91/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">G6踩坑</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/04/22/%E4%B8%89%E7%A7%8D%E8%AE%A1%E7%AE%97%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E5%8F%96%E4%BD%99%E8%BF%90%E7%AE%97/">
-                        <span class="hidden-mobile">三种计算器实现加减乘除取余运算</span>
+                      <a href="/2021/12/28/%E6%A0%A1%E5%A4%96%E8%AE%BF%E9%97%AE%E7%9F%A5%E7%BD%91%E6%8C%87%E5%8D%97/">
+                        <span class="hidden-mobile">校外访问知网指南</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
