@@ -20,7 +20,7 @@
   <meta name="keywords" content="">
   <meta name="baidu-site-verification" content="code-YL4uW1Y3qB" />
   
-  <title>Ubuntu安装jupyter服务 - 日常随笔</title>
+  <title>git提交超过文件限制的解决办法 - 日常随笔</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -174,7 +174,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Ubuntu安装jupyter服务">
+            <span class="h2" id="subtitle" title="git提交超过文件限制的解决办法">
               
             </span>
 
@@ -184,8 +184,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-12-31 09:18" pubdate>
-        2021年12月31日 上午
+      <time datetime="2022-01-21 09:35" pubdate>
+        2022年1月21日 上午
       </time>
     </span>
   
@@ -196,7 +196,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      319 字
+      407 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      6
        分钟
     </span>
   
@@ -236,39 +236,43 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Ubuntu安装jupyter服务</h1>
+            <h1 style="display: none">git提交超过文件限制的解决办法</h1>
             
             <div class="markdown-body">
-              <h1 id="python部分"><a href="#python部分" class="headerlink" title="python部分"></a>python部分</h1><ul>
-<li><p>Ubuntu自带python2跟python3，但是默认的Python命令行是Python2的，想要执行python3就必须输入python3</p>
-</li>
-<li><p>我们先解决python3默认问题</p>
-<ul>
-<li>执行以下两个命令即可  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo update-alternatives --install <span class="hljs-regexp">/usr/</span>bin<span class="hljs-regexp">/python python /u</span>sr<span class="hljs-regexp">/bin/</span>python2 <span class="hljs-number">100</span><br><br>sudo update-alternatives --install <span class="hljs-regexp">/usr/</span>bin<span class="hljs-regexp">/python python /u</span>sr<span class="hljs-regexp">/bin/</span>python3 <span class="hljs-number">150</span><br><br></code></pre></td></tr></table></figure></li>
-<li>如果想切换到python2 执行  <figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vbnet"><span class="hljs-symbol">ModuleNotFoundError:</span> No <span class="hljs-keyword">module</span> named <span class="hljs-comment">&#x27;pip&#x27;</span><br></code></pre></td></tr></table></figure></li>
+              <h1 id="git提交超过文件限制的解决办法"><a href="#git提交超过文件限制的解决办法" class="headerlink" title="git提交超过文件限制的解决办法"></a>git提交超过文件限制的解决办法</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vhdl">remote: <span class="hljs-literal">error</span>: See http://git.io/iEPt8g <span class="hljs-keyword">for</span> more information.<br>remote: <span class="hljs-literal">error</span>: <span class="hljs-keyword">File</span> <span class="hljs-keyword">new</span>-nsita/bitmap/bitmap.pdf <span class="hljs-keyword">is</span> <span class="hljs-number">189.85</span> MB; this exceeds GitHub<span class="hljs-symbol">&#x27;s</span> <span class="hljs-keyword">file</span> size limit <span class="hljs-keyword">of</span> <span class="hljs-number">100.00</span> MB<br>remote: <span class="hljs-literal">error</span>: GH001: Large files detected. You may want <span class="hljs-keyword">to</span> try Git Large <span class="hljs-keyword">File</span> Storage - https://git-lfs.github.com.<br><span class="hljs-keyword">To</span> https://github.com/wanqqq29/Daily-HTML.git<br> ! [remote rejected] xxx -&gt; xxx (pre-receive hook declined)<br><span class="hljs-literal">error</span>: failed <span class="hljs-keyword">to</span> push some refs <span class="hljs-keyword">to</span> <span class="hljs-symbol">&#x27;https</span>://github.com/wanqqq29/Daily-HTML.git&#x27;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>报错信息中第三行提示文件太大</p>
+</blockquote>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
+<li>查看是哪个文件超过限制  <ul>
+<li>第二行<code>remote: error: File new-nsita/bitmap/bitmap.pdf is 189.85 MB; this exceeds GitHub&#39;s file size limit of 100.00 MB</code>说明是<code>bitmap.pdf</code>这个文件太大，超过了100M的限制。所以我们就要处理这个文件了</li>
 </ul>
 </li>
-<li><p>若报错：ModuleNotFoundError: No module named ‘pip’</p>
-<ul>
-<li>执行  <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">sudo apt install --<span class="hljs-keyword">fix</span>-missing <span class="hljs-keyword">python3</span>-pip<br></code></pre></td></tr></table></figure></li>
+<li>重写commit,删除大文件<ul>
+<li><code> git filter-branch --force --index-filter &#39;git rm -rf --cached --ignore-unmatch new-nsita/bitmap/bitmap.pdf&#39; --prune-empty --tag-name-filter cat -- --all</code>注意将<code>new-nsita/bitmap/bitmap.pdf</code>替换成你的路径与文件<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-code"> WARNING: git-filter-branch has a glut of gotchas generating mangled history</span><br><span class="hljs-code">     rewrites.  Hit Ctrl-C before proceeding to abort, then use an</span><br><span class="hljs-code">     alternative filtering tool such as &#x27;git filter-repo&#x27;</span><br><span class="hljs-code">     (https://github.com/newren/git-filter-repo/) instead.  See the</span><br><span class="hljs-code">     filter-branch manual page for more details; to squelch this warning,</span><br><span class="hljs-code">     set FILTER_BRANCH_SQUELCH_WARNING=1.</span><br>Proceeding with filter-branch...<br>Rewrite 2621a6906cd6cf828ccf659622c8959c98e6eaab (3/5) (1 seconds passed, remaining 0 predicted)    rm <span class="hljs-emphasis">&#x27;new-nsita/bitmap/bitmap.pdf&#x27;</span><br><span class="hljs-symbol">WARNING: </span>Ref <span class="hljs-emphasis">&#x27;refs/heads/master&#x27;</span> is unchanged<br>Ref <span class="hljs-emphasis">&#x27;refs/heads/xxx&#x27;</span> was rewritten<br><span class="hljs-symbol">WARNING: </span>Ref <span class="hljs-emphasis">&#x27;refs/remotes/origin/master&#x27;</span> is unchanged<br><span class="hljs-symbol">WARNING: </span>Ref <span class="hljs-emphasis">&#x27;refs/stash&#x27;</span> is unchanged<br></code></pre></td></tr></table></figure>
+看到第8行提示重写 说明成功</li>
+</ul>
+  <strong>不要忘了检查本地大文件还在不</strong></li>
+<li>强制推送修改后的repo<ul>
+<li><code>git push origin xxx --force </code> xxx是你当前的分支名</li>
+<li><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%85%B6%E4%BB%96/git%E6%8F%90%E4%BA%A4%E8%B6%85%E8%BF%87%E6%96%87%E4%BB%B6%E9%99%90%E5%88%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.md/552683309238588.png" srcset="/img/loading.gif" lazyload></li>
+<li>可以看到成功推送</li>
 </ul>
 </li>
-</ul>
-<h1 id="Jupyter部分"><a href="#Jupyter部分" class="headerlink" title="Jupyter部分"></a>Jupyter部分</h1><ul>
-<li>安装jupter  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">sudo pip <span class="hljs-keyword">install</span> jupyter<br></code></pre></td></tr></table></figure></li>
-<li>生成jupyter配置文件  <figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs verilog">jupyter notebook --<span class="hljs-keyword">generate</span>-<span class="hljs-keyword">config</span><br></code></pre></td></tr></table></figure>
-</li>
-<li>为jupyter notebook生成密码  <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk">	from notebook.auth import passwd<br>	passwd()<br>	Enterpassword: <span class="hljs-regexp">//</span>输入密码<br>	Verify password: <span class="hljs-regexp">//</span>再次输入密码<br>	out[<span class="hljs-number">2</span>]:<span class="hljs-string">&#x27;sha1:*&#x27;</span> <span class="hljs-regexp">//</span>保存好sha1备用<br><br>+ 修改配置文件 ~<span class="hljs-regexp">/.jupter/</span>jupyter_notebook_config.py<br>	<br></code></pre></td></tr></table></figure>
-  c.NotebookApp.ip=’0.0.0.0’<br>  c.NotebookApp.allow_root=True<br>  c.NotebookApp.open_browser = False<br>  c.NotebookApp.port =8890  <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">	注意一点，如果保存完配置文件报错，需删掉.<span class="hljs-keyword">jupyter目录下的jupyter_notebook*.json文件</span><br><span class="hljs-keyword"></span>	<br>+ 运行<span class="hljs-keyword">jupyter: </span><span class="hljs-keyword">jupyter </span>notebook --no-<span class="hljs-keyword">browser </span>(--port: --ip:)<br><br><span class="hljs-comment"># 注意</span><br><span class="hljs-number">1</span>. 在服务器上放开<span class="hljs-keyword">jupyter端口</span><br><span class="hljs-keyword"></span><span class="hljs-number">2</span>.	换成python3之后 yum无法正常工作，修改下列文件可使用<br>	<br></code></pre></td></tr></table></figure>
-  which yum =&gt; 找到yum路径  sudo vi  /usr/bin/yum  #!/usr/bin/python  修改为系统的python path  例如：#!/usr/bin/python2  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs"><br>若还报错 修改	 <br><br></code></pre></td></tr></table></figure>
-  vi /usr/libexec/urlgrabber-ext-down  #! /usr/bin/python   修改为系统的python path  例如：#!/usr/bin/python2<br>  ```</li>
-</ul>
+</ol>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/git/">git</a>
+                    
+                  </div>
                 
               </div>
               
@@ -283,18 +287,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/01/21/git%E6%8F%90%E4%BA%A4%E8%B6%85%E8%BF%87%E6%96%87%E4%BB%B6%E9%99%90%E5%88%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">git提交超过文件限制的解决办法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/12/28/%E6%A0%A1%E5%A4%96%E8%AE%BF%E9%97%AE%E7%9F%A5%E7%BD%91%E6%8C%87%E5%8D%97/">
-                        <span class="hidden-mobile">校外访问知网指南</span>
+                      <a href="/2021/12/31/ubuntu%E9%83%A8%E7%BD%B2jupyter-notebook%E6%9C%8D%E5%8A%A1/">
+                        <span class="hidden-mobile">Ubuntu安装jupyter服务</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
