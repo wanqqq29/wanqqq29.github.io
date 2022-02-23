@@ -20,9 +20,25 @@
   <meta name="keywords" content="">
   <meta name="baidu-site-verification" content="code-YL4uW1Y3qB" />
   
-  <title>归档 - 日常随笔</title>
+  <title>某些特定条件下click()报错 - 日常随笔</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -59,7 +75,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -158,9 +174,46 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="某些特定条件下click()报错">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-23 10:03" pubdate>
+        2022年2月23日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      62 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1
+       分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -173,52 +226,114 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 23 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2022</p>
-    
-    <a href="/2022/02/23/%E6%9F%90%E4%BA%9B%E7%89%B9%E5%AE%9A%E6%9D%A1%E4%BB%B6%E4%B8%8Bclick()%E6%8A%A5%E9%94%99/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">某些特定条件下click()报错</span>
-      <time style="float: right;">02-23</time>
-    </a>
-  
-    
-    <a href="/2022/02/23/Quasar%E4%B8%AD%E6%B7%BB%E5%8A%A0TailwindCSS/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Quasar 中添加 tailwindcss</span>
-      <time style="float: right;">02-23</time>
-    </a>
-  
-    
-    <a href="/2022/01/21/git%E6%8F%90%E4%BA%A4%E8%B6%85%E8%BF%87%E6%96%87%E4%BB%B6%E9%99%90%E5%88%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">git提交超过文件限制的解决办法</span>
-      <time style="float: right;">01-21</time>
-    </a>
-  
-</div>
 
-
-
-
-
-              </div>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">某些特定条件下click()报错</h1>
+            
+            <div class="markdown-body">
+              <h1 id="某些特定条件下click-报错"><a href="#某些特定条件下click-报错" class="headerlink" title="某些特定条件下click()报错"></a>某些特定条件下click()报错</h1><blockquote>
+<p>某程酒店评论的下一页按钮,获取dom后使用.click()方法报错</p>
+</blockquote>
+<p><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%89%8D%E7%AB%AF/%E6%9F%90%E4%BA%9B%E7%89%B9%E5%AE%9A%E6%9D%A1%E4%BB%B6%E4%B8%8Bclick()%E6%8A%A5%E9%94%99.md/251371110226555.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>需要先让按钮出现,再点击按钮</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">document</span><span class="hljs-selector-class">.getElementsByClassName</span>(<span class="hljs-string">&#x27;forward&#x27;</span>)<span class="hljs-selector-attr">[0]</span><span class="hljs-selector-class">.scrollIntoViewIfNeeded</span>()<br><span class="hljs-selector-tag">document</span><span class="hljs-selector-class">.getElementsByClassName</span>(<span class="hljs-string">&#x27;forward&#x27;</span>)<span class="hljs-selector-attr">[0]</span><span class="hljs-selector-class">.click</span>()<br></code></pre></td></tr></table></figure>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/23/Quasar%E4%B8%AD%E6%B7%BB%E5%8A%A0TailwindCSS/">
+                        <span class="hidden-mobile">Quasar 中添加 tailwindcss</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'wanqqq29/wanqqq29.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'Comments');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -332,9 +447,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 

@@ -20,7 +20,7 @@
   <meta name="keywords" content="">
   <meta name="baidu-site-verification" content="code-YL4uW1Y3qB" />
   
-  <title>git提交超过文件限制的解决办法 - 日常随笔</title>
+  <title>Quasar 中添加 tailwindcss - 日常随笔</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -174,7 +174,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="git提交超过文件限制的解决办法">
+            <span class="h2" id="subtitle" title="Quasar 中添加 tailwindcss">
               
             </span>
 
@@ -184,8 +184,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-01-21 09:35" pubdate>
-        2022年1月21日 上午
+      <time datetime="2022-02-23 10:03" pubdate>
+        2022年2月23日 上午
       </time>
     </span>
   
@@ -196,7 +196,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      407 字
+      734 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      9
        分钟
     </span>
   
@@ -236,43 +236,47 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">git提交超过文件限制的解决办法</h1>
+            <h1 style="display: none">Quasar 中添加 tailwindcss</h1>
             
             <div class="markdown-body">
-              <h1 id="git提交超过文件限制的解决办法"><a href="#git提交超过文件限制的解决办法" class="headerlink" title="git提交超过文件限制的解决办法"></a>git提交超过文件限制的解决办法</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vhdl">remote: <span class="hljs-literal">error</span>: See http://git.io/iEPt8g <span class="hljs-keyword">for</span> more information.<br>remote: <span class="hljs-literal">error</span>: <span class="hljs-keyword">File</span> <span class="hljs-keyword">new</span>-nsita/bitmap/bitmap.pdf <span class="hljs-keyword">is</span> <span class="hljs-number">189.85</span> MB; this exceeds GitHub<span class="hljs-symbol">&#x27;s</span> <span class="hljs-keyword">file</span> size limit <span class="hljs-keyword">of</span> <span class="hljs-number">100.00</span> MB<br>remote: <span class="hljs-literal">error</span>: GH001: Large files detected. You may want <span class="hljs-keyword">to</span> try Git Large <span class="hljs-keyword">File</span> Storage - https://git-lfs.github.com.<br><span class="hljs-keyword">To</span> https://github.com/wanqqq29/Daily-HTML.git<br> ! [remote rejected] xxx -&gt; xxx (pre-receive hook declined)<br><span class="hljs-literal">error</span>: failed <span class="hljs-keyword">to</span> push some refs <span class="hljs-keyword">to</span> <span class="hljs-symbol">&#x27;https</span>://github.com/wanqqq29/Daily-HTML.git&#x27;<br></code></pre></td></tr></table></figure>
-<blockquote>
-<p>报错信息中第三行提示文件太大</p>
+              <h2 id="Quasar-中添加-tailwindcss"><a href="#Quasar-中添加-tailwindcss" class="headerlink" title="Quasar 中添加 tailwindcss"></a>Quasar 中添加 tailwindcss</h2><blockquote>
+<p>踩大坑了，搞了整整一天才研究明白</p>
 </blockquote>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
-<li>查看是哪个文件超过限制  <ul>
-<li>第二行<code>remote: error: File new-nsita/bitmap/bitmap.pdf is 189.85 MB; this exceeds GitHub&#39;s file size limit of 100.00 MB</code>说明是<code>bitmap.pdf</code>这个文件太大，超过了100M的限制。所以我们就要处理这个文件了</li>
-</ul>
-</li>
-<li>重写commit,删除大文件<ul>
-<li><code> git filter-branch --force --index-filter &#39;git rm -rf --cached --ignore-unmatch new-nsita/bitmap/bitmap.pdf&#39; --prune-empty --tag-name-filter cat -- --all</code>注意将<code>new-nsita/bitmap/bitmap.pdf</code>替换成你的路径与文件<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-code"> WARNING: git-filter-branch has a glut of gotchas generating mangled history</span><br><span class="hljs-code">     rewrites.  Hit Ctrl-C before proceeding to abort, then use an</span><br><span class="hljs-code">     alternative filtering tool such as &#x27;git filter-repo&#x27;</span><br><span class="hljs-code">     (https://github.com/newren/git-filter-repo/) instead.  See the</span><br><span class="hljs-code">     filter-branch manual page for more details; to squelch this warning,</span><br><span class="hljs-code">     set FILTER_BRANCH_SQUELCH_WARNING=1.</span><br>Proceeding with filter-branch...<br>Rewrite 2621a6906cd6cf828ccf659622c8959c98e6eaab (3/5) (1 seconds passed, remaining 0 predicted)    rm <span class="hljs-emphasis">&#x27;new-nsita/bitmap/bitmap.pdf&#x27;</span><br><span class="hljs-symbol">WARNING: </span>Ref <span class="hljs-emphasis">&#x27;refs/heads/master&#x27;</span> is unchanged<br>Ref <span class="hljs-emphasis">&#x27;refs/heads/xxx&#x27;</span> was rewritten<br><span class="hljs-symbol">WARNING: </span>Ref <span class="hljs-emphasis">&#x27;refs/remotes/origin/master&#x27;</span> is unchanged<br><span class="hljs-symbol">WARNING: </span>Ref <span class="hljs-emphasis">&#x27;refs/stash&#x27;</span> is unchanged<br></code></pre></td></tr></table></figure>
-看到第8行提示重写 说明成功</li>
-</ul>
-  <strong>不要忘了检查本地大文件还在不</strong></li>
-<li>强制推送修改后的repo<ul>
-<li><code>git push origin xxx --force </code> xxx是你当前的分支名</li>
-<li><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%85%B6%E4%BB%96/git%E6%8F%90%E4%BA%A4%E8%B6%85%E8%BF%87%E6%96%87%E4%BB%B6%E9%99%90%E5%88%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.md/552683309238588.png" srcset="/img/loading.gif" lazyload></li>
-<li>可以看到成功推送</li>
-</ul>
-</li>
-</ol>
+<p>结果操作是非常简单，但是我把tailwindcss安装文档从vite到next到nuxt都研究了一遍。把tailwind文档研究后，发现是quasar的问题。单纯的引入并不能引入成功。</p>
+<p>从quasar的文档从入门开始看仔细研究，一开始以为可以用quasar的启动文件boot，在启动文件引入tailwind的css文件，照样是没有任何作用，我都已经开始怀疑引入的这个**@tailwind**是不是有毛病，quasar识别不了？</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-keyword">@tailwind</span> base;<br><span class="hljs-keyword">@tailwind</span> components;<br><span class="hljs-keyword">@tailwind</span> utilities;<br></code></pre></td></tr></table></figure>
+
+<p>接着试验用vite去引入tailwind，很容易 直接成功，然后我尝试用quasar引入elementui+，因为elemenui+需要使用app.use()调用，用quasar的boot启动文件是可以调用VUEapp的。但是，tailwind没有默认导出文件！只能import引入css。到底是quasar的问题还是tailwind的问题？</p>
+<h4 id="结果来了"><a href="#结果来了" class="headerlink" title="结果来了"></a>结果来了</h4><p>在通篇阅读quasar的文档后，在文档的最下角发现了 <strong>应用扩展</strong></p>
+<blockquote>
+<p>应用扩展是一种轻松注入具有各种依赖项、启动文件、模板和自定义逻辑的复杂（或简单）库的方法。 他们可以扩展webpack、<code>quasar.conf.js</code>，将外部UI组件紧密耦合到核心，甚至可以通过Quasar CLI注册新命令。 它们可以与<code>quasar dev</code>一起运行，并且可以完全访问当前的实时<code>ctx</code>（上下文）。</p>
+</blockquote>
+<p>所有应用扩展必须在其名称前加上<code>quasar-app-extension-</code>。 该前缀之后的所有内容均被视为其简短别名。 在整个文档中，我们将其称为<code>ext-id</code>。</p>
+<p>附查找应用扩展网址</p>
+<p><a target="_blank" rel="noopener" href="https://www.npmjs.com/search?q=quasar-app-extension">quasar-app-extension - npm search (npmjs.com)</a></p>
+<h5 id="安装应用扩展"><a href="#安装应用扩展" class="headerlink" title="安装应用扩展"></a>安装应用扩展</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ quasar ext add &lt;ext-id&gt;<br></code></pre></td></tr></table></figure>
+
+<h5 id="查看已安装的应用拓展"><a href="#查看已安装的应用拓展" class="headerlink" title="查看已安装的应用拓展"></a>查看已安装的应用拓展</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ quasar ext<br>$ quasar info<br>$ cat quasar.extensions.json<br></code></pre></td></tr></table></figure>
+
+<h5 id="更新应用扩展"><a href="#更新应用扩展" class="headerlink" title="更新应用扩展"></a>更新应用扩展</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ quasar ext add &lt;ext-id&gt;<br></code></pre></td></tr></table></figure>
+
+<h5 id="删除应用扩展"><a href="#删除应用扩展" class="headerlink" title="删除应用扩展"></a>删除应用扩展</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ quasar ext remove &lt;ext-id&gt;<br></code></pre></td></tr></table></figure>
+
+<h4 id="然而这个tailwind就用quasar的扩展，但文档怎么不说？？？"><a href="#然而这个tailwind就用quasar的扩展，但文档怎么不说？？？" class="headerlink" title="然而这个tailwind就用quasar的扩展，但文档怎么不说？？？"></a>然而这个tailwind就用quasar的扩展，但文档怎么不说？？？</h4><p><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/quasar-app-extension-tailwindcss2">quasar-app-extension-tailwindcss2 - npm (npmjs.com)</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ quasar ext add tailwindcss2<br></code></pre></td></tr></table></figure>
+
+<p>安装完成后会在src目录下创建extensions文件夹</p>
+<p>安装的时候会让选择一个前缀，因为quasar里面的类也有很多相似的，怕引起冲突，需要选择一个前缀以保证css样式的类名不会发生冲突</p>
+<p>如扩展前缀为 <strong>qa-</strong></p>
+<p>后面的所有tailwind的样式类都需要在前面添加 <strong>qa-</strong>    例:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;qa-p-6 qa-max-w-sm qa-mx-auto qa-bg-white qa-rounded-xl qa-shadow-md qa-flex qa-items-center qa-space-x-4&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;qa-flex-shrink-0&quot;</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;qa-h-12 qa-w-12&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/favicon.ico&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;ChitChat Logo&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;qa-text-xl qa-font-medium qa-text-black&quot;</span>&gt;</span>ChitChat<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;qa-text-gray-500&quot;</span>&gt;</span>You have a new message!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/git/">git</a>
-                    
-                  </div>
                 
               </div>
               
@@ -287,9 +291,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/02/23/Quasar%E4%B8%AD%E6%B7%BB%E5%8A%A0TailwindCSS/">
+                      <a href="/2022/02/23/%E6%9F%90%E4%BA%9B%E7%89%B9%E5%AE%9A%E6%9D%A1%E4%BB%B6%E4%B8%8Bclick()%E6%8A%A5%E9%94%99/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Quasar 中添加 tailwindcss</span>
+                        <span class="hidden-mobile">某些特定条件下click()报错</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -297,8 +301,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/12/31/ubuntu%E9%83%A8%E7%BD%B2jupyter-notebook%E6%9C%8D%E5%8A%A1/">
-                        <span class="hidden-mobile">Ubuntu安装jupyter服务</span>
+                      <a href="/2022/01/21/git%E6%8F%90%E4%BA%A4%E8%B6%85%E8%BF%87%E6%96%87%E4%BB%B6%E9%99%90%E5%88%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
+                        <span class="hidden-mobile">git提交超过文件限制的解决办法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
