@@ -20,7 +20,7 @@
   <meta name="keywords" content="">
   <meta name="baidu-site-verification" content="code-YL4uW1Y3qB" />
   
-  <title>某些特定条件下click()报错 - 日常随笔</title>
+  <title>vue3 router传参 - 日常随笔</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -174,7 +174,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="某些特定条件下click()报错">
+            <span class="h2" id="subtitle" title="vue3 router传参">
               
             </span>
 
@@ -184,8 +184,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-02-23 10:03" pubdate>
-        2022年2月23日 上午
+      <time datetime="2022-03-01 10:31" pubdate>
+        2022年3月1日 上午
       </time>
     </span>
   
@@ -196,7 +196,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      62 字
+      291 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      4
        分钟
     </span>
   
@@ -236,15 +236,23 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">某些特定条件下click()报错</h1>
+            <h1 style="display: none">vue3 router传参</h1>
             
             <div class="markdown-body">
-              <h1 id="某些特定条件下click-报错"><a href="#某些特定条件下click-报错" class="headerlink" title="某些特定条件下click()报错"></a>某些特定条件下click()报错</h1><blockquote>
-<p>某程酒店评论的下一页按钮,获取dom后使用.click()方法报错</p>
+              <h1 id="vue3-router传参"><a href="#vue3-router传参" class="headerlink" title="vue3 router传参"></a>vue3 router传参</h1><blockquote>
+<p>A页面点击按钮后携带参数跳转到B页面</p>
 </blockquote>
-<p><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%89%8D%E7%AB%AF/%E6%9F%90%E4%BA%9B%E7%89%B9%E5%AE%9A%E6%9D%A1%E4%BB%B6%E4%B8%8Bclick()%E6%8A%A5%E9%94%99.md/251371110226555.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>需要先让按钮出现,再点击按钮</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-selector-tag">document</span><span class="hljs-selector-class">.getElementsByClassName</span>(<span class="hljs-string">&#x27;forward&#x27;</span>)<span class="hljs-selector-attr">[0]</span><span class="hljs-selector-class">.scrollIntoViewIfNeeded</span>()<br><span class="hljs-selector-tag">document</span><span class="hljs-selector-class">.getElementsByClassName</span>(<span class="hljs-string">&#x27;forward&#x27;</span>)<span class="hljs-selector-attr">[0]</span><span class="hljs-selector-class">.click</span>()<br></code></pre></td></tr></table></figure>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><ul>
+<li>导入router <code>import &#123; useRouter &#125; from &quot;vue-router&quot;;</code></li>
+<li>A页面传参<code>router.push(&#123;&#125;)</code></li>
+<li>B页面接收<code>route.params.num;</code></li>
+</ul>
+<h2 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h2><h3 id="route-js"><a href="#route-js" class="headerlink" title="route.js"></a>route.js</h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript">&#123; path: <span class="hljs-string">&#x27;/A&#x27;</span>, name:<span class="hljs-string">&#x27;A&#x27;</span>,component: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;pages/A.vueB&#x27;</span>) &#125;,<br>&#123; path: <span class="hljs-string">&#x27;/B&#x27;</span>, name:<span class="hljs-string">&#x27;B&#x27;</span>,component: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;pages/B.vue&#x27;</span>) &#125;<br></code></pre></td></tr></table></figure>
+<h3 id="A页面"><a href="#A页面" class="headerlink" title="A页面"></a>A页面</h3><p><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%89%8D%E7%AB%AF/vue3%20router%E4%BC%A0%E5%8F%82.md/273232410238768.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;go&quot;</span>&gt;</span>跳转<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br>&lt;/template&gt;<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="javascript"><span class="xml"><span class="hljs-keyword">import</span> &#123; useRouter &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-router&quot;</span>;</span></span><br><span class="javascript"><span class="xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (&#123;</span></span><br><span class="javascript"><span class="xml">    <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params">props, ctx</span>)</span> &#123;</span></span><br><span class="javascript"><span class="xml">        <span class="hljs-comment">//router是全局路由对象，route= userRoute()是当前路由对象</span></span></span><br><span class="javascript"><span class="xml">        <span class="hljs-keyword">let</span> router = useRouter();</span></span><br><span class="javascript"><span class="xml">        <span class="hljs-keyword">const</span> go=<span class="hljs-function">()=&gt;</span>&#123;</span></span><br><span class="javascript"><span class="xml">            router.push(&#123;</span></span><br><span class="javascript"><span class="xml">            <span class="hljs-comment">//传递参数使用params的话，只能使用name指定(在route.js里面声明name)</span></span></span><br><span class="javascript"><span class="xml">            <span class="hljs-attr">name</span>:<span class="hljs-string">&quot;B&quot;</span>,</span></span><br><span class="javascript"><span class="xml">            <span class="hljs-attr">params</span>:&#123;</span></span><br><span class="javascript"><span class="xml">                <span class="hljs-attr">num</span>:<span class="hljs-number">1</span></span></span><br><span class="javascript"><span class="xml">            &#125;</span></span><br><span class="javascript"><span class="xml">            <span class="hljs-comment">/* 使用query的话，指定path或者name都行</span></span></span><br><span class="hljs-comment"><span class="javascript"><span class="xml">            path:&#x27;/home&#x27;,</span></span></span><br><span class="hljs-comment"><span class="javascript"><span class="xml">            query:&#123;</span></span></span><br><span class="hljs-comment"><span class="javascript"><span class="xml">            num:1</span></span></span><br><span class="hljs-comment"><span class="javascript"><span class="xml">            &#125; */</span></span></span><br><span class="javascript"><span class="xml">            &#125;)</span></span><br><span class="javascript"><span class="xml">        &#125;</span></span><br><span class="javascript"><span class="xml">        <span class="hljs-keyword">return</span>&#123;</span></span><br><span class="javascript"><span class="xml">            go,</span></span><br><span class="javascript"><span class="xml">        &#125;</span></span><br><span class="javascript"><span class="xml">    &#125;</span></span><br><span class="javascript"><span class="xml">&#125;)</span></span><br><span class="javascript"><span class="xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h3 id="B页面"><a href="#B页面" class="headerlink" title="B页面"></a>B页面</h3><p><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/%E5%89%8D%E7%AB%AF/vue3%20router%E4%BC%A0%E5%8F%82.md/108052510226635.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;template&gt;<br>  &#123;&#123; num &#125;&#125;<br>&lt;/template&gt;<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="javascript"><span class="xml"><span class="hljs-keyword">import</span> &#123; useRoute &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue-router&quot;</span>;</span></span><br><span class="javascript"><span class="xml"></span></span><br><span class="javascript"><span class="xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="javascript"><span class="xml">  <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params">props, ctx</span>)</span> &#123;</span></span><br><span class="javascript"><span class="xml">    <span class="hljs-comment">//router是全局路由对象，route= userRoute()是当前路由对象</span></span></span><br><span class="javascript"><span class="xml">    <span class="hljs-keyword">let</span> route = useRoute();</span></span><br><span class="javascript"><span class="xml">    <span class="hljs-keyword">const</span> num = route.params.num;</span></span><br><span class="javascript"><span class="xml">    <span class="hljs-built_in">console</span>.log(num);</span></span><br><span class="javascript"><span class="xml">    <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="javascript"><span class="xml">      num,</span></span><br><span class="javascript"><span class="xml">    &#125;;</span></span><br><span class="javascript"><span class="xml">  &#125;,</span></span><br><span class="javascript"><span class="xml">&#125;;</span></span><br><span class="javascript"><span class="xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br></code></pre></td></tr></table></figure>
+
             </div>
             <hr>
             <div>
@@ -264,18 +272,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/01/vue3%20router%E4%BC%A0%E5%8F%82/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">vue3 router传参</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/02/23/Quasar%E4%B8%AD%E6%B7%BB%E5%8A%A0TailwindCSS/">
-                        <span class="hidden-mobile">Quasar 中添加 tailwindcss</span>
+                      <a href="/2022/02/23/%E6%9F%90%E4%BA%9B%E7%89%B9%E5%AE%9A%E6%9D%A1%E4%BB%B6%E4%B8%8Bclick()%E6%8A%A5%E9%94%99/">
+                        <span class="hidden-mobile">某些特定条件下click()报错</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
