@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>vue3 父子组件间相互传值</title>
+    <link href="/2022/03/02/vue3%20%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%97%B4%E7%9B%B8%E4%BA%92%E4%BC%A0%E5%80%BC/"/>
+    <url>/2022/03/02/vue3%20%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E9%97%B4%E7%9B%B8%E4%BA%92%E4%BC%A0%E5%80%BC/</url>
+    
+    <content type="html"><![CDATA[<h1 id="vue3-父子组件间相互传值"><a href="#vue3-父子组件间相互传值" class="headerlink" title="vue3 父子组件间相互传值"></a>vue3 父子组件间相互传值</h1><h2 id="父向子传值"><a href="#父向子传值" class="headerlink" title="父向子传值"></a>父向子传值</h2><h3 id="父"><a href="#父" class="headerlink" title="父"></a>父</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">pie-chart</span> <span class="hljs-attr">:pieData</span>=<span class="hljs-string">&quot;post_data.pid&quot;</span> /&gt;</span><br></code></pre></td></tr></table></figure><blockquote><p>父组件只需在子组件上声明一个变量即可。 <code>:</code>代表变量，可以传变量;否则只能传常量</p></blockquote><h3 id="子"><a href="#子" class="headerlink" title="子"></a>子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>    <span class="hljs-attr">props</span>:[<span class="hljs-string">&#x27;pieData&#x27;</span>],<br>    <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params">props,ctx</span>)</span> &#123;<br>        <span class="hljs-keyword">const</span> pie_data = props.pieData<br></code></pre></td></tr></table></figure><blockquote><p>子组件中需要在<code>props</code>中声明需要接收的变量名，setup中需要引用<code>props</code>，赋值时用<code>props.变量名</code>接收。return出去就可以用了</p></blockquote><h2 id="子组件向父组件传值"><a href="#子组件向父组件传值" class="headerlink" title="子组件向父组件传值"></a>子组件向父组件传值</h2><h3 id="父-1"><a href="#父-1" class="headerlink" title="父"></a>父</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs typescript"> &lt;submit <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-meta">@e_flag</span>=<span class="hljs-string">&quot;get_e_flag&quot;</span> /&gt;<br> <br><span class="hljs-keyword">const</span> e_flag = ref(<span class="hljs-literal">false</span>);<br>    <span class="hljs-keyword">const</span> get_e_flag = <span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> &#123;<br>      e_flag.value = e;<br>    &#125;;<br></code></pre></td></tr></table></figure><blockquote><p>父组件需要声明一个@方法<code>get_e_flag</code>接收子组件发送的值,在该方法中赋值给需要的变量</p></blockquote><h3 id="子-1"><a href="#子-1" class="headerlink" title="子"></a>子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params">props, ctx</span>)</span> &#123;<br>    ……<br>    <span class="hljs-keyword">const</span> spyder_go = <span class="hljs-function">() =&gt;</span> &#123;<br>        ctx.emit(<span class="hljs-string">&#x27;e_flag&#x27;</span>,e_flag.value)<br></code></pre></td></tr></table></figure><blockquote><p>子组件中需要在setup中使用<code>ctx</code>，使用<code>ctx.emit</code>向父组件传值。该方法需要调用，比如点击或者onMounted</p></blockquote>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>前端</tag>
+      
+      <tag>vue3</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>vue3 router传参</title>
     <link href="/2022/03/01/vue3%20router%E4%BC%A0%E5%8F%82/"/>
     <url>/2022/03/01/vue3%20router%E4%BC%A0%E5%8F%82/</url>
