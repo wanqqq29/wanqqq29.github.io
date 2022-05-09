@@ -194,7 +194,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-05-09 15:15" pubdate>
+      <time datetime="2022-05-09 15:17" pubdate>
         2022年5月9日 下午
       </time>
     </span>
@@ -206,7 +206,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      147 字
+      396 字
     </span>
   
 
@@ -216,7 +216,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      6
        分钟
     </span>
   
@@ -249,7 +249,15 @@
             <h1 style="display: none"></h1>
             
             <div class="markdown-body">
-              {"created_time":"2021-12-15T05:59:25Z","files":[{"attachment_folder":"","created_time":"2021-12-16T06:58:58Z","id":"24","modified_time":"2021-12-16T07:00:39Z","name":"2020东京奥运会金牌榜爬虫.md","signature":"1255770088370","tags":[]},{"attachment_folder":"","created_time":"2021-12-16T07:00:44Z","id":"25","modified_time":"2021-12-16T07:01:36Z","name":"request.get乱码解决.md","signature":"8028933514268","tags":[]},{"attachment_folder":"","created_time":"2021-12-17T02:44:05Z","id":"30","modified_time":"2022-04-16T01:38:09Z","name":"云函数代理池.md","signature":"59834829109621","tags":[]},{"attachment_folder":"","created_time":"2021-12-18T07:29:54Z","id":"32","modified_time":"2021-12-18T07:29:54Z","name":"pandas入门.md","signature":"79316800867826","tags":[]},{"attachment_folder":"","created_time":"2022-02-18T07:27:54Z","id":"52","modified_time":"2022-02-18T07:29:24Z","name":"selenium_webdriver.md","signature":"177738828410","tags":[]}],"folders":[],"id":"4","modified_time":"2021-12-15T05:59:25Z","signature":"658769544253","version":3}
+              <h1 id="vuex-组合式API实践指南"><a href="#vuex-组合式API实践指南" class="headerlink" title="vuex 组合式API实践指南"></a>vuex 组合式API实践指南</h1><h2 id="1-定义store"><a href="#1-定义store" class="headerlink" title="1. 定义store"></a>1. 定义store</h2><p>store/index.js 创建store对象并导出store</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; store &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;quasar/wrappers&quot;</span>;<br><span class="hljs-keyword">import</span> &#123; createStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vuex&quot;</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> store(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"><span class="hljs-comment">/* &#123; ssrContext &#125; */</span></span>) </span>&#123;<br>  <span class="hljs-keyword">const</span> Store = createStore(&#123;<br>    <span class="hljs-comment">//全局数据</span><br>    <span class="hljs-attr">state</span>: &#123;<br>      <span class="hljs-attr">num</span>:<span class="hljs-string">&#x27;1&#x27;</span><br>    &#125;,<br>    <span class="hljs-comment">//操作全局数据方法</span><br>    <span class="hljs-attr">mutations</span>: &#123;<br>        <span class="hljs-comment">//无参数执行方法</span><br>        <span class="hljs-function"><span class="hljs-title">addNum</span>(<span class="hljs-params">state</span>)</span>&#123;<br>            state.num ++;<br>        &#125;,<br>        <span class="hljs-comment">//携带参数执行方法</span><br>        <span class="hljs-function"><span class="hljs-title">addNum2</span>(<span class="hljs-params">state,val</span>)</span>&#123;<br>            state.num +=val<br>        &#125;,<br>    &#125;,<br>    <span class="hljs-comment">//异步操作在action中进行，再传递到mutation</span><br>    <span class="hljs-attr">actions</span>: &#123;<br>    &#125;,<br>    <span class="hljs-comment">//vuex允许我们将store分割成模块化（modules）</span><br>    <span class="hljs-attr">modules</span>: &#123;<br>    &#125;<br>  &#125;);<br><br>  <span class="hljs-keyword">return</span> Store;<br>&#125;);<br></code></pre></td></tr></table></figure>
+<h2 id="2-使用store"><a href="#2-使用store" class="headerlink" title="2. 使用store"></a>2. 使用store</h2><h3 id="2-1-在模板中调用声名的num"><a href="#2-1-在模板中调用声名的num" class="headerlink" title="2.1. 在模板中调用声名的num"></a>2.1. 在模板中调用声名的num</h3><p><img src="vx_images/498453214238976.png" srcset="/img/loading.gif" lazyload></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>$store.state.num:&#123;&#123;$store.state.num&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br><span class="hljs-keyword">import</span> &#123; useStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vuex&#x27;</span>    <span class="hljs-comment">// 引入useStore 方法</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> defineComponent(&#123;<br>    <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-keyword">const</span> store = useStore()    <span class="hljs-comment">// 该方法用于返回store 实例</span><br>    &#125;<br>&#125;);<br><br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+<h3 id="2-2-对state-num进行操作"><a href="#2-2-对state-num进行操作" class="headerlink" title="2.2. 对state.num进行操作"></a>2.2. 对state.num进行操作</h3><p><img src="vx_images/118723714226843.png" srcset="/img/loading.gif" lazyload><br><img src="vx_images/192504114247009.gif" srcset="/img/loading.gif" lazyload alt="GIF 2022-5-9 14-40-37"><br>vuex的store状态更新的唯一方式：<code>提交 mutation</code><br>同步操作可以直接在mutatuions中直接进行<br>不能直接对state直接操作<code>store.state.num +=44;</code>，这样会丢失响应性。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;num&quot;</span>&gt;</span> $store.state.num:&#123;&#123;$store.state.num&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">q-btn</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;num+1&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;numplus1&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">q-btn</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;num+3&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;numplus3&quot;</span>/&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br><span class="hljs-keyword">import</span> &#123; useStore &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vuex&#x27;</span>    <span class="hljs-comment">// 引入useStore 方法</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> defineComponent(&#123;<br>    <span class="hljs-function"><span class="hljs-title">setup</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-keyword">const</span> store = useStore()    <span class="hljs-comment">// 该方法用于返回store 实例</span><br>        <span class="hljs-comment">//调用定义中addNum方法对num进行+1操作</span><br>        <span class="hljs-keyword">const</span> numplus1 =<span class="hljs-function">()=&gt;</span>&#123;<br>            store.commit(<span class="hljs-string">&#x27;addNum&#x27;</span>)<br>        &#125;<br>        <span class="hljs-keyword">const</span> numplus3 =<span class="hljs-function">()=&gt;</span>&#123;<br>            store.commit(<span class="hljs-string">&#x27;addNum2&#x27;</span>,<span class="hljs-number">3</span>)<br>        &#125;<br>        <span class="hljs-keyword">return</span>&#123;<br>            numplus1,<br>            numplus3,<br>        &#125;<br>    &#125;<br>&#125;);<br><br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
             </div>
             <hr>
             <div>
@@ -269,9 +277,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/09/%E5%89%8D%E7%AB%AF/echarts%E6%8A%A5%E9%94%99%60setOption%60%20should%20not%20be%20called%20during%20main%20process/">
+                      <a href="/2022/05/09/vue%20%E4%B8%AD%20%E9%80%9A%E8%BF%87js%E6%8F%92%E5%85%A5%E7%9A%84dom%20%E6%97%A0%E6%B3%95%E7%94%9F%E6%95%88css/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">echarts报错`setOption` should not be called during main process</span>
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -279,8 +287,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/09/python&amp;%E7%88%AC%E8%99%AB/request.get%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3/">
-                        <span class="hidden-mobile">request.get中文乱码解决</span>
+                      <a href="/2022/05/09/%E9%80%9A%E8%BF%87%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E6%96%B9%E5%BC%8F%E4%BF%9D%E5%AD%98%E9%87%8D%E8%A6%81%E4%BF%A1%E6%81%AF/">
+                        <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

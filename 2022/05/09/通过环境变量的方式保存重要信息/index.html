@@ -25,6 +25,22 @@
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
 
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
 
 <!-- 主题依赖的图标库，不要自行修改 -->
 
@@ -69,7 +85,7 @@
 
 
 <body>
-  <header style="height: 100vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -168,17 +184,50 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="🌳种一棵树最好的时间是十年前，其次是现在👏">
+            <span class="h2" id="subtitle" title="">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-09 15:17" pubdate>
+        2022年5月9日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      249 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      2
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -187,204 +236,130 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/08/05/G6%E8%B8%A9%E5%9D%91/" target="_self">
-          G6踩坑
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/08/05/G6%E8%B8%A9%E5%9D%91/" target="_self">
-          
-          
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
             
-          
-          在学习G6的过程中，遇到一些问题，随手记录下来
-点击一次add按钮 重新绘制图片问题出现原因：在draw()函数中声明的graph，当点击按钮调用add()时，为了调用到graph，写成了draw().graph
-出现了调用add()时重新new一个graph对象出来，所以才会在同一个id容器内重新生成canvas的问题
-问题解决办法：在setup中直接声明全局graph，在draw()中new对
-        </a>
-      </p>
+            <div class="markdown-body">
+              <h1 id="通过环境变量的方式保存重要信息"><a href="#通过环境变量的方式保存重要信息" class="headerlink" title="通过环境变量的方式保存重要信息"></a>通过环境变量的方式保存重要信息</h1><blockquote>
+<p>使用Django时，经常会在settings文件中写入数据库的连接信息,当上传到git仓库时，很容易泄露敏感信息造成安全隐患。</p>
+</blockquote>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>配置环境变量，让Django连接数据库时从环境变量中读取配置信息。<br>这里我们用到了<code>os.environ.get(&#39;DbUser&#39;)</code>这行代码，意思是从环境变量中读取DbUser这个变量的值。</p>
+<h2 id="配置Pycharm的环境变量："><a href="#配置Pycharm的环境变量：" class="headerlink" title="配置Pycharm的环境变量："></a>配置Pycharm的环境变量：</h2><p>通过Pytharm运行项目时可以在Pycharm中配置环境变量，这个环境变量仅限于Pycharm，通过命令行就无法运行了。</p>
+<h3 id="配置说明"><a href="#配置说明" class="headerlink" title="配置说明"></a>配置说明</h3><ol>
+<li>编辑运行配置 <img src="vx_images/76104809238891.png" srcset="/img/loading.gif" lazyload></li>
+<li>点击编辑环境变量按钮<img src="vx_images/529104809226758.png" srcset="/img/loading.gif" lazyload></li>
+<li>添加环境变量<img src="vx_images/193404909246924.png" srcset="/img/loading.gif" lazyload><img src="vx_images/43665009239593.png" srcset="/img/loading.gif" lazyload></li>
+<li>点击确定，现在就可以在django项目中使用了。<h2 id="系统环境变量"><a href="#系统环境变量" class="headerlink" title="系统环境变量"></a>系统环境变量</h2><h3 id="配置说明-1"><a href="#配置说明-1" class="headerlink" title="配置说明"></a>配置说明</h3></li>
+<li>在用户环境变量中配置即可<img src="vx_images/277385509247386.png" srcset="/img/loading.gif" lazyload><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2></li>
+<li>导入os库</li>
+<li>直接os.environ.get(‘DbUser’) <img src="vx_images/246655109231902.png" srcset="/img/loading.gif" lazyload></li>
+<li><img src="vx_images/566165309249782.png" srcset="/img/loading.gif" lazyload></li>
+</ol>
 
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-05 15:45" pubdate>
-              2021-08-05
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
-            
-              <a href="/tags/vue/">vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/08/05/Django%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96/" target="_self">
-          Django项目初始化
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/08/05/Django%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96/" target="_self">
-          
-          
-            
-          
-          MySQL连接SETTING.py123456789101112DATABASES = &#123;    &#x27;default&#x27;: &#123;        &#x27;ENGINE&#x27;: &#x27;django.db.backends.mysql&#x27;,        &#x27;NAME&#x27;: &#x27;xxx&#x27;,        &#x2
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-05 15:45" pubdate>
-              2021-08-05
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Python/">Python</a>
-            
-              <a href="/tags/%E5%90%8E%E7%AB%AF/">后端</a>
-            
-              <a href="/tags/Django/">Django</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/04/22/%E4%B8%89%E7%A7%8D%E8%AE%A1%E7%AE%97%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E5%8F%96%E4%BD%99%E8%BF%90%E7%AE%97/" target="_self">
-          三种计算器实现加减乘除取余运算
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/04/22/%E4%B8%89%E7%A7%8D%E8%AE%A1%E7%AE%97%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4%E5%8F%96%E4%BD%99%E8%BF%90%E7%AE%97/" target="_self">
-          
-          
-            
-          
-          三种计算器实现加减乘除取余运算预览地址
-第一种 采用swich case 进行判断
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283&
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-22 18:07" pubdate>
-              2020-04-22
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/04/21/2D%E6%B3%A2%E6%B5%AA%E6%8C%89%E9%92%AE-1/" target="_self">
-          2D波浪按钮
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/04/21/2D%E6%B3%A2%E6%B5%AA%E6%8C%89%E9%92%AE-1/" target="_self">
-          
-          
-            
-          
-          [每天一个]1.2D波浪按钮预览图
-预览链接http://web.wanqqq29.cn/DailyCss/2Dwave/
-wave.png下载链接http://markdowntc.wanqqq29.cn//img/wave.png
-思路1
-html 代码1234567&lt;div class=&quot;wavebtn&quot;&gt;    &lt;a href=&quot;#&quot
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-21 15:29" pubdate>
-              2020-04-21
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/5/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="page-number current">6</span>
-    </span>
-  </nav>
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/09/quasar+vuex%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/09/%E5%89%8D%E7%AB%AF/%E6%9F%90%E4%BA%9B%E7%89%B9%E5%AE%9A%E6%9D%A1%E4%BB%B6%E4%B8%8Bclick()%E6%8A%A5%E9%94%99/">
+                        <span class="hidden-mobile">某些特定条件下click()报错</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'wanqqq29/wanqqq29.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'Comments');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -498,9 +473,15 @@ html 代码1234567&lt;div class=&quot;wavebtn&quot;&gt;    &lt;a href=&quot;#&qu
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
