@@ -1,0 +1,572 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="google-site-verification" content="TneGvKxHBEhNeNdJY3BrlLe_y8OsYSHNicJyUXafxzE" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="万能青年">
+  <meta name="keywords" content="">
+  <meta name="baidu-site-verification" content="code-YL4uW1Y3qB" />
+  
+  <title>Django项目初始化 - 日常随笔</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.wanqqq29.cn","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ba727d5704de87e82519e888b016c619";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>    
+	  <script src="https://cdn-go.cn/aegis/aegis-sdk/latest/aegis.min.js"></script>
+    <script>
+      const aegis = new Aegis({
+        id: 'O53YWsQOJDYmvrkRmo', // 上报 id
+        uin: 'xxx', // 用户唯一 ID（可选）
+        reportApiSpeed: true, // 接口测速
+        reportAssetSpeed: true, // 静态资源测速
+        spa: true // spa 应用页面跳转的时候开启 pv 计算
+      });
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>日常随笔</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                学习随笔
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Django项目初始化">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-09 15:12" pubdate>
+        2022年5月9日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      713 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      11
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Django项目初始化</h1>
+            
+            <div class="markdown-body">
+              <h1 id="初始化操作"><a href="#初始化操作" class="headerlink" title="初始化操作"></a>初始化操作</h1><h2 id="创建app"><a href="#创建app" class="headerlink" title="创建app"></a>创建app</h2><p><code>python manage.py startapp appname</code></p>
+<h2 id="MySQL连接"><a href="#MySQL连接" class="headerlink" title="MySQL连接"></a>MySQL连接</h2><h3 id="SETTING-py"><a href="#SETTING-py" class="headerlink" title="SETTING.py"></a>SETTING.py</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs py">DATABASES = &#123;<br>    <span class="hljs-string">&#x27;default&#x27;</span>: &#123;<br>        <span class="hljs-string">&#x27;ENGINE&#x27;</span>: <span class="hljs-string">&#x27;django.db.backends.mysql&#x27;</span>,<br>        <span class="hljs-string">&#x27;NAME&#x27;</span>: <span class="hljs-string">&#x27;xxx&#x27;</span>,<br>        <span class="hljs-string">&#x27;HOST&#x27;</span>:<span class="hljs-string">&#x27;localhost&#x27;</span>,<br>        <span class="hljs-string">&#x27;PORT&#x27;</span>:<span class="hljs-string">&#x27;3306&#x27;</span>,<br>        <span class="hljs-string">&#x27;USER&#x27;</span>:<span class="hljs-string">&#x27;username&#x27;</span>,<br>        <span class="hljs-string">&#x27;PASSWORD&#x27;</span>:<span class="hljs-string">&#x27;password&#x27;</span><br>    &#125;<br>&#125;<br><br>LANGUAGE_CODE = <span class="hljs-string">&#x27;zh-hans&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="init-py"><a href="#init-py" class="headerlink" title="init.py"></a><em>init</em>.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pymysql<br>pymysql.install_as_MySQLdb()<br></code></pre></td></tr></table></figure>
+
+<h3 id="数据库模型-models-py"><a href="#数据库模型-models-py" class="headerlink" title="数据库模型(models.py)"></a>数据库模型(models.py)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> Django.db <span class="hljs-keyword">import</span> models<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">xxx</span>(<span class="hljs-params">models.Model</span>):</span><br>    a = models.AutoField(primary_key=<span class="hljs-literal">True</span>)<br>    ……<br>    <br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Meta</span>:</span><br>        db_table=<span class="hljs-string">&#x27;tableName&#x27;</span><br></code></pre></td></tr></table></figure>
+<h3 id="数据库迁移"><a href="#数据库迁移" class="headerlink" title="数据库迁移"></a>数据库迁移</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs she">python manage.py makemigrations<br>python manage.py migrate<br></code></pre></td></tr></table></figure>
+<h2 id="mongoDB连接"><a href="#mongoDB连接" class="headerlink" title="mongoDB连接"></a>mongoDB连接</h2><p><a target="_blank" rel="noopener" href="https://www.djongomapper.com/get-started/">djongo</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ol>
+<li>必须完全按照以下版本安装<a target="_blank" rel="noopener" href="https://gist.github.com/uneconomicalfairy14/0d23275414122217c65882a56a30d615">引用来源</a> <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">asgiref</span>==<span class="hljs-number">3</span>.<span class="hljs-number">5</span>.<span class="hljs-number">0</span><br><span class="hljs-attribute">Django</span>==<span class="hljs-number">4</span>.<span class="hljs-number">0</span>.<span class="hljs-number">3</span><br><span class="hljs-attribute">djongo</span>==<span class="hljs-number">1</span>.<span class="hljs-number">3</span>.<span class="hljs-number">6</span><br><span class="hljs-attribute">dnspython</span>==<span class="hljs-number">2</span>.<span class="hljs-number">2</span>.<span class="hljs-number">1</span><br><span class="hljs-attribute">pymongo</span>==<span class="hljs-number">3</span>.<span class="hljs-number">12</span>.<span class="hljs-number">1</span><br><span class="hljs-attribute">python</span>-snappy==<span class="hljs-number">0</span>.<span class="hljs-number">6</span>.<span class="hljs-number">1</span><br><span class="hljs-attribute">pytz</span>==<span class="hljs-number">2022</span>.<span class="hljs-number">1</span><br><span class="hljs-attribute">sqlparse</span>==<span class="hljs-number">0</span>.<span class="hljs-number">2</span>.<span class="hljs-number">4</span><br></code></pre></td></tr></table></figure></li>
+<li>在您的项目settings.py文件中，添加： <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">DATABASES</span> = &#123;<br>    <span class="hljs-string">&#x27;default&#x27;</span>: &#123;<br>        <span class="hljs-string">&#x27;ENGINE&#x27;</span>: <span class="hljs-string">&#x27;djongo&#x27;</span>,<br>        <span class="hljs-string">&#x27;NAME&#x27;</span>: <span class="hljs-string">&#x27;your-db-name&#x27;</span>,<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="setting-py配置数据库"><a href="#setting-py配置数据库" class="headerlink" title="setting.py配置数据库"></a>setting.py配置数据库</h3><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs ada">DATABASES = &#123;<br>        <span class="hljs-symbol">&#x27;default</span>&#x27;: &#123;<br>            <span class="hljs-symbol">&#x27;ENGINE</span>&#x27;: <span class="hljs-symbol">&#x27;djongo</span>&#x27;,<br>            <span class="hljs-symbol">&#x27;NAME</span>&#x27;: <span class="hljs-symbol">&#x27;mdb</span>&#x27;,<br>            <span class="hljs-symbol">&#x27;ENFORCE_SCHEMA</span>&#x27;: <span class="hljs-literal">False</span>,<br>            <span class="hljs-symbol">&#x27;CLIENT</span>&#x27;: &#123;<br>                <span class="hljs-symbol">&#x27;host</span>&#x27;: <span class="hljs-symbol">&#x27;ip</span>&#x27;,<br>                <span class="hljs-symbol">&#x27;port</span>&#x27;: <span class="hljs-number">27017</span>,<br>                <span class="hljs-symbol">&#x27;username</span>&#x27;: <span class="hljs-symbol">&#x27;xx</span>&#x27;,<br>                <span class="hljs-symbol">&#x27;password</span>&#x27;: <span class="hljs-symbol">&#x27;xx</span>&#x27;,<br>                <span class="hljs-symbol">&#x27;authSource</span>&#x27;: <span class="hljs-symbol">&#x27;mdb</span>&#x27;,<br>                <span class="hljs-symbol">&#x27;authMechanism</span>&#x27;: <span class="hljs-symbol">&#x27;SCRAM</span>-SHA-<span class="hljs-number">1</span>&#x27;<br>            &#125;,<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="定义模型"><a href="#定义模型" class="headerlink" title="定义模型"></a>定义模型</h2><blockquote>
+<p>Blog是一个抽象类，相当于二级集合，在下面Entry集合中的blog字段里面用</p>
+</blockquote>
+<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">from</span> djongo <span class="hljs-keyword">import</span> models<br><span class="hljs-class"></span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Blog</span>(<span class="hljs-title">models</span>.<span class="hljs-type">Model</span>):</span><br><span class="hljs-class">    name = models.<span class="hljs-type">CharField</span>(<span class="hljs-title">max_length</span>=100)</span><br><span class="hljs-class"></span><br><span class="hljs-class">    <span class="hljs-keyword">class</span> <span class="hljs-type">Meta</span>:</span><br><span class="hljs-class">        abstract = <span class="hljs-type">True</span>  </span><br><span class="hljs-class">        //定义抽象类后不会在数据库中建表</span><br><span class="hljs-class"></span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Entry</span>(<span class="hljs-title">models</span>.<span class="hljs-type">Model</span>):</span><br><span class="hljs-class">    blog = models.<span class="hljs-type">EmbeddedField</span>(</span><br><span class="hljs-class">        <span class="hljs-title">model_container</span>=<span class="hljs-type">Blog</span></span><br><span class="hljs-class">    )    </span><br><span class="hljs-class">    headline = models.<span class="hljs-type">CharField</span>(<span class="hljs-title">max_length</span>=255)    </span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在view的自定义函数中这样用。通过字典的形式给blog集合内的值赋值</p>
+</blockquote>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs stylus">e = Entry()<br>e<span class="hljs-selector-class">.blog</span> = &#123;<br>    <span class="hljs-string">&#x27;name&#x27;</span>: <span class="hljs-string">&#x27;Djongo&#x27;</span><br>&#125;<br>e<span class="hljs-selector-class">.headline</span> = <span class="hljs-string">&#x27;The Django MongoDB connector&#x27;</span><br>e<span class="hljs-selector-class">.save</span>()<br></code></pre></td></tr></table></figure>
+
+<h2 id="报错处理"><a href="#报错处理" class="headerlink" title="报错处理"></a>报错处理</h2><h3 id="1-Array-and-Embedded-Fields-vs-Error-Abstract-models-cannot-be-instantiated"><a href="#1-Array-and-Embedded-Fields-vs-Error-Abstract-models-cannot-be-instantiated" class="headerlink" title="1. Array and Embedded Fields vs Error Abstract models cannot be instantiated"></a>1. Array and Embedded Fields vs Error <strong>Abstract models cannot be instantiated</strong></h3><blockquote>
+<p>在读取数据库时报错，抽象类不能被实例化。说明blog这个字段出现了问题，无法读取数据库</p>
+</blockquote>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><ul>
+<li>根据文档的说法在Model模型中添加一个objects字段，示例如下  <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-type">Entry</span>(<span class="hljs-title">models</span>.<span class="hljs-type">Model</span>):</span><br><span class="hljs-class">blog = models.<span class="hljs-type">EmbeddedField</span>(</span><br><span class="hljs-class">    <span class="hljs-title">model_container</span>=<span class="hljs-type">Blog</span>,</span><br><span class="hljs-class">)</span><br><span class="hljs-class">headline = models.<span class="hljs-type">CharField</span>(<span class="hljs-title">max_length</span>=255)    </span><br><span class="hljs-class">objects = models.<span class="hljs-type">DjongoManager</span>()    </span><br></code></pre></td></tr></table></figure></li>
+<li>添加objects字段后就就可以使用pymongo的命令来读取数据库了  <figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">index</span> = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> Entry.objects.mongo_aggregate([<br>            &#123;<br>                <span class="hljs-string">&#x27;$match&#x27;</span>: &#123;<br>                    <span class="hljs-string">&#x27;headline&#x27;</span>: <span class="hljs-string">&#x27;xx&#x27;</span><br>                &#125;<br>            &#125;,<br>        ])]<br><br><span class="hljs-keyword">return</span> <span class="hljs-keyword">index</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-Object-of-type-‘ObjectId’-is-not-JSON-serializable"><a href="#2-Object-of-type-‘ObjectId’-is-not-JSON-serializable" class="headerlink" title="2.Object of type ‘ObjectId’ is not JSON serializable"></a>2.Object of type ‘ObjectId’ is not JSON serializable</h3><blockquote>
+<p>读取数据库后通过JsonResponse返回报错</p>
+</blockquote>
+<blockquote>
+<p>mongodb读取后返回的是一个orderdict（有序字典）它是有元素的先后顺序的。通过Json.load也无法将其格式化。</p>
+</blockquote>
+<h4 id="解决办法-1"><a href="#解决办法-1" class="headerlink" title="解决办法"></a>解决办法</h4><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs haskell"><span class="hljs-title">from</span> bson <span class="hljs-keyword">import</span> json_util<br> <br><span class="hljs-class"><span class="hljs-keyword">data</span> = json_util.dumps(<span class="hljs-title">data</span>)</span><br><span class="hljs-title">return</span> <span class="hljs-type">HttpResponse</span>(<span class="hljs-class"><span class="hljs-keyword">data</span>)</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h2><h3 id="app-urls-py-需自建"><a href="#app-urls-py-需自建" class="headerlink" title="app/urls.py(需自建)"></a>app/urls.py(需自建)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> App.views<br><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin<br><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path<br><br>urlpatterns = [<br>    path(<span class="hljs-string">&#x27;&#x27;</span>,App.views.function),<br>    path……<br>]<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="urls-py"><a href="#urls-py" class="headerlink" title="urls.py"></a>urls.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin<br><span class="hljs-keyword">from</span> django.urls <span class="hljs-keyword">import</span> path, include<br><span class="hljs-keyword">from</span> App <span class="hljs-keyword">import</span> urls<br><br>urlpatterns = [<br>    path(<span class="hljs-string">&#x27;admin/&#x27;</span>, admin.site.urls),<br>    path(<span class="hljs-string">&#x27;&#x27;</span>, include(<span class="hljs-string">&#x27;App.urls&#x27;</span>))<br>]<br></code></pre></td></tr></table></figure>
+
+<h1 id="跨域问题解决"><a href="#跨域问题解决" class="headerlink" title="跨域问题解决"></a>跨域问题解决</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/majingjie/p/11152052.html">https://www.cnblogs.com/majingjie/p/11152052.html</a></p>
+<p>django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:</p>
+<p>ERRORS:<br>?: (corsheaders.E014) Origin ‘<a target="_blank" rel="noopener" href="http://123.56.127.98/&#39;">http://123.56.127.98/&#39;</a> in CORS_ORIGIN_WHITELIST should not have path<br>?: (corsheaders.E014) Origin ‘<a target="_blank" rel="noopener" href="http://onestep.wanqqq29.cn/&#39;">http://onestep.wanqqq29.cn/&#39;</a> in CORS_ORIGIN_WHITELIST should not have path</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Django/">Django</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/09/Django/vx/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/09/Django/docker%E5%B0%81%E8%A3%85Django+uwsgi/">
+                        <span class="hidden-mobile">docker封装Django+uwsgi</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'wanqqq29/wanqqq29.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'Comments');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鲁ICP备19024884号
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

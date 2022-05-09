@@ -1,0 +1,560 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="google-site-verification" content="TneGvKxHBEhNeNdJY3BrlLe_y8OsYSHNicJyUXafxzE" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="万能青年">
+  <meta name="keywords" content="">
+  <meta name="baidu-site-verification" content="code-YL4uW1Y3qB" />
+  
+  <title>Django模板开发&amp;重写&amp;使用bootstrap - 日常随笔</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.wanqqq29.cn","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?ba727d5704de87e82519e888b016c619";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>    
+	  <script src="https://cdn-go.cn/aegis/aegis-sdk/latest/aegis.min.js"></script>
+    <script>
+      const aegis = new Aegis({
+        id: 'O53YWsQOJDYmvrkRmo', // 上报 id
+        uin: 'xxx', // 用户唯一 ID（可选）
+        reportApiSpeed: true, // 接口测速
+        reportAssetSpeed: true, // 静态资源测速
+        spa: true // spa 应用页面跳转的时候开启 pv 计算
+      });
+    </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>日常随笔</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                学习随笔
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Django模板开发&重写&使用bootstrap">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-09 15:12" pubdate>
+        2022年5月9日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      989 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      15
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Django模板开发&amp;重写&amp;使用bootstrap</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Django模板开发-amp-重写-amp-使用bootstrap"><a href="#Django模板开发-amp-重写-amp-使用bootstrap" class="headerlink" title="Django模板开发&amp;重写&amp;使用bootstrap"></a>Django模板开发&amp;重写&amp;使用bootstrap</h1><blockquote>
+<p>本文使用Django自带模板系统</p>
+</blockquote>
+<h2 id="base-html"><a href="#base-html" class="headerlink" title="base.html"></a>base.html</h2><p>Django的模板系统离不开<code>base.html</code>这个模板文件，它相当于一个大框架，通过各种<code>block</code>块进行拼接，这部分与<code>vue</code>的<code>模板</code>相似。</p>
+<p>你可以在<code>base.html</code>中定义所有页面都不变的部分，比如： <code>&#123;% block header %&#125;</code>定义页面导航栏等头部部分、<code>&#123;% block footer %&#125;</code>定义页面底部版权内容、最重要的是<code>&#123;% block content %&#125;</code>定义页面可变的内容部分</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>变量都是双大括号<code>&#123;&#123; name &#125;&#125;</code></p>
+<h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><p>Django模板的语法不仅限于定义内容块，还可以进行循环、判断</p>
+<blockquote>
+<p>Django模板的标签都是块标签，也就意味着他们需要成对出现 以<code>end</code>结束</p>
+</blockquote>
+<h4 id="block"><a href="#block" class="headerlink" title="block"></a>block</h4><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">block</span></span> header %&#125;</span><span class="xml"></span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header&quot;</span>&gt;</span></span><br><span class="xml">        This is header block!</span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endblock</span></span> %&#125;</span><span class="xml"></span><br><span class="xml"></span><br><span class="xml"># content块不需要填写内容，会根据view返回的模板自动填充进去</span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">block</span></span> content %&#125;</span><span class="xml"></span><br><span class="xml"></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endblock</span></span> %&#125;</span><br></code></pre></td></tr></table></figure>
+<h4 id="for"><a href="#for" class="headerlink" title="for"></a>for</h4><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">for</span></span> i <span class="hljs-keyword">in</span> array%&#125;</span><span class="xml"></span><br><span class="xml">    </span><span class="hljs-template-variable">&#123;&#123; i &#125;&#125;</span><span class="xml"></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endfor</span></span> %&#125;</span><br></code></pre></td></tr></table></figure>
+<h4 id="if"><a href="#if" class="headerlink" title="if"></a>if</h4><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">if</span></span> a %&#125;</span><span class="xml"></span><br><span class="xml"></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endif</span></span> %&#125;</span><span class="xml"></span><br><span class="xml"></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">if</span></span> b == &#x27;str&#x27; %&#125;</span><span class="xml"></span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>当b=&#x27;str&#x27;时显示我<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">else</span></span> if b == &#x27;str1&#x27; %&#125;</span><span class="xml"></span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>当b=&#x27;str1&#x27;时显示我<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">else</span></span> %&#125;</span><span class="xml"></span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>当b!=&#x27;str&#x27;&amp;b!=&#x27;str1&#x27;时显示我<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endif</span></span> %&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="使用bootstrap"><a href="#使用bootstrap" class="headerlink" title="使用bootstrap"></a>使用bootstrap</h2><h3 id="1-安装bootstrap4"><a href="#1-安装bootstrap4" class="headerlink" title="1. 安装bootstrap4"></a>1. 安装bootstrap4</h3><p><code> pip install django-bootstrap4</code></p>
+<h3 id="2-导入bootstrap"><a href="#2-导入bootstrap" class="headerlink" title="2. 导入bootstrap"></a>2. 导入bootstrap</h3><p>在Settings.py文件中安装导入<br><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/django/django%E6%A8%A1%E6%9D%BF%E5%BC%80%E5%8F%91&%E9%87%8D%E5%86%99&%E4%BD%BF%E7%94%A8bootstrap.md/76781116235300.png" srcset="/img/loading.gif" lazyload> </p>
+<h3 id="3-使用bootstrap"><a href="#3-使用bootstrap" class="headerlink" title="3. 使用bootstrap"></a>3. 使用bootstrap</h3><p>在需要使用bootstrap的模板文件中写明</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">&#123;% load bootstrap4 %&#125;<br>&#123;<span class="hljs-comment"># load CSS and JavaScript #&#125;</span><br>&#123;% bootstrap_css %&#125;<br>&#123;% bootstrap_javascript jquery=<span class="hljs-string">&#x27;full&#x27;</span> %&#125;<br>&#123;<span class="hljs-comment"># Display django.contrib.messages as                     Bootstrap alerts #&#125;</span><br>&#123;% bootstrap_messages %&#125;<br></code></pre></td></tr></table></figure>
+<p>接下来就可以愉快的和平时一样写bootstrap的样式了<br><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/django/django%E6%A8%A1%E6%9D%BF%E5%BC%80%E5%8F%91&%E9%87%8D%E5%86%99&%E4%BD%BF%E7%94%A8bootstrap.md/14433516229972.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="bootstrap表单"><a href="#bootstrap表单" class="headerlink" title="bootstrap表单"></a>bootstrap表单</h4><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span></span><br><span class="xml">    </span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">csrf_token</span></span> %&#125;</span><span class="xml"></span><br><span class="xml">    </span><span class="hljs-template-tag">&#123;% <span class="hljs-name">bootstrap_form</span> form %&#125;</span><span class="xml"></span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">trans</span></span> &#x27;登录&#x27; %&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-primary&quot;</span>/&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;next&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; next &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>/&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="重写第三方插件模板"><a href="#重写第三方插件模板" class="headerlink" title="重写第三方插件模板"></a>重写第三方插件模板</h2><p><a target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/howto/overriding-templates/">官方文档</a><br>一般采用第一种方式，即在工程目录下新建template文件夹</p>
+<blockquote>
+<p>Django在渲染时找template文件夹，会先找工程目录<code>DIRS</code>，再找<code>APPDIRS</code></p>
+</blockquote>
+<h3 id="案例：重写registration应用登录模板"><a href="#案例：重写registration应用登录模板" class="headerlink" title="案例：重写registration应用登录模板"></a>案例：重写registration应用登录模板</h3><p>registration应用目录如下</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">+<span class="hljs-params">---backends</span><br>|   +<span class="hljs-params">---admin_approval</span><br>+<span class="hljs-params">---locale</span><br><span class="hljs-string">......</span><br>|   \<span class="hljs-params">---zh_TW</span><br>|       \<span class="hljs-params">---LC_MESSAGES</span><br>+<span class="hljs-params">---management</span><br>|   +<span class="hljs-params">---commands</span><br>|   |   \<span class="hljs-params">---__pycache__</span><br>|   \<span class="hljs-params">---__pycache__</span><br>+<span class="hljs-params">---migrations</span><br>|   \<span class="hljs-params">---__pycache__</span><br>+<span class="hljs-params">---templates</span><br>|   \<span class="hljs-params">---registration</span><br>+<span class="hljs-params">---tests</span><br>|   \<span class="hljs-params">---__pycache__</span><br>\<span class="hljs-params">---__pycache__</span><br></code></pre></td></tr></table></figure>
+<p>根据上面文件夹目录可得出结论，registration应用自带的模板在template/registration<br>我们可以在自己的template文件夹下建立registration，这时，我们写的同名模板就会替换自带模板</p>
+<blockquote>
+<p><strong>注意：</strong> 复写模板时，模板的父模板也需要一起复写</p>
+</blockquote>
+<p><img src="https://gitee.com/wanqqq29/vnote_images/raw/master/markdown%E6%96%87%E4%BB%B6%E5%A4%B9/django/django%E6%A8%A1%E6%9D%BF%E5%BC%80%E5%8F%91&%E9%87%8D%E5%86%99&%E4%BD%BF%E7%94%A8bootstrap.md/339044816218592.png" srcset="/img/loading.gif" lazyload><br>这种情况下需要同时建立registration_base.html文件，内容如果没有变化可以从自带模板中复制 <code>然后你会发现，这个文件中就一行&#123;% extends "base.html" %&#125;</code><br>login.html</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs django"><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">extends</span></span> &quot;registration/registration_base.html&quot; %&#125;</span><span class="xml"></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">load</span></span> bootstrap4 %&#125;</span><span class="xml"></span><br><span class="xml"></span><span class="hljs-comment">&#123;# load CSS and JavaScript #&#125;</span><span class="xml"></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name">bootstrap_css</span> %&#125;</span><span class="xml"></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name">bootstrap_javascript</span> jquery=&#x27;full&#x27; %&#125;</span><span class="xml"></span><br><span class="xml"></span><span class="hljs-comment">&#123;# Display django.contrib.messages as Bootstrap alerts #&#125;</span><span class="xml"></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name">bootstrap_messages</span> %&#125;</span><span class="xml"></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">load</span></span> i18n %&#125;</span><span class="xml"></span><br><span class="xml"></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">block</span></span> title %&#125;</span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">trans</span></span> &quot;Log <span class="hljs-keyword">in</span>&quot; %&#125;</span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endblock</span></span> %&#125;</span><span class="xml"></span><br><span class="xml"></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">block</span></span> content %&#125;</span><span class="xml"></span><br><span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;index&quot;</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;login_frame&quot;</span>&gt;</span></span><br><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;login_title&quot;</span>&gt;</span></span><br><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span></span><br><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span></span><br><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></span><br><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span></span><br><span class="xml">                </span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">csrf_token</span></span> %&#125;</span><span class="xml"></span><br><span class="xml">                </span><span class="hljs-template-tag">&#123;% <span class="hljs-name">bootstrap_form</span> form %&#125;</span><span class="xml"></span><br><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">trans</span></span> &#x27;登录&#x27; %&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn btn-primary&quot;</span>/&gt;</span></span><br><span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;hidden&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;next&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-variable">&#123;&#123; next &#125;&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>/&gt;</span></span><br><span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span><br><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">trans</span></span> &quot;忘记密码？&quot; %&#125;</span><span class="xml"> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">url</span></span> &#x27;auth_password_reset&#x27; %&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">trans</span></span> &quot;重置&quot; %&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">trans</span></span> &quot;还没有账号？&quot; %&#125;</span><span class="xml"> <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;</span></span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">url</span></span> &#x27;registration_register&#x27; %&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">&quot;</span>&gt;</span></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">trans</span></span> &quot;注册&quot; %&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="xml"></span><span class="hljs-template-tag">&#123;% <span class="hljs-name"><span class="hljs-name">endblock</span></span> %&#125;</span><br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Python/">Python</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Django/">Django</a>
+                    
+                      <a class="hover-with-bg" href="/tags/WEB/">WEB</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/09/Django/docker%E5%B0%81%E8%A3%85Django+uwsgi/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">docker封装Django+uwsgi</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/18/echarts%E6%8A%A5%E9%94%99%60setOption%60%20should%20not%20be%20called%20during%20main%20process/">
+                        <span class="hidden-mobile">echarts报错`setOption` should not be called during main process</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'wanqqq29/wanqqq29.github.io');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'Comments');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        鲁ICP备19024884号
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
